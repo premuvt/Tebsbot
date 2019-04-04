@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68A69F2522568F5D00EEB71E /* LeaveChatModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */; };
+		68A69F272256940200EEB71E /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A69F262256940200EEB71E /* WebService.swift */; };
+		68A69F292256AADD00EEB71E /* LeaveChatTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */; };
 		68E78BF0225664EF00BFD976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E78BEF225664EF00BFD976 /* AppDelegate.swift */; };
 		68E78BF2225664EF00BFD976 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E78BF1225664EF00BFD976 /* ViewController.swift */; };
 		68E78BF5225664EF00BFD976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E78BF3225664EF00BFD976 /* Main.storyboard */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveChatModal.swift; sourceTree = "<group>"; };
+		68A69F262256940200EEB71E /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveChatTableviewCell.swift; sourceTree = "<group>"; };
 		68E78BEC225664EF00BFD976 /* Tebsbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tebsbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E78BEF225664EF00BFD976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68E78BF1225664EF00BFD976 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +88,9 @@
 				68E78C0122566DCB00BFD976 /* Home.storyboard */,
 				68E78C032256700A00BFD976 /* HomeViewcontroller.swift */,
 				68E78C0522567D1300BFD976 /* ApplyLeaveViewController.swift */,
+				68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */,
+				68A69F262256940200EEB71E /* WebService.swift */,
+				68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */,
 			);
 			path = Tebsbot;
 			sourceTree = "<group>";
@@ -172,11 +181,14 @@
 				73CF4BE7225679F2004C6106 /* LoadingButton.swift in Sources */,
 				73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */,
 				73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */,
+				68A69F292256AADD00EEB71E /* LeaveChatTableviewCell.swift in Sources */,
 				68E78BF2225664EF00BFD976 /* ViewController.swift in Sources */,
 				68E78C042256700A00BFD976 /* HomeViewcontroller.swift in Sources */,
 				68E78BF0225664EF00BFD976 /* AppDelegate.swift in Sources */,
 				68E78C0622567D1300BFD976 /* ApplyLeaveViewController.swift in Sources */,
 				73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */,
+				68A69F272256940200EEB71E /* WebService.swift in Sources */,
+				68A69F2522568F5D00EEB71E /* LeaveChatModal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
