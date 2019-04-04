@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="111"/>
+            <point key="canvasLocation" x="2624.8000000000002" y="133.5832083958021"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="nNa-5e-JzG">
@@ -117,6 +117,105 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WS-QK-z2n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-530.39999999999998" y="133.5832083958021"/>
+        </scene>
+        <!--Upload Receipt View Controller-->
+        <scene sceneID="7MY-jJ-K17">
+            <objects>
+                <viewController id="U6E-mM-WhF" customClass="UploadReceiptViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9HD-ep-Anc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Renjit R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbQ-iM-eUV">
+                                <rect key="frame" x="10" y="84" width="355" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload your Receipt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkw-ZW-OEw">
+                                <rect key="frame" x="10" y="125" width="355" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOF-OL-Bo4">
+                                <rect key="frame" x="147.5" y="171" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.1529411765" green="0.21960784310000001" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="DKL-GC-bad"/>
+                                    <constraint firstAttribute="height" constant="30" id="NUz-OL-UJe"/>
+                                </constraints>
+                                <state key="normal" title="Browse">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tam-cm-QGR">
+                                <rect key="frame" x="147.5" y="267" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.1529411765" green="0.21960784310000001" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KHW-Zd-mbE"/>
+                                    <constraint firstAttribute="width" constant="80" id="aZn-CH-H80"/>
+                                </constraints>
+                                <state key="normal" title="Upload">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No file selected.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkG-xY-EP8">
+                                <rect key="frame" x="10" y="216" width="355" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PkG-xY-EP8" firstAttribute="top" secondItem="zOF-OL-Bo4" secondAttribute="bottom" constant="15" id="BMe-Ev-igE"/>
+                            <constraint firstItem="XIa-Si-JN8" firstAttribute="trailing" secondItem="PkG-xY-EP8" secondAttribute="trailing" constant="10" id="DqZ-yR-FdX"/>
+                            <constraint firstItem="BbQ-iM-eUV" firstAttribute="top" secondItem="XIa-Si-JN8" secondAttribute="top" constant="20" id="EF6-7r-RtW"/>
+                            <constraint firstItem="XIa-Si-JN8" firstAttribute="trailing" secondItem="kkw-ZW-OEw" secondAttribute="trailing" constant="10" id="HBR-bT-OL5"/>
+                            <constraint firstItem="PkG-xY-EP8" firstAttribute="leading" secondItem="XIa-Si-JN8" secondAttribute="leading" constant="10" id="MjS-xB-821"/>
+                            <constraint firstItem="BbQ-iM-eUV" firstAttribute="leading" secondItem="XIa-Si-JN8" secondAttribute="leading" constant="10" id="N8a-C2-aW5"/>
+                            <constraint firstItem="XIa-Si-JN8" firstAttribute="trailing" secondItem="BbQ-iM-eUV" secondAttribute="trailing" constant="10" id="Zfz-KN-Pj6"/>
+                            <constraint firstItem="zOF-OL-Bo4" firstAttribute="top" secondItem="kkw-ZW-OEw" secondAttribute="bottom" constant="25" id="daV-Tu-pJE"/>
+                            <constraint firstItem="kkw-ZW-OEw" firstAttribute="leading" secondItem="XIa-Si-JN8" secondAttribute="leading" constant="10" id="lUs-oA-2h6"/>
+                            <constraint firstItem="BbQ-iM-eUV" firstAttribute="centerX" secondItem="9HD-ep-Anc" secondAttribute="centerX" id="lyn-w7-Qyn"/>
+                            <constraint firstItem="zOF-OL-Bo4" firstAttribute="centerX" secondItem="9HD-ep-Anc" secondAttribute="centerX" id="nnK-Ul-M6C"/>
+                            <constraint firstItem="kkw-ZW-OEw" firstAttribute="top" secondItem="BbQ-iM-eUV" secondAttribute="bottom" constant="20" id="t4I-Gn-N94"/>
+                            <constraint firstItem="tam-cm-QGR" firstAttribute="centerX" secondItem="9HD-ep-Anc" secondAttribute="centerX" id="xSS-Ui-hyS"/>
+                            <constraint firstItem="tam-cm-QGR" firstAttribute="top" secondItem="PkG-xY-EP8" secondAttribute="bottom" constant="30" id="zLg-38-8ry"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XIa-Si-JN8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="F9O-GE-boI"/>
+                    <connections>
+                        <outlet property="buttonbrowse" destination="zOF-OL-Bo4" id="vr7-PI-JhZ"/>
+                        <outlet property="buttonupload" destination="tam-cm-QGR" id="43m-gR-tcX"/>
+                        <outlet property="fileNameLabel" destination="PkG-xY-EP8" id="LQU-c1-MIK"/>
+                        <outlet property="nameLabel" destination="BbQ-iM-eUV" id="L0o-zC-say"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Z3-Mr-NBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1412" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lUG-Ga-SG2">
+            <objects>
+                <navigationController storyboardIdentifier="uploadReceiptNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="I8s-yE-fvH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Uez-xW-S7c"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pQf-LZ-1Xl">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="U6E-mM-WhF" kind="relationship" relationship="rootViewController" id="qxy-Xx-HDC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r2z-JI-RNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="472.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>
