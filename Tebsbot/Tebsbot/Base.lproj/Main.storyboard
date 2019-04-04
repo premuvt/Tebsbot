@@ -73,29 +73,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnQ-sH-DE4">
-                                <rect key="frame" x="70" y="368" width="235" height="30"/>
-                                <color key="backgroundColor" red="0.15294117647058825" green="0.2196078431372549" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftX-NE-k14">
+                                <rect key="frame" x="60" y="363" width="255" height="30"/>
+                                <color key="backgroundColor" red="0.1529411765" green="0.21960784310000001" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="hRc-Dz-UvP"/>
+                                    <constraint firstAttribute="height" constant="30" id="dqQ-dG-Fcb"/>
                                 </constraints>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonLoginPressed:" destination="MCi-Nn-5nU" eventType="touchUpInside" id="yj4-iX-bZC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftX-NE-k14">
-                                <rect key="frame" x="100" y="403" width="175" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="dqQ-dG-Fcb"/>
-                                </constraints>
-                                <state key="normal" title="Sign up">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonSignupPressed:" destination="MCi-Nn-5nU" eventType="touchUpInside" id="Z38-C0-Jgk"/>
+                                    <action selector="buttonLoginPressed:" destination="MCi-Nn-5nU" eventType="touchUpInside" id="rMD-dL-w7w"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -103,30 +91,25 @@
                         <constraints>
                             <constraint firstItem="ad8-K9-sGd" firstAttribute="leading" secondItem="5fU-dR-QgJ" secondAttribute="leading" constant="80" id="0H1-he-eRw"/>
                             <constraint firstItem="5fU-dR-QgJ" firstAttribute="trailing" secondItem="w2m-tb-7aO" secondAttribute="trailing" constant="50" id="6hE-FQ-twu"/>
-                            <constraint firstItem="xnQ-sH-DE4" firstAttribute="top" secondItem="Vl1-W6-hyU" secondAttribute="bottom" constant="20" id="9TR-2g-mEB"/>
                             <constraint firstItem="w2m-tb-7aO" firstAttribute="leading" secondItem="5fU-dR-QgJ" secondAttribute="leading" constant="50" id="CW0-jh-OEX"/>
                             <constraint firstItem="Vl1-W6-hyU" firstAttribute="centerX" secondItem="os1-mm-Sni" secondAttribute="centerX" id="ChB-aS-shU"/>
-                            <constraint firstItem="5fU-dR-QgJ" firstAttribute="trailing" secondItem="ftX-NE-k14" secondAttribute="trailing" constant="100" id="ET7-3g-6WU"/>
-                            <constraint firstItem="ftX-NE-k14" firstAttribute="leading" secondItem="5fU-dR-QgJ" secondAttribute="leading" constant="100" id="Fnk-FB-ZOz"/>
+                            <constraint firstItem="5fU-dR-QgJ" firstAttribute="trailing" secondItem="ftX-NE-k14" secondAttribute="trailing" constant="60" id="ET7-3g-6WU"/>
+                            <constraint firstItem="ftX-NE-k14" firstAttribute="leading" secondItem="5fU-dR-QgJ" secondAttribute="leading" constant="60" id="Fnk-FB-ZOz"/>
                             <constraint firstItem="5fU-dR-QgJ" firstAttribute="trailing" secondItem="ad8-K9-sGd" secondAttribute="trailing" constant="80" id="Lz9-ax-DQ7"/>
+                            <constraint firstItem="ftX-NE-k14" firstAttribute="top" secondItem="Vl1-W6-hyU" secondAttribute="bottom" constant="15" id="Mbi-fQ-Tpg"/>
                             <constraint firstItem="w2m-tb-7aO" firstAttribute="centerX" secondItem="os1-mm-Sni" secondAttribute="centerX" id="QW0-Ue-vK5"/>
                             <constraint firstItem="Vl1-W6-hyU" firstAttribute="top" secondItem="w2m-tb-7aO" secondAttribute="bottom" constant="15" id="bLS-V2-QVv"/>
-                            <constraint firstItem="ftX-NE-k14" firstAttribute="top" secondItem="xnQ-sH-DE4" secondAttribute="bottom" constant="5" id="cqG-En-l9p"/>
                             <constraint firstItem="w2m-tb-7aO" firstAttribute="top" secondItem="ad8-K9-sGd" secondAttribute="bottom" constant="30" id="dVx-P0-68V"/>
                             <constraint firstItem="Vl1-W6-hyU" firstAttribute="leading" secondItem="5fU-dR-QgJ" secondAttribute="leading" constant="50" id="kXa-Pe-361"/>
                             <constraint firstItem="5fU-dR-QgJ" firstAttribute="trailing" secondItem="Vl1-W6-hyU" secondAttribute="trailing" constant="50" id="l5l-kE-s8d"/>
                             <constraint firstItem="ftX-NE-k14" firstAttribute="centerX" secondItem="os1-mm-Sni" secondAttribute="centerX" id="oP3-6h-qSU"/>
                             <constraint firstItem="ad8-K9-sGd" firstAttribute="centerX" secondItem="os1-mm-Sni" secondAttribute="centerX" id="tVm-SJ-e40"/>
-                            <constraint firstItem="xnQ-sH-DE4" firstAttribute="centerX" secondItem="os1-mm-Sni" secondAttribute="centerX" id="vKq-bx-i23"/>
-                            <constraint firstItem="xnQ-sH-DE4" firstAttribute="leading" secondItem="5fU-dR-QgJ" secondAttribute="leading" constant="70" id="vcr-Py-Sxo"/>
                             <constraint firstItem="ad8-K9-sGd" firstAttribute="top" secondItem="5fU-dR-QgJ" secondAttribute="top" constant="173" id="wJt-X1-q6t"/>
-                            <constraint firstItem="5fU-dR-QgJ" firstAttribute="trailing" secondItem="xnQ-sH-DE4" secondAttribute="trailing" constant="70" id="ynS-2k-wWf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5fU-dR-QgJ"/>
                     </view>
                     <connections>
-                        <outlet property="buttonLogin" destination="xnQ-sH-DE4" id="m0E-3Q-g1y"/>
-                        <outlet property="buttonSignUp" destination="ftX-NE-k14" id="usR-nu-8iW"/>
+                        <outlet property="buttonLogin" destination="ftX-NE-k14" id="gUs-Ec-zYx"/>
                         <outlet property="textFieldPassword" destination="Vl1-W6-hyU" id="WFq-CX-OjU"/>
                         <outlet property="textFieldUserName" destination="w2m-tb-7aO" id="msU-fd-uCX"/>
                     </connections>
