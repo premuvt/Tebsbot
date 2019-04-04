@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68A69F2522568F5D00EEB71E /* LeaveChatModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */; };
+		68A69F272256940200EEB71E /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A69F262256940200EEB71E /* WebService.swift */; };
+		68A69F292256AADD00EEB71E /* LeaveChatTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */; };
 		68E78BF0225664EF00BFD976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E78BEF225664EF00BFD976 /* AppDelegate.swift */; };
 		68E78BF2225664EF00BFD976 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E78BF1225664EF00BFD976 /* ViewController.swift */; };
 		68E78BF5225664EF00BFD976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E78BF3225664EF00BFD976 /* Main.storyboard */; };
@@ -20,11 +23,12 @@
 		73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE2225679F1004C6106 /* LabelTextField.swift */; };
 		73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE3225679F1004C6106 /* LineTextField.swift */; };
 		73CF4BE7225679F2004C6106 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE4225679F2004C6106 /* LoadingButton.swift */; };
-		73CF4BE922568627004C6106 /* UploadReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE822568627004C6106 /* UploadReceiptViewController.swift */; };
-		73CF4BEC22568DC0004C6106 /* UIViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BEB22568DC0004C6106 /* UIViewController+Storyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveChatModal.swift; sourceTree = "<group>"; };
+		68A69F262256940200EEB71E /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveChatTableviewCell.swift; sourceTree = "<group>"; };
 		68E78BEC225664EF00BFD976 /* Tebsbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tebsbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E78BEF225664EF00BFD976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68E78BF1225664EF00BFD976 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,8 +44,6 @@
 		73CF4BE2225679F1004C6106 /* LabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
 		73CF4BE3225679F1004C6106 /* LineTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTextField.swift; sourceTree = "<group>"; };
 		73CF4BE4225679F2004C6106 /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
-		73CF4BE822568627004C6106 /* UploadReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadReceiptViewController.swift; sourceTree = "<group>"; };
-		73CF4BEB22568DC0004C6106 /* UIViewController+Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,13 +76,11 @@
 		68E78BEE225664EF00BFD976 /* Tebsbot */ = {
 			isa = PBXGroup;
 			children = (
-				73CF4BEA225686E8004C6106 /* Services */,
 				73CF4BE12256793F004C6106 /* Extension */,
 				68E78BEF225664EF00BFD976 /* AppDelegate.swift */,
 				68E78BF1225664EF00BFD976 /* ViewController.swift */,
 				68E78BF3225664EF00BFD976 /* Main.storyboard */,
 				73CF4BDF2256716B004C6106 /* LoginViewController.swift */,
-				73CF4BE822568627004C6106 /* UploadReceiptViewController.swift */,
 				73CF4BDD22567120004C6106 /* Login.storyboard */,
 				68E78BF6225664F200BFD976 /* Assets.xcassets */,
 				68E78BF8225664F200BFD976 /* LaunchScreen.storyboard */,
@@ -88,6 +88,9 @@
 				68E78C0122566DCB00BFD976 /* Home.storyboard */,
 				68E78C032256700A00BFD976 /* HomeViewcontroller.swift */,
 				68E78C0522567D1300BFD976 /* ApplyLeaveViewController.swift */,
+				68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */,
+				68A69F262256940200EEB71E /* WebService.swift */,
+				68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */,
 			);
 			path = Tebsbot;
 			sourceTree = "<group>";
@@ -98,16 +101,8 @@
 				73CF4BE2225679F1004C6106 /* LabelTextField.swift */,
 				73CF4BE3225679F1004C6106 /* LineTextField.swift */,
 				73CF4BE4225679F2004C6106 /* LoadingButton.swift */,
-				73CF4BEB22568DC0004C6106 /* UIViewController+Storyboard.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		73CF4BEA225686E8004C6106 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,14 +180,15 @@
 			files = (
 				73CF4BE7225679F2004C6106 /* LoadingButton.swift in Sources */,
 				73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */,
-				73CF4BE922568627004C6106 /* UploadReceiptViewController.swift in Sources */,
 				73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */,
+				68A69F292256AADD00EEB71E /* LeaveChatTableviewCell.swift in Sources */,
 				68E78BF2225664EF00BFD976 /* ViewController.swift in Sources */,
 				68E78C042256700A00BFD976 /* HomeViewcontroller.swift in Sources */,
 				68E78BF0225664EF00BFD976 /* AppDelegate.swift in Sources */,
 				68E78C0622567D1300BFD976 /* ApplyLeaveViewController.swift in Sources */,
 				73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */,
-				73CF4BEC22568DC0004C6106 /* UIViewController+Storyboard.swift in Sources */,
+				68A69F272256940200EEB71E /* WebService.swift in Sources */,
+				68A69F2522568F5D00EEB71E /* LeaveChatModal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

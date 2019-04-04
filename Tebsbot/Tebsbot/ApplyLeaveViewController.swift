@@ -10,8 +10,24 @@ import Foundation
 import UIKit
 
 class ApplyLeaveViewController: UIViewController {
+    
+    @IBOutlet weak var chatTableView: UITableView!
+    var chatArray:[LeaveChatModal]! = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        sendMessage()
+        chatTableView.register(UITableViewCell.self, forCellReuseIdentifier: "LeaveChatTableviewCell")
+    }
+    
+    func sendMessage(message: String? = ""){
+        WebService.shared.applyLeaveChat(message: message!) { (status, errorMessage, chatModel) in
+            if status{
+                
+                
+            }else{
+                debugPrint("No chat Available")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,4 +52,22 @@ class ApplyLeaveViewController: UIViewController {
     @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
     }
+}
+extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.chatArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:LeaveChatTableviewCell = tableView.dequeueReusableCell(withIdentifier: "LeaveChatTableviewCell", for: indexPath) as! LeaveChatTableviewCell
+        
+        cell.setChatForIndex(chat: self.chatArray[indexPath.row])
+        if (self.chatArray.count - 1) == indexPath.row {
+            cell.loadingImage.isHidden = false
+        }
+        return cell
+    }
+    
+    
+    
 }

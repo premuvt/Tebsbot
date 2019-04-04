@@ -1,0 +1,6 @@
+module Pods_Tebsbot {
+  umbrella header "Pods-Tebsbot-umbrella.h"
+
+  export *
+  module * { export * }
+}
