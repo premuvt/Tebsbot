@@ -12,6 +12,9 @@
 		68E78BF5225664EF00BFD976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E78BF3225664EF00BFD976 /* Main.storyboard */; };
 		68E78BF7225664F200BFD976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68E78BF6225664F200BFD976 /* Assets.xcassets */; };
 		68E78BFA225664F200BFD976 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E78BF8225664F200BFD976 /* LaunchScreen.storyboard */; };
+		68E78C0222566DCB00BFD976 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E78C0122566DCB00BFD976 /* Home.storyboard */; };
+		68E78C042256700A00BFD976 /* HomeViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E78C032256700A00BFD976 /* HomeViewcontroller.swift */; };
+		68E78C0622567D1300BFD976 /* ApplyLeaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E78C0522567D1300BFD976 /* ApplyLeaveViewController.swift */; };
 		73CF4BDE22567120004C6106 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CF4BDD22567120004C6106 /* Login.storyboard */; };
 		73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BDF2256716B004C6106 /* LoginViewController.swift */; };
 		73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE2225679F1004C6106 /* LabelTextField.swift */; };
@@ -29,6 +32,9 @@
 		68E78BF6225664F200BFD976 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68E78BF9225664F200BFD976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68E78BFB225664F200BFD976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68E78C0122566DCB00BFD976 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		68E78C032256700A00BFD976 /* HomeViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewcontroller.swift; sourceTree = "<group>"; };
+		68E78C0522567D1300BFD976 /* ApplyLeaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyLeaveViewController.swift; sourceTree = "<group>"; };
 		73CF4BDD22567120004C6106 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		73CF4BDF2256716B004C6106 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		73CF4BE2225679F1004C6106 /* LabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
@@ -79,6 +85,9 @@
 				68E78BF6225664F200BFD976 /* Assets.xcassets */,
 				68E78BF8225664F200BFD976 /* LaunchScreen.storyboard */,
 				68E78BFB225664F200BFD976 /* Info.plist */,
+				68E78C0122566DCB00BFD976 /* Home.storyboard */,
+				68E78C032256700A00BFD976 /* HomeViewcontroller.swift */,
+				68E78C0522567D1300BFD976 /* ApplyLeaveViewController.swift */,
 			);
 			path = Tebsbot;
 			sourceTree = "<group>";
@@ -163,6 +172,7 @@
 				68E78BFA225664F200BFD976 /* LaunchScreen.storyboard in Resources */,
 				68E78BF7225664F200BFD976 /* Assets.xcassets in Resources */,
 				68E78BF5225664EF00BFD976 /* Main.storyboard in Resources */,
+				68E78C0222566DCB00BFD976 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +188,9 @@
 				73CF4BE922568627004C6106 /* UploadReceiptViewController.swift in Sources */,
 				73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */,
 				68E78BF2225664EF00BFD976 /* ViewController.swift in Sources */,
+				68E78C042256700A00BFD976 /* HomeViewcontroller.swift in Sources */,
 				68E78BF0225664EF00BFD976 /* AppDelegate.swift in Sources */,
+				68E78C0622567D1300BFD976 /* ApplyLeaveViewController.swift in Sources */,
 				73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */,
 				73CF4BEC22568DC0004C6106 /* UIViewController+Storyboard.swift in Sources */,
 			);

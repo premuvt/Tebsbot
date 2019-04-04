@@ -35,8 +35,9 @@ class LoginViewController: UIViewController {
     @IBAction func buttonLoginPressed(_ sender: UIButton) {
         if textFieldUserName.text == "ranjit" && textFieldPassword.text == "1234"{
             debugPrint("Valid Credentials")
-            
-
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController")
+            self.present(controller, animated: true, completion: nil)
         }else{
             debugPrint("Invalid Credentials")
         }
