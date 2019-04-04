@@ -121,12 +121,12 @@
         <!--Upload Receipt View Controller-->
         <scene sceneID="7MY-jJ-K17">
             <objects>
-                <viewController id="U6E-mM-WhF" customClass="UploadReceiptViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UploadReceiptViewController" id="U6E-mM-WhF" customClass="UploadReceiptViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9HD-ep-Anc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Renjit R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbQ-iM-eUV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Ranjit R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbQ-iM-eUV">
                                 <rect key="frame" x="10" y="84" width="355" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -148,6 +148,9 @@
                                 <state key="normal" title="Browse">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onBrowse:" destination="U6E-mM-WhF" eventType="touchUpInside" id="V8d-np-osv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tam-cm-QGR">
                                 <rect key="frame" x="147.5" y="267" width="80" height="30"/>
@@ -159,6 +162,9 @@
                                 <state key="normal" title="Upload">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonUploadPressed:" destination="U6E-mM-WhF" eventType="touchUpInside" id="sga-gD-eBV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No file selected.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkG-xY-EP8">
                                 <rect key="frame" x="10" y="216" width="355" height="21"/>

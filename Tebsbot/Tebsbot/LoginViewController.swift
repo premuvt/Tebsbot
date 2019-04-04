@@ -21,12 +21,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setDemoCred()
     }
     func setUI(){
         buttonLogin.layer.cornerRadius = buttonLogin.frame.height / 2
         buttonLogin.layer.masksToBounds = true
     }
-
+    func setDemoCred() {
+        self.textFieldUserName.text = "ranjit"
+        self.textFieldPassword.text = "1234"
+    }
     
     //MARK:- Button Actions
     
