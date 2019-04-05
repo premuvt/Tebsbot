@@ -11,6 +11,7 @@ struct LeaveChatModal : Codable {
     let data : Data?
     let message : String?
     let flag : Bool?
+    var currentDate = Date()
     
     enum CodingKeys: String, CodingKey {
         
@@ -24,6 +25,7 @@ struct LeaveChatModal : Codable {
         data = try values.decodeIfPresent(Data.self, forKey: .data)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         flag = try values.decodeIfPresent(Bool.self, forKey: .flag)
+        currentDate = Date()
     }
     
 }

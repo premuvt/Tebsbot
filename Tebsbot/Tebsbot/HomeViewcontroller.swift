@@ -26,9 +26,16 @@ class HomeViewcontroller: UIViewController {
         self.applyLeaveView.addGestureRecognizer(gesture)
         let gesture2 = UITapGestureRecognizer(target: self, action:  #selector(self.applyClaim))
         self.applyClaimView.addGestureRecognizer(gesture2)
+        setUI()
         
     }
     
+    func setUI(){
+        applyLeaveView.layer.cornerRadius = applyLeaveView.frame.height / 2
+        applyLeaveView.layer.masksToBounds = true
+        applyClaimView.layer.cornerRadius = applyClaimView.frame.height / 2
+        applyClaimView.layer.masksToBounds =  true
+    }
     
     
     @objc func applyLeave(sender : UITapGestureRecognizer) {

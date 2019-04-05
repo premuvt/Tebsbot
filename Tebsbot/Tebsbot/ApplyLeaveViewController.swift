@@ -12,21 +12,35 @@ import UIKit
 class ApplyLeaveViewController: UIViewController {
     
     @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var messageTextField: UITextField!
+    
     var chatArray:[LeaveChatModal]! = []
+    var messageArray: [String] = []
+    var chatMessage: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         sendMessage()
-        chatTableView.register(UITableViewCell.self, forCellReuseIdentifier: "LeaveChatTableviewCell")
+//        chatTableView.register(UITableViewCell.self, forCellReuseIdentifier: "LeaveChatTableviewCell")
     }
     
     func sendMessage(message: String? = ""){
+        if message != ""{
         WebService.shared.applyLeaveChat(message: message!) { (status, errorMessage, chatModel) in
             if status{
-                
-                
+                if chatModel?.message == "continue"{
+                self.chatArray.append(chatModel!)
+                DispatchQueue.main.sync {
+                    self.chatTableView.reloadData()
+                }
+                }else{
+                    debugPrint("move to confirmation page")
+                }
             }else{
                 debugPrint("No chat Available")
             }
+        }
+        } else{
+            debugPrint("no message")
         }
     }
     
@@ -52,18 +66,50 @@ class ApplyLeaveViewController: UIViewController {
     @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func onSend(_ sender: Any) {
+        let message = self.messageTextField.text!
+        if message.count != 0 && message != ""{
+            messageArray.append(message)
+            if chatArray.count != 0 {
+             chatMessage = "\((chatArray[chatArray.count - 1].data?.sentence!))\(message)"
+            }else{
+               chatMessage = message
+            }
+        self.sendMessage(message: chatMessage)
+            self.messageTextField.text = ""
+        }else{
+            debugPrint("enter a message a to send")
+        }
+    }
+    @IBAction func onRecord(_ sender: Any) {
+    }
 }
 extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func scrollToBottom(){
+        
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(
+                row: self.chatArray.count - 1,
+                section: 0)
+            self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.chatArray.count
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:LeaveChatTableviewCell = tableView.dequeueReusableCell(withIdentifier: "LeaveChatTableviewCell", for: indexPath) as! LeaveChatTableviewCell
-        
-        cell.setChatForIndex(chat: self.chatArray[indexPath.row])
-        if (self.chatArray.count - 1) == indexPath.row {
-            cell.loadingImage.isHidden = false
+        if chatArray.count != 0{
+            cell.setChatForIndex(chat: self.chatArray[indexPath.row],message:messageArray[indexPath.row])
+            if (self.chatArray.count - 1) == indexPath.row {
+                cell.loadingImage.isHidden = false
+            }
         }
         return cell
     }

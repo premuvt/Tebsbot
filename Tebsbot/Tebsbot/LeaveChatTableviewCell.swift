@@ -22,8 +22,18 @@ class LeaveChatTableviewCell: UITableViewCell {
         
     }
     
-    func setChatForIndex(chat:LeaveChatModal) {
-        self.messageSendLable.text = chat.data?.sentence
+    func setChatForIndex(chat:LeaveChatModal,message:String) {
+        self.timeLabelSend.text = setTime(curDate: chat.currentDate)
+        self.messageSendLable.text = message
         self.messageReceiveLabel.text = chat.data?.question
+        self.timeLabelReceiv.text = self.setTime(curDate: Date())
+    }
+    func setTime(curDate:Date) -> String{
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date / server String
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let myString = formatter.string(from: Date())
+        return myString// string
     }
 }
