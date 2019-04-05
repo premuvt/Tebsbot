@@ -9,7 +9,12 @@
 import Foundation
 import UIKit
 
-class ApplyLeaveViewController: UIViewController {
+class ApplyLeaveViewController: UIViewController,confirmationDelegate {
+    func didCancelClicked() {
+         self.navigationController?.popViewController(animated: true)
+         self.navigationController?.popViewController(animated: true)
+    }
+    
     
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
@@ -33,7 +38,16 @@ class ApplyLeaveViewController: UIViewController {
                     self.chatTableView.reloadData()
                 }
                 }else{
-                    debugPrint("move to confirmation page")
+                    debugPrint("move to next page")
+                    DispatchQueue.main.sync {
+                         self.chatArray.append(chatModel!)
+                        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                        let confirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "ConfirmationPageViewController") as! ConfirmationPageViewController
+                        confirmatioCcontroller.leaveConfirm = self.chatArray.last
+                        confirmatioCcontroller.delegate = self
+                        self.navigationController?.pushViewController(confirmatioCcontroller, animated: true)
+                    }
+                    
                 }
             }else{
                 debugPrint("No chat Available")

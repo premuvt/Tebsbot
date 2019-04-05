@@ -8,7 +8,7 @@
 
 import Foundation
 struct LeaveChatModal : Codable {
-    let data : Data?
+    let data : StringData?
     let message : String?
     let flag : Bool?
     var currentDate = Date()
@@ -22,14 +22,14 @@ struct LeaveChatModal : Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        data = try values.decodeIfPresent(Data.self, forKey: .data)
+        data = try values.decodeIfPresent(StringData.self, forKey: .data)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         flag = try values.decodeIfPresent(Bool.self, forKey: .flag)
         currentDate = Date()
     }
     
 }
-struct Data : Codable {
+struct StringData : Codable {
     let flag : Int?
     let question : String?
     let sentence : String?
