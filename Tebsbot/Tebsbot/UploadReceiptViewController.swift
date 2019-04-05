@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class UploadReceiptViewController: UIViewController {
     
@@ -28,6 +29,7 @@ class UploadReceiptViewController: UIViewController {
     
     var imagePicker = UIImagePickerController()
     var selectedImage:UIImage!
+    var fileName:String!
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -69,10 +71,46 @@ class UploadReceiptViewController: UIViewController {
     }
     
     @IBAction func buttonUploadPressed(_ sender: Any) {
-        self.sendFile(urlPath: url, fileName: "\(self.fileNameLabel).png", data: data!) { (response, data, error) in
-            if (response != nil){
-                
-            }else{
+        
+        if let data = selectedImage.jpegData(compressionQuality: 0.75) {
+//            let parameters: Parameters = [
+//                "access_token" : "YourToken"
+//            ]
+            // You can change your image name here, i use NSURL image and convert into string
+            
+            // Start Alamofire
+            
+            Alamofire.upload(multipartFormData: { (multipartFormData) in
+                multipartFormData.append(self.selectedImage.jpegData(compressionQuality: 0.75)!, withName: "photo_path", fileName: "swift_file.jpeg", mimeType: "image/jpeg")
+//                for (key, value) in parameters {
+//                    multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+//                }
+            }, to:"https://tebsbot.uvionicstech.com/teBSbot/user/file/text")
+            { (result) in
+                switch result {
+                case .success(let upload, _, _):
+                    
+                    upload.uploadProgress(closure: { (Progress) in
+                        print("Upload Progress: \(Progress.fractionCompleted)")
+                    })
+                    
+                    upload.responseJSON { response in
+                        //self.delegate?.showSuccessAlert()
+                        print(response.request)  // original URL request
+                        print(response.response) // URL response
+                        print(response.data)     // server data
+                        print(response.result)   // result of response serialization
+                        //                        self.showSuccesAlert()
+                        //self.removeImage("frame", fileExtension: "txt")
+                        if let JSON = response.result.value {
+                            print("JSON: \(JSON)")
+                        }
+                    }
+                    
+                case .failure(let encodingError):
+                    //self.delegate?.showFailAlert()
+                    print(encodingError)
+                }
                 
             }
         }
@@ -86,84 +124,15 @@ extension UploadReceiptViewController : UIImagePickerControllerDelegate, UINavig
         self.selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         imagePicker.dismiss(animated: true, completion: nil)
         self.fileNameLabel.text = "File Selected"
-        data = selectedImage.pngData()
+        
+        let imageURL = info[UIImagePickerController.InfoKey.referenceURL] as! NSURL
+        self.fileName = imageURL.absoluteString
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
-    func sendFile(
-        urlPath:String,
-        fileName:String,
-        data:Data,
-        completionHandler: @escaping (URLResponse!, NSData!, NSError!) -> Void){
-        
-        var url: NSURL = NSURL(string: urlPath)!
-        var request1: NSMutableURLRequest = NSMutableURLRequest(url: url as URL)
-        
-        request1.httpMethod = "POST"
-        
-        let boundary = generateBoundary()
-        let fullData = photoDataToFormData(data,boundary:boundary,fileName:fileName)
-        
-        request1.setValue("multipart/form-data; boundary=" + boundary,
-                          forHTTPHeaderField: "Content-Type")
-        
-        // REQUIRED!
-        request1.setValue(String(fullData.length), forHTTPHeaderField: "Content-Length")
-        
-        request1.HTTPBody = fullData
-        request1.httpShouldHandleCookies = false
-        
-        let queue:OperationQueue = OperationQueue()
-        do{
-        NSURLConnection.sendAsynchronousRequest(
-            request1 as URLRequest,
-            queue: queue,
-            completionHandler:completionHandler)
-        }catch{
-            debugPrint(error)
-        }
-    }
     
-    // this is a very verbose version of that function
-    // you can shorten it, but i left it as-is for clarity
-    // and as an example
-    func photoDataToFormData(data:Data,boundary:String,fileName:String) -> NSData {
-        var fullData = NSMutableData()
-        
-        // 1 - Boundary should start with --
-        let lineOne = "--" + boundary + "\r\n"
-        fullData.append(lineOne.data(
-            using: .utf8,
-            allowLossyConversion: false)!)
-        
-        // 2
-        let lineTwo = "Content-Disposition: form-data; name=\"image\"; filename=\"" + fileName + "\"\r\n"
-        NSLog(lineTwo)
-        fullData.append(lineTwo.data(
-            using: .utf8,
-            allowLossyConversion: false)!)
-        
-        // 3
-        let lineThree = "Content-Type: image/jpg\r\n\r\n"
-        fullData.append(lineThree.data(
-            using: .utf8,
-            allowLossyConversion: false)!)
-        
-        // 4
-        fullData.append(data)
-        
-        // 5
-        let lineFive = "\r\n"
-        fullData.append(lineFive.data(using: .utf8,
-            allowLossyConversion: false)!)
-        
-        // 6 - The end. Notice -- at the start and at the end
-        let lineSix = "--" + boundary + "--\r\n"
-        fullData.append(lineSix.data(using: .utf8,
-            allowLossyConversion: false)!)
-        
-        return fullData
-    }
+    
+    
 }
