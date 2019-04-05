@@ -20,14 +20,20 @@
 		68E78C0222566DCB00BFD976 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E78C0122566DCB00BFD976 /* Home.storyboard */; };
 		68E78C042256700A00BFD976 /* HomeViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E78C032256700A00BFD976 /* HomeViewcontroller.swift */; };
 		68E78C0622567D1300BFD976 /* ApplyLeaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E78C0522567D1300BFD976 /* ApplyLeaveViewController.swift */; };
+		73B48E2D2256BCF4000186A2 /* UploadReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B48E2C2256BCF4000186A2 /* UploadReceiptViewController.swift */; };
+		73B48E2F2256EFA0000186A2 /* UploadResponceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */; };
 		73CF4BDE22567120004C6106 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CF4BDD22567120004C6106 /* Login.storyboard */; };
 		73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BDF2256716B004C6106 /* LoginViewController.swift */; };
 		73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE2225679F1004C6106 /* LabelTextField.swift */; };
 		73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE3225679F1004C6106 /* LineTextField.swift */; };
 		73CF4BE7225679F2004C6106 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE4225679F2004C6106 /* LoadingButton.swift */; };
+		962E7C96CF1001D4AF6A8301 /* Pods_Tebsbot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089CD5EAE19B5718C2A651E7 /* Pods_Tebsbot.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		089CD5EAE19B5718C2A651E7 /* Pods_Tebsbot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tebsbot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27DAD86F6B1F901AF5907ABD /* Pods-Tebsbot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.debug.xcconfig"; path = "Target Support Files/Pods-Tebsbot/Pods-Tebsbot.debug.xcconfig"; sourceTree = "<group>"; };
+		3A84BCF9D7F3AA1116683F2A /* Pods-Tebsbot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot.debug.xcconfig"; sourceTree = "<group>"; };
 		68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveChatModal.swift; sourceTree = "<group>"; };
 		68A69F262256940200EEB71E /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveChatTableviewCell.swift; sourceTree = "<group>"; };
@@ -43,11 +49,15 @@
 		68E78C0122566DCB00BFD976 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		68E78C032256700A00BFD976 /* HomeViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewcontroller.swift; sourceTree = "<group>"; };
 		68E78C0522567D1300BFD976 /* ApplyLeaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyLeaveViewController.swift; sourceTree = "<group>"; };
+		73B48E2C2256BCF4000186A2 /* UploadReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadReceiptViewController.swift; sourceTree = "<group>"; };
+		73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResponceDataModel.swift; sourceTree = "<group>"; };
 		73CF4BDD22567120004C6106 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		73CF4BDF2256716B004C6106 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		73CF4BE2225679F1004C6106 /* LabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
 		73CF4BE3225679F1004C6106 /* LineTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTextField.swift; sourceTree = "<group>"; };
 		73CF4BE4225679F2004C6106 /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		A0F20FEE18995FFFD549E9F0 /* Pods-Tebsbot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot.release.xcconfig"; sourceTree = "<group>"; };
+		FA64164E40FF11376348DF4F /* Pods-Tebsbot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.release.xcconfig"; path = "Target Support Files/Pods-Tebsbot/Pods-Tebsbot.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,17 +65,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				962E7C96CF1001D4AF6A8301 /* Pods_Tebsbot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21F494C78598DA497B03CEAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				089CD5EAE19B5718C2A651E7 /* Pods_Tebsbot.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		68E78BE3225664EE00BFD976 = {
 			isa = PBXGroup;
 			children = (
 				68E78BEE225664EF00BFD976 /* Tebsbot */,
 				68E78BED225664EF00BFD976 /* Products */,
+				DBFD8A3EBC7F2326C1F2AD13 /* Pods */,
+				21F494C78598DA497B03CEAE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +118,8 @@
 				68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */,
 				68A69F262256940200EEB71E /* WebService.swift */,
 				68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */,
+				73B48E2C2256BCF4000186A2 /* UploadReceiptViewController.swift */,
+				73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */,
 			);
 			path = Tebsbot;
 			sourceTree = "<group>";
@@ -111,6 +134,17 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		DBFD8A3EBC7F2326C1F2AD13 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				27DAD86F6B1F901AF5907ABD /* Pods-Tebsbot.debug.xcconfig */,
+				FA64164E40FF11376348DF4F /* Pods-Tebsbot.release.xcconfig */,
+				3A84BCF9D7F3AA1116683F2A /* Pods-Tebsbot.debug.xcconfig */,
+				A0F20FEE18995FFFD549E9F0 /* Pods-Tebsbot.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,9 +152,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68E78BFE225664F200BFD976 /* Build configuration list for PBXNativeTarget "Tebsbot" */;
 			buildPhases = (
+				56A8CDC70E1CCEA049B88A50 /* [CP] Check Pods Manifest.lock */,
 				68E78BE8225664EE00BFD976 /* Sources */,
 				68E78BE9225664EE00BFD976 /* Frameworks */,
 				68E78BEA225664EE00BFD976 /* Resources */,
+				9387912917C140CC1086DF29 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -179,17 +215,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		56A8CDC70E1CCEA049B88A50 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tebsbot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9387912917C140CC1086DF29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		68E78BE8225664EE00BFD976 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73B48E2D2256BCF4000186A2 /* UploadReceiptViewController.swift in Sources */,
 				73CF4BE7225679F2004C6106 /* LoadingButton.swift in Sources */,
 				73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */,
 				73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */,
 				68A69F292256AADD00EEB71E /* LeaveChatTableviewCell.swift in Sources */,
 				68E78BF2225664EF00BFD976 /* ViewController.swift in Sources */,
 				68E78C042256700A00BFD976 /* HomeViewcontroller.swift in Sources */,
+				73B48E2F2256EFA0000186A2 /* UploadResponceDataModel.swift in Sources */,
 				68E78BF0225664EF00BFD976 /* AppDelegate.swift in Sources */,
 				68E78C0622567D1300BFD976 /* ApplyLeaveViewController.swift in Sources */,
 				68B598EB2256E39400D8A836 /* ConfirmationPageViewController.swift in Sources */,
@@ -340,11 +429,13 @@
 		};
 		68E78BFF225664F200BFD976 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27DAD86F6B1F901AF5907ABD /* Pods-Tebsbot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GTC9T5VZZY;
 				INFOPLIST_FILE = Tebsbot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -352,17 +443,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.connectedlife.wellnessandvitalsigns.Tebsbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		68E78C00225664F200BFD976 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA64164E40FF11376348DF4F /* Pods-Tebsbot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GTC9T5VZZY;
 				INFOPLIST_FILE = Tebsbot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -370,7 +463,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.connectedlife.wellnessandvitalsigns.Tebsbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

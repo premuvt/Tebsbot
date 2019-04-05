@@ -2,3 +2,67 @@ Tebsbot/Tebsbot.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 Tebsbot/Tebsbot.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 Tebsbot/Tebsbot.xcodeproj/project.xcworkspace/xcuserdata/premraj.xcuserdatad/UserInterfaceState.xcuserstate
 Tebsbot/Tebsbot.xcodeproj/xcuserdata/premraj.xcuserdatad/xcschemes/xcschememanagement.plist
+Tebsbot/Podfile.lock
+Tebsbot/Pods/Manifest.lock
+Tebsbot/Pods/Alamofire/LICENSE
+Tebsbot/Pods/Alamofire/README.md
+Tebsbot/Pods/Alamofire-SwiftyJSON/LICENSE
+Tebsbot/Pods/Alamofire-SwiftyJSON/README.md
+Tebsbot/Pods/Alamofire-SwiftyJSON/Source/Alamofire-SwiftyJSON.swift
+Tebsbot/Pods/Alamofire/Source/AFError.swift
+Tebsbot/Pods/Alamofire/Source/Alamofire.swift
+Tebsbot/Pods/Alamofire/Source/DispatchQueue+Alamofire.swift
+Tebsbot/Pods/Alamofire/Source/MultipartFormData.swift
+Tebsbot/Pods/Alamofire/Source/NetworkReachabilityManager.swift
+Tebsbot/Pods/Alamofire/Source/Notifications.swift
+Tebsbot/Pods/Alamofire/Source/ParameterEncoding.swift
+Tebsbot/Pods/Alamofire/Source/Request.swift
+Tebsbot/Pods/Alamofire/Source/Response.swift
+Tebsbot/Pods/Alamofire/Source/ResponseSerialization.swift
+Tebsbot/Pods/Alamofire/Source/Result.swift
+Tebsbot/Pods/Alamofire/Source/ServerTrustPolicy.swift
+Tebsbot/Pods/Alamofire/Source/SessionDelegate.swift
+Tebsbot/Pods/Alamofire/Source/SessionManager.swift
+Tebsbot/Pods/Alamofire/Source/TaskDelegate.swift
+Tebsbot/Pods/Alamofire/Source/Timeline.swift
+Tebsbot/Pods/Alamofire/Source/Validation.swift
+Tebsbot/Pods/Pods.xcodeproj/project.pbxproj
+Tebsbot/Pods/Pods.xcodeproj/xcuserdata/premraj.xcuserdatad/xcschemes/Pods-Tebsbot.xcscheme
+Tebsbot/Pods/Pods.xcodeproj/xcuserdata/premraj.xcuserdatad/xcschemes/xcschememanagement.plist
+Tebsbot/Pods/SwiftyJSON/LICENSE
+Tebsbot/Pods/SwiftyJSON/README.md
+Tebsbot/Pods/SwiftyJSON/Source/SwiftyJSON.swift
+Tebsbot/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-acknowledgements.markdown
+Tebsbot/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-acknowledgements.plist
+Tebsbot/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-dummy.m
+Tebsbot/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-frameworks.sh
+Tebsbot/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-resources.sh
+Tebsbot/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-umbrella.h
+Tebsbot/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot.debug.xcconfig
+Tebsbot/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot.modulemap
+Tebsbot/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot.release.xcconfig
+Tebsbot/Tebsbot.xcworkspace/contents.xcworkspacedata
+Tebsbot/Tebsbot.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+Tebsbot/Tebsbot.xcworkspace/xcuserdata/premraj.xcuserdatad/UserInterfaceState.xcuserstate
+Tebsbot/Pods/Pods.xcodeproj/xcuserdata/premraj.xcuserdatad/xcschemes/Alamofire-SwiftyJSON.xcscheme
+Tebsbot/Pods/Pods.xcodeproj/xcuserdata/premraj.xcuserdatad/xcschemes/Alamofire.xcscheme
+Tebsbot/Pods/Pods.xcodeproj/xcuserdata/premraj.xcuserdatad/xcschemes/SwiftyJSON.xcscheme
+Tebsbot/Pods/Target Support Files/Alamofire/Alamofire-dummy.m
+Tebsbot/Pods/Target Support Files/Alamofire/Alamofire-Info.plist
+Tebsbot/Pods/Target Support Files/Alamofire/Alamofire-prefix.pch
+Tebsbot/Pods/Target Support Files/Alamofire/Alamofire-umbrella.h
+Tebsbot/Pods/Target Support Files/Alamofire/Alamofire.modulemap
+Tebsbot/Pods/Target Support Files/Alamofire/Alamofire.xcconfig
+Tebsbot/Pods/Target Support Files/Alamofire-SwiftyJSON/Alamofire-SwiftyJSON-dummy.m
+Tebsbot/Pods/Target Support Files/Alamofire-SwiftyJSON/Alamofire-SwiftyJSON-Info.plist
+Tebsbot/Pods/Target Support Files/Alamofire-SwiftyJSON/Alamofire-SwiftyJSON-prefix.pch
+Tebsbot/Pods/Target Support Files/Alamofire-SwiftyJSON/Alamofire-SwiftyJSON-umbrella.h
+Tebsbot/Pods/Target Support Files/Alamofire-SwiftyJSON/Alamofire-SwiftyJSON.modulemap
+Tebsbot/Pods/Target Support Files/Alamofire-SwiftyJSON/Alamofire-SwiftyJSON.xcconfig
+Tebsbot/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-Info.plist
+Tebsbot/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-dummy.m
+Tebsbot/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist
+Tebsbot/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch
+Tebsbot/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-umbrella.h
+Tebsbot/Pods/Target Support Files/SwiftyJSON/SwiftyJSON.modulemap
+Tebsbot/Pods/Target Support Files/SwiftyJSON/SwiftyJSON.xcconfig

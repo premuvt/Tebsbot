@@ -48,5 +48,8 @@ class HomeViewcontroller: UIViewController {
     @objc func applyClaim(sender : UITapGestureRecognizer) {
         // Do what you want
         print("applyClaim")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "UploadReceiptViewController")
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
