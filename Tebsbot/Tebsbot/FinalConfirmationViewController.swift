@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 
 class FinalConfirmationViewController: UIViewController {
@@ -15,7 +16,10 @@ class FinalConfirmationViewController: UIViewController {
         super.viewDidLoad()
 
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.speakText(message: "Your leave has been applied. Thank you.")
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,4 +51,13 @@ class FinalConfirmationViewController: UIViewController {
         (UIApplication.shared.delegate as! AppDelegate).navigatetoLoginPage()
     }
 
+    //MARK:- text to speech
+    func speakText(message:String) {
+        print("test to voice - ",message)
+        let utterance = AVSpeechUtterance(string: message)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
+    }
 }

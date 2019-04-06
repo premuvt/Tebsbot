@@ -11,6 +11,7 @@ import UIKit
 class HomeNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 }
 
@@ -29,12 +30,28 @@ class HomeViewcontroller: UIViewController {
         setUI()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        let logo = UIImage(named: "logo")
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+        
+        let rightButton = UIButton.init(type: .custom)
+        rightButton.setImage(UIImage.init(named: "logout"), for: UIControl.State.normal)
+        rightButton.addTarget(self, action:#selector(logout(sender:)), for:.touchUpInside)
+        rightButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
+        let barButtonRight = UIBarButtonItem.init(customView: rightButton)
+        self.navigationItem.rightBarButtonItem = barButtonRight
+    }
     
     func setUI(){
         applyLeaveView.layer.cornerRadius = applyLeaveView.frame.height / 2
         applyLeaveView.layer.masksToBounds = true
         applyClaimView.layer.cornerRadius = applyClaimView.frame.height / 2
         applyClaimView.layer.masksToBounds =  true
+
     }
     
     
@@ -51,5 +68,11 @@ class HomeViewcontroller: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "UploadReceiptViewController")
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func logout(sender:UIButton){
+        UserDefaults.standard.removeObject(forKey: "user")
+        UserDefaults.standard.removeObject(forKey: "pass")
+        (UIApplication.shared.delegate as! AppDelegate).navigatetoLoginPage()
     }
 }

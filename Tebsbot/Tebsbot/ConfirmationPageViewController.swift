@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ConfirmationPageViewController: UIViewController {
 
@@ -22,6 +23,11 @@ class ConfirmationPageViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.speakText(message: "Sir, do you like to apply \(String(leaveConfirm!.data!.type!)) on \(String(describing: leaveConfirm!.data!.date!)). Please confirm.")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,8 +89,22 @@ class ConfirmationPageViewController: UIViewController {
     @objc func chat(sender:UIButton){
 self.navigationController?.popViewController(animated: true)
     }
+
     @objc func buttonCancel(sender:UIButton){
         self.navigationController?.popToRootViewController(animated: true)
-    }
+
+    
+
+}
+    //MARK:- text to speech
+    func speakText(message:String) {
+        print("test to voice - ",message)
+        let utterance = AVSpeechUtterance(string: message)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
+        
 }
 
+}
