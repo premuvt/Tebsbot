@@ -39,14 +39,14 @@
                                     <constraint firstAttribute="height" constant="50" id="UbW-nv-a6H"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w2m-tb-7aO" customClass="LineTextField" customModule="Tebsbot" customModuleProvider="target">
+                            <textField opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w2m-tb-7aO" customClass="LineTextField" customModule="Tebsbot" customModuleProvider="target">
                                 <rect key="frame" x="50" y="273" width="275" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="iwp-F8-YqP"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                         <real key="value" value="1"/>
@@ -56,14 +56,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vl1-W6-hyU" customClass="LineTextField" customModule="Tebsbot" customModuleProvider="target">
+                            <textField opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vl1-W6-hyU" customClass="LineTextField" customModule="Tebsbot" customModuleProvider="target">
                                 <rect key="frame" x="50" y="318" width="275" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Fkd-HQ-Cue"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                         <real key="value" value="1"/>
@@ -104,12 +104,13 @@
                             <constraint firstItem="5fU-dR-QgJ" firstAttribute="trailing" secondItem="Vl1-W6-hyU" secondAttribute="trailing" constant="50" id="l5l-kE-s8d"/>
                             <constraint firstItem="ftX-NE-k14" firstAttribute="centerX" secondItem="os1-mm-Sni" secondAttribute="centerX" id="oP3-6h-qSU"/>
                             <constraint firstItem="ad8-K9-sGd" firstAttribute="centerX" secondItem="os1-mm-Sni" secondAttribute="centerX" id="tVm-SJ-e40"/>
-                            <constraint firstItem="ad8-K9-sGd" firstAttribute="top" secondItem="5fU-dR-QgJ" secondAttribute="top" constant="173" id="wJt-X1-q6t"/>
+                            <constraint firstItem="5fU-dR-QgJ" firstAttribute="bottom" secondItem="ftX-NE-k14" secondAttribute="bottom" constant="274" id="umd-Q3-K40"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5fU-dR-QgJ"/>
                     </view>
                     <connections>
                         <outlet property="buttonLogin" destination="ftX-NE-k14" id="gUs-Ec-zYx"/>
+                        <outlet property="keyboardHeightLayoutConstraint" destination="umd-Q3-K40" id="RQe-G3-AmK"/>
                         <outlet property="textFieldPassword" destination="Vl1-W6-hyU" id="WFq-CX-OjU"/>
                         <outlet property="textFieldUserName" destination="w2m-tb-7aO" id="msU-fd-uCX"/>
                     </connections>

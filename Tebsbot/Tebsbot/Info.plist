@@ -20,8 +20,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Your speech will be detected after tapping the start button.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Access Photo lid</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Speak and watch your words become text or say a color to see the grey box change colors.</string>
 	<key>Privacy - Camera Usage Description </key>
 	<string>Camera access</string>
 	<key>UILaunchStoryboardName</key>
@@ -35,8 +39,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -45,9 +47,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>Speak and watch your words become text or say a color to see the grey box change colors.</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Your speech will be detected after tapping the start button.</string>
 </dict>
 </plist>

@@ -274,7 +274,9 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
                     lastString = bestString.substring(from: indexTo)
                 }
             } else if let error = error {
-                self.sendAlert(message: "There has been a speech recognition error.")
+                if self.messageTextField.text?.count == 0 {
+                    self.sendAlert(message: "There has been a speech recognition error.")
+                }
                 print(error)
             }
         })
