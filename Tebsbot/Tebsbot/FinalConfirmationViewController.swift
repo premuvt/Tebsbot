@@ -8,8 +8,12 @@
 
 import UIKit
 
+protocol FinalConfirmationPageDelegate {
+    func didClickCancel(viewController: FinalConfirmationViewController)
+}
 class FinalConfirmationViewController: UIViewController {
 
+    var delegate:FinalConfirmationPageDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,10 +29,14 @@ class FinalConfirmationViewController: UIViewController {
         self.navigationItem.titleView = imageView
         let button = UIButton.init(type: .custom)
         button.setImage(UIImage.init(named: "arrow"), for: UIControl.State.normal)
-        button.addTarget(self, action:#selector(ApplyLeaveViewController.backAction), for:.touchUpInside)
+        button.addTarget(self, action:#selector(cancelClicked(sender:)), for:.touchUpInside)
         button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
         let barButton = UIBarButtonItem.init(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
+    }
+    @objc func cancelClicked(sender:UIButton){
+        delegate?.didClickCancel(viewController: self)
+        
     }
 
 }

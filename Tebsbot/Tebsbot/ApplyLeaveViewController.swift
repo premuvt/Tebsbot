@@ -13,13 +13,13 @@ import Speech
 
 class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     func didCancelClicked() {
-         self.navigationController?.popViewController(animated: true)
-         self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
     @IBOutlet weak var chatTableView: UITableView!
-    @IBOutlet weak var messageTextField: TextField!
+    @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     @IBOutlet var sendButtonboardHeightLayoutConstraint: NSLayoutConstraint?
     @IBOutlet var voiceButtonboardHeightLayoutConstraint: NSLayoutConstraint?
@@ -44,12 +44,12 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     var chatArray:[LeaveChatModal]! = []
     var messageArray: [String] = []
     var chatMessage: String = ""
+    var autoSendTimer:Timer!
     override func viewDidLoad() {
         super.viewDidLoad()
-        sendMessage()
         setUpKeyBoardNotification()
         setUIBoarder()
-        
+
         
         //for speech recogonition
         self.requestSpeechAuthorization()
@@ -68,10 +68,15 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
                                                object: nil)
     }
     func setUIBoarder(){
+        
+        self.messageTextView.delegate = self
         //message text field
-        self.messageTextField.layer.borderWidth = 1
-        self.messageTextField.layer.cornerRadius = 10
-        self.messageTextField.layer.borderColor = UIColor.gray.cgColor
+        self.messageTextView.layer.borderWidth = 1
+        self.messageTextView.layer.cornerRadius = 10
+        self.messageTextView.layer.borderColor = UIColor.gray.cgColor
+        
+        //inset
+        self.messageTextView.textContainerInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
     }
     func sendMessage(message: String? = ""){
         if message != ""{
@@ -80,7 +85,9 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
                 DispatchQueue.main.sync {
                     self.sendButton.isEnabled = true
                     self.stopActivity()
+                    self.messageTextView.text = ""
                 }
+
                 if status{
                     if chatModel?.message == "continue"{
                         self.chatArray.append(chatModel!)
@@ -136,9 +143,9 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     }
     @IBAction func onSend(_ sender: Any) {
         print("on send click")
-        let message = self.messageTextField.text!
+        let message = self.messageTextView.text!
         if message.count != 0 && message != ""{
-            self.messageTextField.resignFirstResponder()
+            self.messageTextView.resignFirstResponder()
             //stop recording if it is recording
             if isRecording {
                 self.recordButton.sendActions(for: .touchUpInside)
@@ -151,30 +158,38 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
                 chatMessage = message
             }
             self.sendMessage(message: chatMessage)
-            self.messageTextField.text = ""
             self.sendButton.isEnabled = false
         }else{
             debugPrint("enter a message a to send")
         }
     }
     @IBAction func onRecord(_ sender: Any) {
-        self.messageTextField.resignFirstResponder()
+        self.messageTextView.resignFirstResponder()
         if isRecording == true {
             audioEngine.stop()
             audioEngine.inputNode.removeTap(onBus: 0)
             recognitionTask?.cancel()
             isRecording = false
-            recordButton.backgroundColor = UIColor.gray
+            recordButton.tintColor = UIColor.black
+            
         } else {
             self.recordAndRecognizeSpeech()
             isRecording = true
-            recordButton.backgroundColor = UIColor.red
+            recordButton.tintColor = UIColor.red
         }
     }
     
 }
-extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, SFSpeechRecognizerDelegate {
+//MARK:- extension
+extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, SFSpeechRecognizerDelegate, UITextViewDelegate {
     
+    //MARK:- textview returnkey
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
     //MARK: - Key notification
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
@@ -223,7 +238,10 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
         if chatArray.count != 0{
             cell.setChatForIndex(chat: self.chatArray[indexPath.row],message:messageArray[indexPath.row])
             if (self.chatArray.count - 1) == indexPath.row {
-                cell.loadingImage.isHidden = false
+                cell.loadingImage.isHidden = true//false
+            }
+            else{
+                cell.loadingImage.isHidden = true
             }
         }
         return cell
@@ -248,13 +266,13 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
                     self.recordButton.isEnabled = true
                 case .denied:
                     self.recordButton.isEnabled = false
-                    self.messageTextField.text = "User denied access to speech recognition"
+                    self.messageTextView.text = "User denied access to speech recognition"
                 case .restricted:
                     self.recordButton.isEnabled = false
-                    self.messageTextField.text = "Speech recognition restricted on this device"
+                    self.messageTextView.text = "Speech recognition restricted on this device"
                 case .notDetermined:
                     self.recordButton.isEnabled = false
-                    self.messageTextField.text = "Speech recognition not yet authorized"
+                    self.messageTextView.text = "Speech recognition not yet authorized"
                 }
             }
         }
@@ -265,7 +283,7 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
         let node = audioEngine.inputNode
         let recordingFormat = node.outputFormat(forBus: 0)
         do{
-             node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
+            node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
                 self.request.append(buffer)
             }
         } catch {
@@ -292,7 +310,10 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
             if let result = result {
                 
                 let bestString = result.bestTranscription.formattedString
-                self.messageTextField.text = bestString
+                self.messageTextView.text = bestString
+                self.autoSendTimer?.invalidate()
+
+                    self.autoSendTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.sendAction), userInfo: nil, repeats: false)
                 
                 var lastString: String = ""
                 for segment in result.bestTranscription.segments {
@@ -300,7 +321,7 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
                     lastString = bestString.substring(from: indexTo)
                 }
             } else if let error = error {
-                if self.messageTextField.text?.count == 0 {
+                if self.messageTextView.text?.count == 0 {
                     self.sendAlert(message: "There has been a speech recognition error.")
                 }
                 print(error)
@@ -341,27 +362,16 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
         effectView.contentView.addSubview(strLabel)
         view.addSubview(effectView)
     }
+    
     func stopActivity() {
         activityIndicator.stopAnimating()
         strLabel.removeFromSuperview()
         activityIndicator.removeFromSuperview()
         effectView.removeFromSuperview()
     }
-}
-//custom text field
-class TextField: UITextField {
     
-    let padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-    
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: padding)
+    @objc func sendAction() {
+        self.sendButton.sendActions(for: .touchUpInside)
     }
     
-    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: padding)
-    }
-    
-    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: padding)
-    }
 }

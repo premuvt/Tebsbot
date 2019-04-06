@@ -24,6 +24,7 @@
 		68E78C0622567D1300BFD976 /* ApplyLeaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E78C0522567D1300BFD976 /* ApplyLeaveViewController.swift */; };
 		73B48E2D2256BCF4000186A2 /* UploadReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B48E2C2256BCF4000186A2 /* UploadReceiptViewController.swift */; };
 		73B48E2F2256EFA0000186A2 /* UploadResponceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */; };
+		73BABC9A225871B4001A6149 /* ParameterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BABC99225871B4001A6149 /* ParameterManager.swift */; };
 		73CF4BDE22567120004C6106 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CF4BDD22567120004C6106 /* Login.storyboard */; };
 		73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BDF2256716B004C6106 /* LoginViewController.swift */; };
 		73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE2225679F1004C6106 /* LabelTextField.swift */; };
@@ -55,6 +56,7 @@
 		68E78C0522567D1300BFD976 /* ApplyLeaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyLeaveViewController.swift; sourceTree = "<group>"; };
 		73B48E2C2256BCF4000186A2 /* UploadReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadReceiptViewController.swift; sourceTree = "<group>"; };
 		73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResponceDataModel.swift; sourceTree = "<group>"; };
+		73BABC99225871B4001A6149 /* ParameterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterManager.swift; sourceTree = "<group>"; };
 		73CF4BDD22567120004C6106 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		73CF4BDF2256716B004C6106 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		73CF4BE2225679F1004C6106 /* LabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		68E78BEE225664EF00BFD976 /* Tebsbot */ = {
 			isa = PBXGroup;
 			children = (
+				73BABC9822587185001A6149 /* Manager */,
 				73CF4BE12256793F004C6106 /* Extension */,
 				68E78BEF225664EF00BFD976 /* AppDelegate.swift */,
 				68E78BF1225664EF00BFD976 /* ViewController.swift */,
@@ -119,15 +122,31 @@
 				68B598EA2256E39400D8A836 /* ConfirmationPageViewController.swift */,
 				68E78C032256700A00BFD976 /* HomeViewcontroller.swift */,
 				68E78C0522567D1300BFD976 /* ApplyLeaveViewController.swift */,
-				68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */,
-				68A69F262256940200EEB71E /* WebService.swift */,
+				73BABC9B22587215001A6149 /* Models */,
 				68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */,
 				73B48E2C2256BCF4000186A2 /* UploadReceiptViewController.swift */,
-				73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */,
 				6811FC7722574AB900B0AAB4 /* ClaimCOnfirmViewController.swift */,
-				6811FC7922585A5700B0AAB4 /* Definitions.swift */,
 			);
 			path = Tebsbot;
+			sourceTree = "<group>";
+		};
+		73BABC9822587185001A6149 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				68A69F262256940200EEB71E /* WebService.swift */,
+				73BABC99225871B4001A6149 /* ParameterManager.swift */,
+				6811FC7922585A5700B0AAB4 /* Definitions.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		73BABC9B22587215001A6149 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */,
+				73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		73CF4BE12256793F004C6106 /* Extension */ = {
@@ -286,6 +305,7 @@
 				68E78C042256700A00BFD976 /* HomeViewcontroller.swift in Sources */,
 				73B48E2F2256EFA0000186A2 /* UploadResponceDataModel.swift in Sources */,
 				68E78BF0225664EF00BFD976 /* AppDelegate.swift in Sources */,
+				73BABC9A225871B4001A6149 /* ParameterManager.swift in Sources */,
 				68E78C0622567D1300BFD976 /* ApplyLeaveViewController.swift in Sources */,
 				68B598EB2256E39400D8A836 /* ConfirmationPageViewController.swift in Sources */,
 				73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */,

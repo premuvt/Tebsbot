@@ -41,8 +41,9 @@ class WebService {
         }
     }
     
-    func confirmLeave(parameter:Dictionary<String,Any>,completionBlock:((Bool,String?, String?) -> Void)!){
+    func confirmLeave(parameter:StringData?,completionBlock:((Bool,String?, String?) -> Void)!){
         
+        let requestParams = ConfirmLeave.requestBody(stringParam: parameter!)
         let url = URL(string: BASE_URL+CONFIRM_LEAVE)
         var request = URLRequest(url: url!)
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -50,7 +51,7 @@ class WebService {
         
         //        let jsonData = try
         do{
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameter, options: .prettyPrinted)
+            request.httpBody = try JSONSerialization.data(withJSONObject: requestParams, options: .prettyPrinted)
             
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 do{
@@ -71,32 +72,7 @@ class WebService {
             print(error)
         }
     }
-//    func uploadRecipt(image: Data!,completionBlock:((Bool,String?, LeaveChatModal?) -> Void)!)  {
-//        
-//        let url = URL(string: "http://192.168.10.246:8080/user/file/text")
-//        var request = URLRequest(url: url!)
-//        request.setValue("multipart/form-data; charset=utf-8", forHTTPHeaderField: "Content-Type")
-//        request.httpMethod = "POST"
-//        let params = ["key" : data]
-//        //        let jsonData = try
-//        do{
-//            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
-//            
-//            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//                do{
-//                    let jsonDecoder = JSONDecoder()
-//                    let responseModel = try jsonDecoder.decode(LeaveChatModal.self, from: data!)
-//                    completionBlock(true,nil,responseModel)
-//                }        catch let error as Error {
-//                    print("\(error)")
-//                }
-//            }
-//            
-//            task.resume()
-//        }catch {
-//            print(error)
-//        }
-//    }
+
 }
 
 
@@ -121,3 +97,6 @@ extension CharacterSet {
         return allowed
     }()
 }
+
+
+
