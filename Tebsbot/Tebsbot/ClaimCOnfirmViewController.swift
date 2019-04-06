@@ -44,11 +44,17 @@ class ClaimConfirmViewController: UIViewController {
         let imageView = UIImageView(image:logo)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
-//        let button = UIButton.init(type: .custom)
-//        button.setImage(UIImage.init(named: "arrow"), for: UIControl.State.normal)
-//        button.addTarget(self, action:#selector(ApplyLeaveViewController.backAction), for:.touchUpInside)
-//        button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
-//        let barButton = UIBarButtonItem.init(customView: button)
+
         self.navigationItem.setHidesBackButton(true, animated: true)
+    }
+    @IBAction func confirmButtonTapped(_ sender: UIButton) {
+        DispatchQueue.main.sync {
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let claimConfirmationPage = storyboard.instantiateViewController(withIdentifier: "ClaimConfirmationPageViewController") as! ClaimConfirmationPageViewController
+//            finalConfirmatioCcontroller.delegate = self
+            self.navigationController?.pushViewController(claimConfirmationPage, animated: true)
+        }
+    }
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
     }
 }
