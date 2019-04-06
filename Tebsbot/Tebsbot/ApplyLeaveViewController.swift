@@ -19,13 +19,14 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     
     
     @IBOutlet weak var chatTableView: UITableView!
-    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var messageTextField: TextField!
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     @IBOutlet var sendButtonboardHeightLayoutConstraint: NSLayoutConstraint?
     @IBOutlet var voiceButtonboardHeightLayoutConstraint: NSLayoutConstraint?
     
     @IBOutlet weak var recordButton: UIButton!
     
+    @IBOutlet weak var sendButton: UIButton!
     //MARK:- speet to text
     let audioEngine = AVAudioEngine()
     let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
@@ -33,6 +34,11 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     var recognitionTask: SFSpeechRecognitionTask?
     var isRecording = false
     
+    let messageFrame = UIView()
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+
     
     
     var chatArray:[LeaveChatModal]! = []
@@ -41,7 +47,17 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         sendMessage()
-//        chatTableView.register(UITableViewCell.self, forCellReuseIdentifier: "LeaveChatTableviewCell")
+        setUpKeyBoardNotification()
+        setUIBoarder()
+        
+        
+        //for speech recogonition
+        self.requestSpeechAuthorization()
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    func setUpKeyBoardNotification() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: UIResponder.keyboardDidShowNotification,
@@ -50,43 +66,47 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: UIResponder.keyboardDidHideNotification,
                                                object: nil)
-        
-        self.requestSpeechAuthorization()
     }
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    func setUIBoarder(){
+        //message text field
+        self.messageTextField.layer.borderWidth = 1
+        self.messageTextField.layer.cornerRadius = 10
+        self.messageTextField.layer.borderColor = UIColor.gray.cgColor
     }
-    
-    
     func sendMessage(message: String? = ""){
         if message != ""{
-        WebService.shared.applyLeaveChat(message: message!) { (status, errorMessage, chatModel) in
-            if status{
-                if chatModel?.message == "continue"{
-                self.chatArray.append(chatModel!)
+            self.activityIndicator("Sending...")
+            WebService.shared.applyLeaveChat(message: message!) { (status, errorMessage, chatModel) in
                 DispatchQueue.main.sync {
-                    self.chatTableView.reloadData()
+                    self.sendButton.isEnabled = true
+                    self.stopActivity()
                 }
-                    if let question = chatModel?.data?.question {
-                        self.speakText(message: question)
+                if status{
+                    if chatModel?.message == "continue"{
+                        self.chatArray.append(chatModel!)
+                        DispatchQueue.main.sync {
+                            self.chatTableView.reloadData()
+                        }
+                        if let question = chatModel?.data?.question {
+                            self.speakText(message: question)
+                        }
+                        
+                    }else{
+                        debugPrint("move to next page")
+                        DispatchQueue.main.sync {
+                            self.chatArray.append(chatModel!)
+                            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                            let confirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "ConfirmationPageViewController") as! ConfirmationPageViewController
+                            confirmatioCcontroller.leaveConfirm = self.chatArray.last
+                            confirmatioCcontroller.delegate = self
+                            self.navigationController?.pushViewController(confirmatioCcontroller, animated: true)
+                        }
+                        
                     }
-                    
                 }else{
-                    debugPrint("move to next page")
-                    DispatchQueue.main.sync {
-                         self.chatArray.append(chatModel!)
-                        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                        let confirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "ConfirmationPageViewController") as! ConfirmationPageViewController
-                        confirmatioCcontroller.leaveConfirm = self.chatArray.last
-                        confirmatioCcontroller.delegate = self
-                        self.navigationController?.pushViewController(confirmatioCcontroller, animated: true)
-                    }
-                    
+                    debugPrint("No chat Available")
                 }
-            }else{
-                debugPrint("No chat Available")
             }
-        }
         } else{
             debugPrint("no message")
         }
@@ -115,18 +135,24 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func onSend(_ sender: Any) {
+        print("on send click")
         let message = self.messageTextField.text!
         if message.count != 0 && message != ""{
             self.messageTextField.resignFirstResponder()
-            self.recordButton.sendActions(for: .touchUpInside)
+            //stop recording if it is recording
+            if isRecording {
+                self.recordButton.sendActions(for: .touchUpInside)
+            }
+            
             messageArray.append(message)
             if chatArray.count != 0 {
-             chatMessage = "\((chatArray[chatArray.count - 1].data?.sentence!))\(message)"
+                chatMessage = "\((chatArray[chatArray.count - 1].data?.sentence!))\(message)"
             }else{
-               chatMessage = message
+                chatMessage = message
             }
-        self.sendMessage(message: chatMessage)
+            self.sendMessage(message: chatMessage)
             self.messageTextField.text = ""
+            self.sendButton.isEnabled = false
         }else{
             debugPrint("enter a message a to send")
         }
@@ -159,13 +185,13 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
             let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
             if endFrameY >= UIScreen.main.bounds.size.height {
-                self.keyboardHeightLayoutConstraint?.constant = 0.0
-                self.sendButtonboardHeightLayoutConstraint?.constant = 0.0
-                self.voiceButtonboardHeightLayoutConstraint?.constant = 0.0
+                self.keyboardHeightLayoutConstraint?.constant = 20.0
+                self.sendButtonboardHeightLayoutConstraint?.constant = 20.0
+                self.voiceButtonboardHeightLayoutConstraint?.constant = 20.0
             } else {
-                self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
-                self.sendButtonboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
-                self.voiceButtonboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+                self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 20.0
+                self.sendButtonboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 20.0
+                self.voiceButtonboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 20.0
             }
             UIView.animate(withDuration: duration,
                            delay: TimeInterval(0),
@@ -288,5 +314,54 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
         let alert = UIAlertController(title: "Speech Recognizer Error", message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK:- activity indicator
+    
+    func activityIndicator(_ title: String) {
+        
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
+        
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
+        strLabel.text = title
+        strLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
+        
+        effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
+        effectView.layer.cornerRadius = 15
+        effectView.layer.masksToBounds = true
+        
+        activityIndicator = UIActivityIndicatorView(style: .white)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+        activityIndicator.startAnimating()
+        
+        effectView.contentView.addSubview(activityIndicator)
+        effectView.contentView.addSubview(strLabel)
+        view.addSubview(effectView)
+    }
+    func stopActivity() {
+        activityIndicator.stopAnimating()
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
+    }
+}
+//custom text field
+class TextField: UITextField {
+    
+    let padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+    
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
     }
 }
