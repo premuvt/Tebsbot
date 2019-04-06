@@ -20,5 +20,14 @@ struct ConfirmLeave {
         return body
     }
 }
+struct ConfirmClaim {
+    static func requestBody(stringParam:Dictionary<String,Any>) -> [String: Any] {
+        
+        let body:[String : Any] = ["status":  true  ,
+                                   "data": stringParam,
+                                   ]
+        return body
+    }
+}
 
 

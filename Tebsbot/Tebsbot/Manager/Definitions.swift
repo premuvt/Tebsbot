@@ -12,4 +12,5 @@ let BASE_URL:String                     = "https://tebsbot.uvionicstech.com/teBS
 let USER_MESSAGE:String                 = "user/message"
 let CONFIRM_LEAVE:String                = "user/confirm-leave"
 let FILE_UPLOAD:String                  = "user/file/text"
+let CONFIRM_CLAIM:String                = "user/confirm-claim"
 
