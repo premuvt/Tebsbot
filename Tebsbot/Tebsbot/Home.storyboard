@@ -455,31 +455,31 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="335" id="XgH-jZ-9Nj"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZZ-Ej-Yhp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claim Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZZ-Ej-Yhp">
                                 <rect key="frame" x="16" y="421" width="343" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="vQS-fR-hMR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABb-1S-d8O">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABb-1S-d8O">
                                 <rect key="frame" x="16" y="473" width="343" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Pxb-d5-C1z"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuL-TL-z0H">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claim Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuL-TL-z0H">
                                 <rect key="frame" x="16" y="517" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="mZH-XS-UYw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZW-nf-rRA">
@@ -490,6 +490,7 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonConfirmPressed:" destination="u3j-kR-8Zg" eventType="touchUpInside" id="zDW-Pf-xGV"/>
+                                    <action selector="confirmButtonTapped:" destination="Z1g-yy-mwx" eventType="touchUpInside" id="VWv-DP-czl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrA-Yy-lId">
@@ -500,6 +501,7 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonCancelPressed:" destination="u3j-kR-8Zg" eventType="touchUpInside" id="zI9-lA-LLi"/>
+                                    <action selector="cancelButtonTapped:" destination="Z1g-yy-mwx" eventType="touchUpInside" id="NT5-IY-xL0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -534,6 +536,8 @@
                     </view>
                     <connections>
                         <outlet property="amountLable" destination="EuL-TL-z0H" id="Sn3-fV-VF0"/>
+                        <outlet property="cancelButton" destination="nrA-Yy-lId" id="cuc-W8-08K"/>
+                        <outlet property="confirmButton" destination="KZW-nf-rRA" id="CAE-4d-sfe"/>
                         <outlet property="dateLabel" destination="ABb-1S-d8O" id="uuZ-hp-qJm"/>
                         <outlet property="reciptImageview" destination="vcH-aM-1Wd" id="F50-fx-W8b"/>
                         <outlet property="typeLabel" destination="PZZ-Ej-Yhp" id="9WS-HN-lsM"/>
@@ -542,6 +546,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ar-b6-mfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3637.5999999999999" y="-72.413793103448285"/>
+        </scene>
+        <!--Claim Confirmation Page View Controller-->
+        <scene sceneID="3Tq-Uz-0Ta">
+            <objects>
+                <viewController storyboardIdentifier="ClaimConfirmationPageViewController" id="Lt2-1D-Iaq" customClass="ClaimConfirmationPageViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="APv-GW-REX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHJ-Rk-MP8">
+                                <rect key="frame" x="10" y="296" width="355" height="75.5"/>
+                                <string key="text">Your claim is under process. 
+The amount will be credited to 
+your account soon !</string>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <color key="textColor" red="0.11372549019607843" green="0.47058823529411764" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jHJ-Rk-MP8" firstAttribute="centerX" secondItem="APv-GW-REX" secondAttribute="centerX" id="Ajc-ww-yiR"/>
+                            <constraint firstItem="jHJ-Rk-MP8" firstAttribute="centerY" secondItem="APv-GW-REX" secondAttribute="centerY" id="HJW-Sk-yhW"/>
+                            <constraint firstItem="dSW-js-VTk" firstAttribute="trailing" secondItem="jHJ-Rk-MP8" secondAttribute="trailing" constant="10" id="NjR-et-mEu"/>
+                            <constraint firstItem="jHJ-Rk-MP8" firstAttribute="leading" secondItem="dSW-js-VTk" secondAttribute="leading" constant="10" id="lwb-pC-gQG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dSW-js-VTk"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O9x-Sj-3OU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4376" y="-79"/>
         </scene>
         <!--Home Navigation Controller-->
         <scene sceneID="O9e-Zq-ahH">

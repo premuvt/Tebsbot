@@ -25,6 +25,7 @@
 		73B48E2D2256BCF4000186A2 /* UploadReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B48E2C2256BCF4000186A2 /* UploadReceiptViewController.swift */; };
 		73B48E2F2256EFA0000186A2 /* UploadResponceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */; };
 		73BABC9A225871B4001A6149 /* ParameterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BABC99225871B4001A6149 /* ParameterManager.swift */; };
+		73BABC9D22588CDA001A6149 /* ClaimConfirmationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BABC9C22588CDA001A6149 /* ClaimConfirmationPageViewController.swift */; };
 		73CF4BDE22567120004C6106 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CF4BDD22567120004C6106 /* Login.storyboard */; };
 		73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BDF2256716B004C6106 /* LoginViewController.swift */; };
 		73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE2225679F1004C6106 /* LabelTextField.swift */; };
@@ -57,6 +58,7 @@
 		73B48E2C2256BCF4000186A2 /* UploadReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadReceiptViewController.swift; sourceTree = "<group>"; };
 		73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResponceDataModel.swift; sourceTree = "<group>"; };
 		73BABC99225871B4001A6149 /* ParameterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterManager.swift; sourceTree = "<group>"; };
+		73BABC9C22588CDA001A6149 /* ClaimConfirmationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimConfirmationPageViewController.swift; sourceTree = "<group>"; };
 		73CF4BDD22567120004C6106 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		73CF4BDF2256716B004C6106 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		73CF4BE2225679F1004C6106 /* LabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */,
 				73B48E2C2256BCF4000186A2 /* UploadReceiptViewController.swift */,
 				6811FC7722574AB900B0AAB4 /* ClaimCOnfirmViewController.swift */,
+				73BABC9C22588CDA001A6149 /* ClaimConfirmationPageViewController.swift */,
 			);
 			path = Tebsbot;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */,
 				68A69F292256AADD00EEB71E /* LeaveChatTableviewCell.swift in Sources */,
 				68E78BF2225664EF00BFD976 /* ViewController.swift in Sources */,
+				73BABC9D22588CDA001A6149 /* ClaimConfirmationPageViewController.swift in Sources */,
 				68E78C042256700A00BFD976 /* HomeViewcontroller.swift in Sources */,
 				73B48E2F2256EFA0000186A2 /* UploadResponceDataModel.swift in Sources */,
 				68E78BF0225664EF00BFD976 /* AppDelegate.swift in Sources */,
