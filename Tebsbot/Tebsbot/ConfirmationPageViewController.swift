@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AVFoundation
 protocol confirmationDelegate {
     func didCancelClicked()
 }
@@ -26,6 +26,10 @@ class ConfirmationPageViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.speakText(message: "Sir, do you like apply \(String(describing: leaveConfirm?.data?.type!)) on \(String(describing: leaveConfirm?.data?.date!)). Please confirm.")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,5 +91,12 @@ extension ConfirmationPageViewController:FinalConfirmationPageDelegate{
         delegate?.didCancelClicked()
     }
     
-    
+    //MARK:- text to speech
+    func speakText(message:String) {
+        let utterance = AVSpeechUtterance(string: message)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
+    }
 }

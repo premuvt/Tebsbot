@@ -54,6 +54,11 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
         //for speech recogonition
         self.requestSpeechAuthorization()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.speakText(message: "Hi sir, now you can also apply for your leave by speak. Please tap the mic button on bottom right corner to speak.")
+    }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -93,6 +98,7 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
                         self.chatArray.append(chatModel!)
                         DispatchQueue.main.sync {
                             self.chatTableView.reloadData()
+                            self.scrollToBottom()
                         }
                         if let question = chatModel?.data?.question {
                             self.speakText(message: question)
@@ -217,8 +223,7 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     }
     
     func scrollToBottom(){
-        
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             let indexPath = IndexPath(
                 row: self.chatArray.count - 1,
                 section: 0)
