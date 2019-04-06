@@ -8,12 +8,8 @@
 
 import UIKit
 
-protocol confirmationDelegate {
-    func didCancelClicked()
-}
 class ConfirmationPageViewController: UIViewController {
-    var delegate:confirmationDelegate?
-    
+
     @IBOutlet weak var buttonCancel: UIButton!
     @IBOutlet weak var buttonConfirm: UIButton!
     @IBOutlet weak var leaveDateLabel: UILabel!
@@ -64,28 +60,16 @@ class ConfirmationPageViewController: UIViewController {
                 DispatchQueue.main.sync {
                     let storyboard = UIStoryboard(name: "Home", bundle: nil)
                     let finalConfirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "FinalConfirmationViewController") as! FinalConfirmationViewController
-                  finalConfirmatioCcontroller.delegate = self
-                    self.navigationController?.pushViewController(finalConfirmatioCcontroller, animated: true)
+                self.navigationController?.pushViewController(finalConfirmatioCcontroller, animated: true)
                 } }else{
                 debugPrint("errorMessage")
             }
         })
-        
-        
-        
     }
     
     @IBAction func buttonCancelPressed(_ sender: UIButton) {
         
-        delegate?.didCancelClicked()
+        self.navigationController?.popToRootViewController(animated: true)
     }
-    
-    
 }
-extension ConfirmationPageViewController:FinalConfirmationPageDelegate{
-    func didClickCancel(viewController: FinalConfirmationViewController) {
-        delegate?.didCancelClicked()
-    }
-    
-    
-}
+

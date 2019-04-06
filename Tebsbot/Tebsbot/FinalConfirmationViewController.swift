@@ -8,12 +8,9 @@
 
 import UIKit
 
-protocol FinalConfirmationPageDelegate {
-    func didClickCancel(viewController: FinalConfirmationViewController)
-}
+
 class FinalConfirmationViewController: UIViewController {
 
-    var delegate:FinalConfirmationPageDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,7 +32,7 @@ class FinalConfirmationViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = barButton
     }
     @objc func cancelClicked(sender:UIButton){
-        delegate?.didClickCancel(viewController: self)
+       self.navigationController?.popToRootViewController(animated: true)
         
     }
 

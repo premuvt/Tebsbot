@@ -181,4 +181,7 @@ extension UploadReceiptViewController : UIImagePickerControllerDelegate, UINavig
     }
     
     
+    override func didReceiveMemoryWarning() {
+        debugPrint("HI")
+    }
 }

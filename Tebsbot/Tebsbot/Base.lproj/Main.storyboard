@@ -28,7 +28,7 @@
         <!--Login View Controller-->
         <scene sceneID="nNa-5e-JzG">
             <objects>
-                <viewController id="MCi-Nn-5nU" customClass="LoginViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="MCi-Nn-5nU" customClass="LoginViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="os1-mm-Sni">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
