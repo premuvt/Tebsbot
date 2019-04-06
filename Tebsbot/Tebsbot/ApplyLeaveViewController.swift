@@ -52,7 +52,7 @@ class ApplyLeaveViewController: UIViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.speakText(message: "Hi sir, now you can also apply for your leave by speak. Please tap the mic button on bottom right corner to speak.")
+        self.speakText(message: "Hi sir, now you can also apply leave by speak. Please tap the mic button on bottom right corner to speak.")
     }
     deinit {
         NotificationCenter.default.removeObserver(self)

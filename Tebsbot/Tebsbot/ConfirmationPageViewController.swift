@@ -26,7 +26,8 @@ class ConfirmationPageViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.speakText(message: "Sir, do you like apply \(String(describing: leaveConfirm?.data?.type!)) on \(String(describing: leaveConfirm?.data?.date!)). Please confirm.")
+        
+        self.speakText(message: "Sir, do you like to apply \(String(leaveConfirm!.data!.type!)) on \(String(describing: leaveConfirm!.data!.date!)). Please confirm.")
     }
     
     override func viewWillAppear(_ animated: Bool) {
