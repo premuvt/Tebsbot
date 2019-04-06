@@ -15,17 +15,26 @@ class ClaimConfirmViewController: UIViewController {
     var responceFareString:String!
     var selectedImage:UIImage!
     
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var reciptImageview: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLable: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateUI()
         reciptImageview.image = selectedImage
-        typeLabel.text = "Claime Type - \(responceClaimString ?? "no type")"
-        dateLabel.text = "Claime Type - \(responceDateString ?? "no date")"
-        amountLable.text = "Claime Type - \(responceFareString ?? "no amount")"
+        typeLabel.text = "Claim Type - \(responceClaimString ?? "no type")"
+        dateLabel.text = "Date - \(responceDateString ?? "no date")"
+        amountLable.text = "Claim Amount - \(responceFareString ?? "no amount")"
+    }
+    func updateUI(){
+        cancelButton.layer.cornerRadius = cancelButton.frame.height / 2
+        cancelButton.layer.masksToBounds = true
+        confirmButton.layer.cornerRadius = confirmButton.frame.height / 2
+        confirmButton.layer.masksToBounds = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
