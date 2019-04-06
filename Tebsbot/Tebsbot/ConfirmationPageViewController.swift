@@ -59,13 +59,12 @@ class ConfirmationPageViewController: UIViewController {
     
     @IBAction func buttonConfirmPressed(_ sender: UIButton) {
         
-        WebService.shared.confirmLeave(parameter: leaveConfirm?.data as! Dictionary<String,Any>, completionBlock: { (success, errorMessage, successMessage) in
+        WebService.shared.confirmLeave(parameter: leaveConfirm?.data , completionBlock: { (success, errorMessage, successMessage) in
             if success{
                 DispatchQueue.main.sync {
                     let storyboard = UIStoryboard(name: "Home", bundle: nil)
                     let finalConfirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "FinalConfirmationViewController") as! FinalConfirmationViewController
-                    
-                    //            confirmatioCcontroller.delegate = self
+                  finalConfirmatioCcontroller.delegate = self
                     self.navigationController?.pushViewController(finalConfirmatioCcontroller, animated: true)
                 } }else{
                 debugPrint("errorMessage")
@@ -78,6 +77,13 @@ class ConfirmationPageViewController: UIViewController {
     
     @IBAction func buttonCancelPressed(_ sender: UIButton) {
         
+        delegate?.didCancelClicked()
+    }
+    
+    
+}
+extension ConfirmationPageViewController:FinalConfirmationPageDelegate{
+    func didClickCancel(viewController: FinalConfirmationViewController) {
         delegate?.didCancelClicked()
     }
     

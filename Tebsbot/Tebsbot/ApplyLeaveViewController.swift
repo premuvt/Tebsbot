@@ -13,8 +13,8 @@ import Speech
 
 class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     func didCancelClicked() {
-         self.navigationController?.popViewController(animated: true)
-         self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -41,7 +41,7 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         sendMessage()
-//        chatTableView.register(UITableViewCell.self, forCellReuseIdentifier: "LeaveChatTableviewCell")
+        //        chatTableView.register(UITableViewCell.self, forCellReuseIdentifier: "LeaveChatTableviewCell")
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: UIResponder.keyboardDidShowNotification,
@@ -60,33 +60,33 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     
     func sendMessage(message: String? = ""){
         if message != ""{
-        WebService.shared.applyLeaveChat(message: message!) { (status, errorMessage, chatModel) in
-            if status{
-                if chatModel?.message == "continue"{
-                self.chatArray.append(chatModel!)
-                DispatchQueue.main.sync {
-                    self.chatTableView.reloadData()
-                }
-                    if let question = chatModel?.data?.question {
-                        self.speakText(message: question)
+            WebService.shared.applyLeaveChat(message: message!) { (status, errorMessage, chatModel) in
+                if status{
+                    if chatModel?.message == "continue"{
+                        self.chatArray.append(chatModel!)
+                        DispatchQueue.main.sync {
+                            self.chatTableView.reloadData()
+                        }
+                        if let question = chatModel?.data?.question {
+                            self.speakText(message: question)
+                        }
+                        
+                    }else{
+                        debugPrint("move to next page")
+                        DispatchQueue.main.sync {
+                            self.chatArray.append(chatModel!)
+                            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                            let confirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "ConfirmationPageViewController") as! ConfirmationPageViewController
+                            confirmatioCcontroller.leaveConfirm = self.chatArray.last
+                            confirmatioCcontroller.delegate = self
+                            self.navigationController?.pushViewController(confirmatioCcontroller, animated: true)
+                        }
+                        
                     }
-                    
                 }else{
-                    debugPrint("move to next page")
-                    DispatchQueue.main.sync {
-                         self.chatArray.append(chatModel!)
-                        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                        let confirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "ConfirmationPageViewController") as! ConfirmationPageViewController
-                        confirmatioCcontroller.leaveConfirm = self.chatArray.last
-                        confirmatioCcontroller.delegate = self
-                        self.navigationController?.pushViewController(confirmatioCcontroller, animated: true)
-                    }
-                    
+                    debugPrint("No chat Available")
                 }
-            }else{
-                debugPrint("No chat Available")
             }
-        }
         } else{
             debugPrint("no message")
         }
@@ -118,14 +118,17 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
         let message = self.messageTextField.text!
         if message.count != 0 && message != ""{
             self.messageTextField.resignFirstResponder()
-            self.recordButton.sendActions(for: .touchUpInside)
-            messageArray.append(message)
-            if chatArray.count != 0 {
-             chatMessage = "\((chatArray[chatArray.count - 1].data?.sentence!))\(message)"
+            if isRecording{
+                self.recordButton.sendActions(for: .touchUpInside)
             }else{
-               chatMessage = message
+                messageArray.append(message)
+                if chatArray.count != 0 {
+                    chatMessage = "\((chatArray[chatArray.count - 1].data?.sentence!))\(message)"
+                }else{
+                    chatMessage = message
+                }
             }
-        self.sendMessage(message: chatMessage)
+            self.sendMessage(message: chatMessage)
             self.messageTextField.text = ""
         }else{
             debugPrint("enter a message a to send")
@@ -239,7 +242,7 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
         let node = audioEngine.inputNode
         let recordingFormat = node.outputFormat(forBus: 0)
         do{
-             node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
+            node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
                 self.request.append(buffer)
             }
         } catch {
