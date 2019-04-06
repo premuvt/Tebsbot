@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class ConfirmationPageViewController: UIViewController {
-    
+
     @IBOutlet weak var buttonCancel: UIButton!
     @IBOutlet weak var buttonConfirm: UIButton!
     @IBOutlet weak var leaveDateLabel: UILabel!
@@ -19,11 +19,6 @@ class ConfirmationPageViewController: UIViewController {
     var leaveConfirm : LeaveChatModal?
     var leavedate = ""
     var leaveType = ""
-    
-    var activityIndicator = UIActivityIndicatorView()
-    var strLabel = UILabel()
-    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -55,7 +50,7 @@ class ConfirmationPageViewController: UIViewController {
         rightButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
         let barButtonRight = UIBarButtonItem.init(customView: rightButton)
         self.navigationItem.rightBarButtonItem = barButtonRight
-        
+
     }
     
     
@@ -73,14 +68,13 @@ class ConfirmationPageViewController: UIViewController {
     }
     
     @IBAction func buttonConfirmPressed(_ sender: UIButton) {
-        self.activityIndicator("Confirming...")
+        
         WebService.shared.confirmLeave(parameter: leaveConfirm?.data , completionBlock: { (success, errorMessage, successMessage) in
             if success{
                 DispatchQueue.main.sync {
-                    self.stopActivity()
                     let storyboard = UIStoryboard(name: "Home", bundle: nil)
                     let finalConfirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "FinalConfirmationViewController") as! FinalConfirmationViewController
-                    self.navigationController?.pushViewController(finalConfirmatioCcontroller, animated: true)
+                self.navigationController?.pushViewController(finalConfirmatioCcontroller, animated: true)
                 } }else{
                 debugPrint("errorMessage")
             }
@@ -93,9 +87,15 @@ class ConfirmationPageViewController: UIViewController {
     }
     
     @objc func chat(sender:UIButton){
-        self.navigationController?.popViewController(animated: true)
+self.navigationController?.popViewController(animated: true)
     }
+
+    @objc func buttonCancel(sender:UIButton){
+        self.navigationController?.popToRootViewController(animated: true)
+
     
+
+}
     //MARK:- text to speech
     func speakText(message:String) {
         print("test to voice - ",message)
@@ -104,43 +104,7 @@ class ConfirmationPageViewController: UIViewController {
         
         let synth = AVSpeechSynthesizer()
         synth.speak(utterance)
-    }
-    
-    @objc func buttonCancel(sender:UIButton){
-        self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    //MARK:- activity indicator
-    
-    func activityIndicator(_ title: String) {
         
-        strLabel.removeFromSuperview()
-        activityIndicator.removeFromSuperview()
-        effectView.removeFromSuperview()
-        
-        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
-        strLabel.text = title
-        strLabel.font = .systemFont(ofSize: 14, weight: .medium)
-        strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
-        
-        effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
-        effectView.layer.cornerRadius = 15
-        effectView.layer.masksToBounds = true
-        
-        activityIndicator = UIActivityIndicatorView(style: .white)
-        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
-        activityIndicator.startAnimating()
-        
-        effectView.contentView.addSubview(activityIndicator)
-        effectView.contentView.addSubview(strLabel)
-        view.addSubview(effectView)
-    }
-    
-    func stopActivity() {
-        activityIndicator.stopAnimating()
-        strLabel.removeFromSuperview()
-        activityIndicator.removeFromSuperview()
-        effectView.removeFromSuperview()
-    }
 }
 
+}
