@@ -11,13 +11,9 @@ import UIKit
 import AVFoundation
 import Speech
 
-class ApplyLeaveViewController: UIViewController,confirmationDelegate {
-    func didCancelClicked() {
-        self.navigationController?.popViewController(animated: true)
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    
+
+class ApplyLeaveViewController: UIViewController{
+  
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
@@ -50,7 +46,6 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
         setUpKeyBoardNotification()
         setUIBoarder()
 
-        
         //for speech recogonition
         self.requestSpeechAuthorization()
     }
@@ -111,7 +106,6 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
                             let storyboard = UIStoryboard(name: "Home", bundle: nil)
                             let confirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "ConfirmationPageViewController") as! ConfirmationPageViewController
                             confirmatioCcontroller.leaveConfirm = self.chatArray.last
-                            confirmatioCcontroller.delegate = self
                             self.navigationController?.pushViewController(confirmatioCcontroller, animated: true)
                         }
                         

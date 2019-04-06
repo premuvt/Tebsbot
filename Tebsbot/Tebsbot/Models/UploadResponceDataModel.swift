@@ -9,7 +9,7 @@
 import Foundation
 
 struct UploadResponceDataModel : Codable {
-    let data : Data?
+    let data : claimData?
     let message : String?
     let flag : Bool?
     
@@ -22,13 +22,13 @@ struct UploadResponceDataModel : Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        data = try values.decodeIfPresent(Data.self, forKey: .data)
+        data = try values.decodeIfPresent(claimData.self, forKey: .data)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         flag = try values.decodeIfPresent(Bool.self, forKey: .flag)
     }
     
 }
-struct data : Codable {
+struct claimData : Codable {
     let status : Int?
     let data : Data?
     

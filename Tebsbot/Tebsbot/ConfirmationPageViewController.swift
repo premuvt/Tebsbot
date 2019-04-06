@@ -8,12 +8,9 @@
 
 import UIKit
 import AVFoundation
-protocol confirmationDelegate {
-    func didCancelClicked()
-}
+
 class ConfirmationPageViewController: UIViewController {
-    var delegate:confirmationDelegate?
-    
+
     @IBOutlet weak var buttonCancel: UIButton!
     @IBOutlet weak var buttonConfirm: UIButton!
     @IBOutlet weak var leaveDateLabel: UILabel!
@@ -45,6 +42,14 @@ class ConfirmationPageViewController: UIViewController {
         button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
         let barButton = UIBarButtonItem.init(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
+        
+        let rightButton = UIButton.init(type: .custom)
+        rightButton.setImage(UIImage.init(named: "chat"), for: UIControl.State.normal)
+        rightButton.addTarget(self, action:#selector(chat(sender:)), for:.touchUpInside)
+        rightButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
+        let barButtonRight = UIBarButtonItem.init(customView: rightButton)
+        self.navigationItem.rightBarButtonItem = barButtonRight
+
     }
     
     
@@ -68,31 +73,25 @@ class ConfirmationPageViewController: UIViewController {
                 DispatchQueue.main.sync {
                     let storyboard = UIStoryboard(name: "Home", bundle: nil)
                     let finalConfirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "FinalConfirmationViewController") as! FinalConfirmationViewController
-                  finalConfirmatioCcontroller.delegate = self
-                    self.navigationController?.pushViewController(finalConfirmatioCcontroller, animated: true)
+                self.navigationController?.pushViewController(finalConfirmatioCcontroller, animated: true)
                 } }else{
                 debugPrint("errorMessage")
             }
         })
-        
-        
-        
     }
     
     @IBAction func buttonCancelPressed(_ sender: UIButton) {
         
-        delegate?.didCancelClicked()
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
-    
-}
-extension ConfirmationPageViewController:FinalConfirmationPageDelegate{
-    func didClickCancel(viewController: FinalConfirmationViewController) {
-        delegate?.didCancelClicked()
+    @objc func chat(sender:UIButton){
+self.navigationController?.popViewController(animated: true)
     }
     
     //MARK:- text to speech
     func speakText(message:String) {
+        print("test to voice - ",message)
         let utterance = AVSpeechUtterance(string: message)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         
@@ -100,3 +99,4 @@ extension ConfirmationPageViewController:FinalConfirmationPageDelegate{
         synth.speak(utterance)
     }
 }
+

@@ -48,13 +48,24 @@ class ClaimConfirmViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     @IBAction func confirmButtonTapped(_ sender: UIButton) {
-        DispatchQueue.main.sync {
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let claimConfirmationPage = storyboard.instantiateViewController(withIdentifier: "ClaimConfirmationPageViewController") as! ClaimConfirmationPageViewController
-//            finalConfirmatioCcontroller.delegate = self
-            self.navigationController?.pushViewController(claimConfirmationPage, animated: true)
+
+        let dictionaryClaim: Dictionary<String,String> = ["date":dateLabel.text!,"claim_type":typeLabel.text!,"fare_amount":amountLable.text!]
+        WebService.shared.confirmClaim(parameter: dictionaryClaim) { (success, errorMessage, successMessage) in
+            if success{
+                DispatchQueue.main.sync {
+                    let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                    let claimConfirmationPage = storyboard.instantiateViewController(withIdentifier: "ClaimConfirmationPageViewController") as! ClaimConfirmationPageViewController
+                    self.navigationController?.pushViewController(claimConfirmationPage, animated: true)
+                }
+            }else{
+                debugPrint("errorMessage")
+            }
         }
+        
+        
+
     }
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }

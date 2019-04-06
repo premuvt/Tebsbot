@@ -67,6 +67,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func buttonLoginPressed(_ sender: UIButton) {
         if textFieldUserName.text == "ranjit" && textFieldPassword.text == "1234"{
             debugPrint("Valid Credentials")
+            UserDefaults.standard.set(textFieldUserName.text, forKey: "user")
+            UserDefaults.standard.set(textFieldPassword.text, forKey: "pass")
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController")
             self.present(controller, animated: true, completion: nil)
