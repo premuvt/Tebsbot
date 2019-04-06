@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import AVFoundation
+import Speech
 
 class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     func didCancelClicked() {
@@ -18,6 +20,20 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
+    @IBOutlet var sendButtonboardHeightLayoutConstraint: NSLayoutConstraint?
+    @IBOutlet var voiceButtonboardHeightLayoutConstraint: NSLayoutConstraint?
+    
+    @IBOutlet weak var recordButton: UIButton!
+    
+    //MARK:- speet to text
+    let audioEngine = AVAudioEngine()
+    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    let request = SFSpeechAudioBufferRecognitionRequest()
+    var recognitionTask: SFSpeechRecognitionTask?
+    var isRecording = false
+    
+    
     
     var chatArray:[LeaveChatModal]! = []
     var messageArray: [String] = []
@@ -26,7 +42,21 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
         super.viewDidLoad()
         sendMessage()
 //        chatTableView.register(UITableViewCell.self, forCellReuseIdentifier: "LeaveChatTableviewCell")
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardNotification(notification:)),
+                                               name: UIResponder.keyboardDidShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardNotification(notification:)),
+                                               name: UIResponder.keyboardDidHideNotification,
+                                               object: nil)
+        
+        self.requestSpeechAuthorization()
     }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     
     func sendMessage(message: String? = ""){
         if message != ""{
@@ -37,6 +67,10 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
                 DispatchQueue.main.sync {
                     self.chatTableView.reloadData()
                 }
+                    if let question = chatModel?.data?.question {
+                        self.speakText(message: question)
+                    }
+                    
                 }else{
                     debugPrint("move to next page")
                     DispatchQueue.main.sync {
@@ -83,6 +117,8 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
     @IBAction func onSend(_ sender: Any) {
         let message = self.messageTextField.text!
         if message.count != 0 && message != ""{
+            self.messageTextField.resignFirstResponder()
+            self.recordButton.sendActions(for: .touchUpInside)
             messageArray.append(message)
             if chatArray.count != 0 {
              chatMessage = "\((chatArray[chatArray.count - 1].data?.sentence!))\(message)"
@@ -96,9 +132,48 @@ class ApplyLeaveViewController: UIViewController,confirmationDelegate {
         }
     }
     @IBAction func onRecord(_ sender: Any) {
+        self.messageTextField.resignFirstResponder()
+        if isRecording == true {
+            audioEngine.stop()
+            audioEngine.inputNode.removeTap(onBus: 0)
+            recognitionTask?.cancel()
+            isRecording = false
+            recordButton.backgroundColor = UIColor.gray
+        } else {
+            self.recordAndRecognizeSpeech()
+            isRecording = true
+            recordButton.backgroundColor = UIColor.red
+        }
     }
+    
 }
-extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource {
+extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, SFSpeechRecognizerDelegate {
+    
+    //MARK: - Key notification
+    @objc func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let endFrameY = endFrame!.origin.y ?? 0
+            let duration:TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
+            if endFrameY >= UIScreen.main.bounds.size.height {
+                self.keyboardHeightLayoutConstraint?.constant = 0.0
+                self.sendButtonboardHeightLayoutConstraint?.constant = 0.0
+                self.voiceButtonboardHeightLayoutConstraint?.constant = 0.0
+            } else {
+                self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+                self.sendButtonboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+                self.voiceButtonboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+            }
+            UIView.animate(withDuration: duration,
+                           delay: TimeInterval(0),
+                           options: animationCurve,
+                           animations: { self.view.layoutIfNeeded() },
+                           completion: nil)
+        }
+    }
     
     func scrollToBottom(){
         
@@ -128,6 +203,88 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    //MARK:- text to speech
+    func speakText(message:String) {
+        let utterance = AVSpeechUtterance(string: message)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
+    }
     
+    //MARK: - Check Authorization Status
     
+    func requestSpeechAuthorization() {
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            OperationQueue.main.addOperation {
+                switch authStatus {
+                case .authorized:
+                    self.recordButton.isEnabled = true
+                case .denied:
+                    self.recordButton.isEnabled = false
+                    self.messageTextField.text = "User denied access to speech recognition"
+                case .restricted:
+                    self.recordButton.isEnabled = false
+                    self.messageTextField.text = "Speech recognition restricted on this device"
+                case .notDetermined:
+                    self.recordButton.isEnabled = false
+                    self.messageTextField.text = "Speech recognition not yet authorized"
+                }
+            }
+        }
+    }
+    //MARK: - Recognize Speech
+    
+    func recordAndRecognizeSpeech() {
+        let node = audioEngine.inputNode
+        let recordingFormat = node.outputFormat(forBus: 0)
+        do{
+             node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
+                self.request.append(buffer)
+            }
+        } catch {
+            return print(error)
+        }
+        
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+        } catch {
+            self.sendAlert(message: "There has been an audio engine error.")
+            return print(error)
+        }
+        guard let myRecognizer = SFSpeechRecognizer() else {
+            self.sendAlert(message: "Speech recognition is not supported for your current locale.")
+            return
+        }
+        if !myRecognizer.isAvailable {
+            self.sendAlert(message: "Speech recognition is not currently available. Check back at a later time.")
+            // Recognizer is not available right now
+            return
+        }
+        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
+            if let result = result {
+                
+                let bestString = result.bestTranscription.formattedString
+                self.messageTextField.text = bestString
+                
+                var lastString: String = ""
+                for segment in result.bestTranscription.segments {
+                    let indexTo = bestString.index(bestString.startIndex, offsetBy: segment.substringRange.location)
+                    lastString = bestString.substring(from: indexTo)
+                }
+            } else if let error = error {
+                self.sendAlert(message: "There has been a speech recognition error.")
+                print(error)
+            }
+        })
+    }
+    
+    //MARK: - Alert
+    
+    func sendAlert(message: String) {
+        let alert = UIAlertController(title: "Speech Recognizer Error", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

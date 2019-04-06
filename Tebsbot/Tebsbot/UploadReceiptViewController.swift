@@ -13,7 +13,7 @@ class UploadReceiptViewController: UIViewController {
     
     //MARK:- VARIABLE
     
-    let url = "http://192.168.10.246:8080/user/file/text"
+    let url = BASE_URL+FILE_UPLOAD
     var data: Data? = nil
     
     // MARK: - outlets
@@ -91,7 +91,7 @@ class UploadReceiptViewController: UIViewController {
                     //                for (key, value) in parameters {
                     //                    multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
                     //                }
-                }, to:"https://tebsbot.uvionicstech.com/teBSbot/user/file/text")
+                }, to:BASE_URL+FILE_UPLOAD)
                 { (result) in
                     switch result {
                     case .success(let upload, _, _):

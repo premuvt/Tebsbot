@@ -131,7 +131,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KNv-sf-7eZ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KNv-sf-7eZ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -139,7 +139,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="00L-MW-Qjw" id="88Z-D0-Gkv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLZ-s1-R64">
@@ -268,7 +268,11 @@
                     </view>
                     <connections>
                         <outlet property="chatTableView" destination="KNv-sf-7eZ" id="xH9-d9-Q7u"/>
+                        <outlet property="keyboardHeightLayoutConstraint" destination="C4W-8U-2up" id="Csd-4x-Rvc"/>
                         <outlet property="messageTextField" destination="L7f-3T-5Il" id="IjB-dE-hiY"/>
+                        <outlet property="recordButton" destination="7jd-fl-Ldk" id="cu0-bk-5PO"/>
+                        <outlet property="sendButtonboardHeightLayoutConstraint" destination="ese-Ay-qcf" id="pyz-u2-X2H"/>
+                        <outlet property="voiceButtonboardHeightLayoutConstraint" destination="Nit-dq-vD7" id="5qS-B4-oxy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZs-qf-rSK" userLabel="First Responder" sceneMemberID="firstResponder"/>

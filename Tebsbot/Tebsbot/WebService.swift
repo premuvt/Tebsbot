@@ -12,7 +12,7 @@ class WebService {
     static let shared = WebService()
     func applyLeaveChat(message: String,completionBlock:((Bool,String?, LeaveChatModal?) -> Void)!)  {
         
-        let url = URL(string: "https://tebsbot.uvionicstech.com/teBSbot/user/message")
+        let url = URL(string: BASE_URL+USER_MESSAGE)
         var request = URLRequest(url: url!)
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
@@ -43,7 +43,7 @@ class WebService {
     
     func confirmLeave(parameter:Dictionary<String,Any>,completionBlock:((Bool,String?, String?) -> Void)!){
         
-        let url = URL(string: "https://tebsbot.uvionicstech.com/teBSbot/user/confirm-leave")
+        let url = URL(string: BASE_URL+CONFIRM_LEAVE)
         var request = URLRequest(url: url!)
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
