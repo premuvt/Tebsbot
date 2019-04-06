@@ -19,6 +19,11 @@ class ConfirmationPageViewController: UIViewController {
     var leaveConfirm : LeaveChatModal?
     var leavedate = ""
     var leaveType = ""
+    var synth:AVSpeechSynthesizer = AVSpeechSynthesizer()
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -53,7 +58,10 @@ class ConfirmationPageViewController: UIViewController {
 
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        synth.stopSpeaking(at: .immediate)
+    }
     func setUpUI(){
         buttonConfirm.layer.cornerRadius = buttonConfirm.frame.height / 2
         buttonConfirm.layer.masksToBounds = true
@@ -68,10 +76,13 @@ class ConfirmationPageViewController: UIViewController {
     }
     
     @IBAction func buttonConfirmPressed(_ sender: UIButton) {
-        
+        sender.isEnabled = false
+        self.activityIndicator("Confirming...")
         WebService.shared.confirmLeave(parameter: leaveConfirm?.data , completionBlock: { (success, errorMessage, successMessage) in
+            sender.isEnabled = true
             if success{
                 DispatchQueue.main.sync {
+                    self.stopActivity()
                     let storyboard = UIStoryboard(name: "Home", bundle: nil)
                     let finalConfirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "FinalConfirmationViewController") as! FinalConfirmationViewController
                 self.navigationController?.pushViewController(finalConfirmatioCcontroller, animated: true)
@@ -101,10 +112,40 @@ self.navigationController?.popViewController(animated: true)
         print("test to voice - ",message)
         let utterance = AVSpeechUtterance(string: message)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        
-        let synth = AVSpeechSynthesizer()
-        synth.speak(utterance)
+        self.synth.speak(utterance)
         
 }
 
+    //MARK:- activity indicator
+    
+    func activityIndicator(_ title: String) {
+        
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
+        
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
+        strLabel.text = title
+        strLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
+        
+        effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
+        effectView.layer.cornerRadius = 15
+        effectView.layer.masksToBounds = true
+        
+        activityIndicator = UIActivityIndicatorView(style: .white)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+        activityIndicator.startAnimating()
+        
+        effectView.contentView.addSubview(activityIndicator)
+        effectView.contentView.addSubview(strLabel)
+        view.addSubview(effectView)
+    }
+    
+    func stopActivity() {
+        activityIndicator.stopAnimating()
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
+    }
 }

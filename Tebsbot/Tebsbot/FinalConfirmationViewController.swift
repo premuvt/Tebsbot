@@ -11,6 +11,8 @@ import AVFoundation
 
 
 class FinalConfirmationViewController: UIViewController {
+    
+    var synth:AVSpeechSynthesizer = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,10 @@ class FinalConfirmationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.speakText(message: "Your leave has been applied. Thank you.")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        synth.stopSpeaking(at: .immediate)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +62,6 @@ class FinalConfirmationViewController: UIViewController {
         print("test to voice - ",message)
         let utterance = AVSpeechUtterance(string: message)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        
-        let synth = AVSpeechSynthesizer()
-        synth.speak(utterance)
+        self.synth.speak(utterance)
     }
 }

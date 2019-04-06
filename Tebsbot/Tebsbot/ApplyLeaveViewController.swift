@@ -29,6 +29,7 @@ class ApplyLeaveViewController: UIViewController{
     let request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask: SFSpeechRecognitionTask?
     var isRecording = false
+    var synth:AVSpeechSynthesizer = AVSpeechSynthesizer()
     
 //    let messageFrame = UIView()
     var activityIndicator = UIActivityIndicatorView()
@@ -52,7 +53,7 @@ class ApplyLeaveViewController: UIViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.speakText(message: "Hi sir, now you can also apply leave by speak. Please tap the mic button on bottom right corner to speak.")
+//        self.speakText(message: "Hi sir, now you can also apply leave by speak. Please tap the mic button on bottom right corner to speak.")
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -137,6 +138,7 @@ class ApplyLeaveViewController: UIViewController{
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        synth.stopSpeaking(at: .immediate)
     }
     @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
@@ -173,6 +175,7 @@ class ApplyLeaveViewController: UIViewController{
             recordButton.tintColor = UIColor.black
             
         } else {
+//            synth.stopSpeaking(at: .immediate)
             self.recordAndRecognizeSpeech()
             isRecording = true
             recordButton.tintColor = UIColor.red
@@ -250,8 +253,6 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     func speakText(message:String) {
         let utterance = AVSpeechUtterance(string: message)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        
-        let synth = AVSpeechSynthesizer()
         synth.speak(utterance)
     }
     
