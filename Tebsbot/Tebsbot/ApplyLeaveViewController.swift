@@ -30,7 +30,7 @@ class ApplyLeaveViewController: UIViewController{
     var recognitionTask: SFSpeechRecognitionTask?
     var isRecording = false
     
-    let messageFrame = UIView()
+//    let messageFrame = UIView()
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))

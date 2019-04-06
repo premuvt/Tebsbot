@@ -16,6 +16,10 @@ class UploadReceiptViewController: UIViewController {
     let url = BASE_URL+FILE_UPLOAD
     var data: Data? = nil
     
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
     // MARK: - outlets
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -77,6 +81,7 @@ class UploadReceiptViewController: UIViewController {
     
     @IBAction func buttonUploadPressed(_ sender: Any) {
         print("upload initiated")
+        self.activityIndicator("Uploading..")
         if selectedImage != nil {
             if let data = selectedImage.jpegData(compressionQuality: 0.75) {
                 //            let parameters: Parameters = [
@@ -116,10 +121,15 @@ class UploadReceiptViewController: UIViewController {
                                     self.responceDateString = data["date"] as? String
                                     self.responceClaimString = data["claim_type"]! as? String
                                     self.responceFareString = data["fare_amount"]! as? String
-                                    
+                                    DispatchQueue.main.async {
+                                        self.stopActivity()
+                                    }
                                     self.pushToConfirmView()
                                 }
                                 else{
+                                    DispatchQueue.main.async {
+                                        self.stopActivity()
+                                    }
                                     print("faild processing")
                                     let alert = UIAlertController(title: "Information", message: "Processing faild", preferredStyle: .alert)
                                     alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: { (action) in
@@ -171,17 +181,53 @@ extension UploadReceiptViewController : UIImagePickerControllerDelegate, UINavig
     }
     
     func pushToConfirmView() {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ClaimConfirmViewController") as! ClaimConfirmViewController
-        controller.responceFareString = self.responceFareString
-        controller.responceClaimString = self.responceClaimString
-        controller.responceDateString = self.responceDateString
-        controller.selectedImage = self.selectedImage
-        self.navigationController?.pushViewController(controller, animated: true)
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "ClaimConfirmViewController") as! ClaimConfirmViewController
+            controller.responceFareString = self.responceFareString
+            controller.responceClaimString = self.responceClaimString
+            controller.responceDateString = self.responceDateString
+            controller.selectedImage = self.selectedImage
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        
     }
     
     
     override func didReceiveMemoryWarning() {
         debugPrint("HI")
+    }
+    
+    //MARK:- activity indicator
+    
+    func activityIndicator(_ title: String) {
+        
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
+        
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
+        strLabel.text = title
+        strLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
+        
+        effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
+        effectView.layer.cornerRadius = 15
+        effectView.layer.masksToBounds = true
+        
+        activityIndicator = UIActivityIndicatorView(style: .white)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+        activityIndicator.startAnimating()
+        
+        effectView.contentView.addSubview(activityIndicator)
+        effectView.contentView.addSubview(strLabel)
+        view.addSubview(effectView)
+    }
+    
+    func stopActivity() {
+        activityIndicator.stopAnimating()
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
     }
 }

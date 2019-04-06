@@ -15,6 +15,10 @@ class ClaimConfirmViewController: UIViewController {
     var responceFareString:String!
     var selectedImage:UIImage!
     
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var reciptImageview: UIImageView!
@@ -48,11 +52,13 @@ class ClaimConfirmViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     @IBAction func confirmButtonTapped(_ sender: UIButton) {
-
+        self.activityIndicator("Confirming...")
+        
         let dictionaryClaim: Dictionary<String,String> = ["date":dateLabel.text!,"claim_type":typeLabel.text!,"fare_amount":amountLable.text!]
         WebService.shared.confirmClaim(parameter: dictionaryClaim) { (success, errorMessage, successMessage) in
             if success{
                 DispatchQueue.main.sync {
+                    self.stopActivity()
                     let storyboard = UIStoryboard(name: "Home", bundle: nil)
                     let claimConfirmationPage = storyboard.instantiateViewController(withIdentifier: "ClaimConfirmationPageViewController") as! ClaimConfirmationPageViewController
                     self.navigationController?.pushViewController(claimConfirmationPage, animated: true)
@@ -67,5 +73,38 @@ class ClaimConfirmViewController: UIViewController {
     }
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    //MARK:- activity indicator
+    
+    func activityIndicator(_ title: String) {
+        
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
+        
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
+        strLabel.text = title
+        strLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
+        
+        effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
+        effectView.layer.cornerRadius = 15
+        effectView.layer.masksToBounds = true
+        
+        activityIndicator = UIActivityIndicatorView(style: .white)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+        activityIndicator.startAnimating()
+        
+        effectView.contentView.addSubview(activityIndicator)
+        effectView.contentView.addSubview(strLabel)
+        view.addSubview(effectView)
+    }
+    
+    func stopActivity() {
+        activityIndicator.stopAnimating()
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
     }
 }

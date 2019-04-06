@@ -465,13 +465,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vcH-aM-1Wd">
-                                <rect key="frame" x="0.0" y="60" width="375" height="335"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="334"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="335" id="XgH-jZ-9Nj"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claim Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZZ-Ej-Yhp">
-                                <rect key="frame" x="16" y="421" width="343" height="44"/>
+                                <rect key="frame" x="16" y="420" width="343" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="vQS-fR-hMR"/>
                                 </constraints>
@@ -480,7 +480,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABb-1S-d8O">
-                                <rect key="frame" x="16" y="473" width="343" height="35"/>
+                                <rect key="frame" x="16" y="472" width="343" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Pxb-d5-C1z"/>
                                 </constraints>
@@ -489,7 +489,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claim Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuL-TL-z0H">
-                                <rect key="frame" x="16" y="517" width="343" height="21"/>
+                                <rect key="frame" x="16" y="516" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="mZH-XS-UYw"/>
                                 </constraints>
@@ -498,8 +498,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZW-nf-rRA">
-                                <rect key="frame" x="25" y="557" width="141.5" height="45"/>
+                                <rect key="frame" x="25" y="556" width="141.5" height="46"/>
                                 <color key="backgroundColor" red="0.29803921570000003" green="0.50196078430000002" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="Pml-Z2-XEF"/>
+                                </constraints>
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" red="0.94901960780000005" green="0.94509803920000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -509,8 +512,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrA-Yy-lId">
-                                <rect key="frame" x="208" y="557" width="141.5" height="45"/>
+                                <rect key="frame" x="208" y="556" width="141.5" height="46"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.21960784310000001" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="72r-Tf-p30"/>
+                                </constraints>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.94901960780000005" green="0.94509803920000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
