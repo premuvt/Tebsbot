@@ -50,7 +50,7 @@ class ConfirmationPageViewController: UIViewController {
             return "5"
         case "sixth","six":
             return "6"
-        case "seventh","seventh":
+        case "seventh","seven":
             return "7"
         case "eighth","eight":
             return "8"
