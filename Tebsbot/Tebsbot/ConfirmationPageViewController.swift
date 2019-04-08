@@ -44,7 +44,7 @@ class ConfirmationPageViewController: UIViewController {
             return "2"
         case "third","three":
             return "3"
-        case "fourth","four":
+        case "fourth","four","forth":
             return "4"
         case "fifth","five":
             return "5"
