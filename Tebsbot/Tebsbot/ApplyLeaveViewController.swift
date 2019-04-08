@@ -123,6 +123,7 @@ class ApplyLeaveViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.white
         let logo = UIImage(named: "logo")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = .scaleAspectFit
