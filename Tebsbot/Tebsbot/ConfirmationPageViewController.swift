@@ -23,7 +23,7 @@ class ConfirmationPageViewController: UIViewController {
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-    
+    var dateString = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -31,13 +31,24 @@ class ConfirmationPageViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.speakText(message: "Sir, do you like to apply \(String(leaveConfirm!.data!.type!)) on \(String(describing: leaveConfirm!.data!.date!)). Please confirm.")
+        dateString = changeDateFormat(string:leaveConfirm!.data!.date!)
+        self.speakText(message: "Sir, do you like to apply \(String(leaveConfirm!.data!.type!)) on \(String(describing: dateString)). Please confirm.")
+    }
+    
+    func changeDateFormat(string : String) -> String{
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "dd-mm-yyyy"
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "mm-dd-yyyy"  //"MMM d, h:mm a" for  Sep 12, 2:11 PM
+        let datee = dateFormatterGet.date(from: string)
+        let speachdate =  dateFormatterPrint.string(from: datee!)
+        return speachdate
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.white
         let logo = UIImage(named: "logo")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = .scaleAspectFit
