@@ -17,30 +17,66 @@ class ConfirmationPageViewController: UIViewController {
     @IBOutlet weak var leaveTypeLabel: UILabel!
     
     var leaveConfirm : LeaveChatModal?
-    var leavedate = ""
-    var leaveType = ""
     var synth:AVSpeechSynthesizer = AVSpeechSynthesizer()
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     var dateString = ""
+    var changedDate = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        
         
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         dateString = changeDateFormat(string:leaveConfirm!.data!.date!)
+        setUpUI()
         self.speakText(message: "Sir, do you like to apply \(String(leaveConfirm!.data!.type!)) on \(String(describing: dateString)). Please confirm.")
+        //setUpUI()
+    }
+    func setday(daystring:String)-> String{
+        switch daystring.lowercased() {
+        case "first","one":
+            return "1"
+        case "second","two":
+            return "2"
+        case "third","three":
+            return "3"
+        case "fourth","four":
+            return "4"
+        case "fifth","five":
+            return "5"
+        case "sixth","six":
+            return "6"
+        case "seventh","seventh":
+            return "7"
+        case "eighth","eight":
+            return "8"
+        case "nineth","ninth","nine":
+            return "9"
+        case "tenth","ten":
+            return "10"
+
+        default:
+            return daystring
+        }
     }
     
+    
     func changeDateFormat(string : String) -> String{
+        
+let dayArray = string.split(separator: "-")
+        let day:String = String(dayArray[0])
+        let dayString = setday(daystring: day)
+        
+        changedDate = dayString + "-" + String(dayArray[1]) + "-" + String(dayArray[2])
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "dd-mm-yyyy"
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "mm-dd-yyyy"  //"MMM d, h:mm a" for  Sep 12, 2:11 PM
-        let datee = dateFormatterGet.date(from: string)
+        let datee = dateFormatterGet.date(from: changedDate)
         let speachdate =  dateFormatterPrint.string(from: datee!)
         return speachdate
     }
@@ -81,7 +117,7 @@ class ConfirmationPageViewController: UIViewController {
         
         if leaveConfirm != nil{
             self.leaveTypeLabel.text = leaveConfirm?.data?.type
-            self.leaveDateLabel.text = leaveConfirm?.data?.date
+            self.leaveDateLabel.text = changedDate
         }
         
     }
