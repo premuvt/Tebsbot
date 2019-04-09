@@ -30,6 +30,7 @@
 		73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE2225679F1004C6106 /* LabelTextField.swift */; };
 		73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE3225679F1004C6106 /* LineTextField.swift */; };
 		73CF4BE7225679F2004C6106 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE4225679F2004C6106 /* LoadingButton.swift */; };
+		73D0BA09225B5C5E00CD5978 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D0BA08225B5C5E00CD5978 /* UIButton.swift */; };
 		962E7C96CF1001D4AF6A8301 /* Pods_Tebsbot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089CD5EAE19B5718C2A651E7 /* Pods_Tebsbot.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		73CF4BE2225679F1004C6106 /* LabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
 		73CF4BE3225679F1004C6106 /* LineTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTextField.swift; sourceTree = "<group>"; };
 		73CF4BE4225679F2004C6106 /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		73D0BA08225B5C5E00CD5978 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		A0F20FEE18995FFFD549E9F0 /* Pods-Tebsbot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot.release.xcconfig"; sourceTree = "<group>"; };
 		FA64164E40FF11376348DF4F /* Pods-Tebsbot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.release.xcconfig"; path = "Target Support Files/Pods-Tebsbot/Pods-Tebsbot.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 				73CF4BE2225679F1004C6106 /* LabelTextField.swift */,
 				73CF4BE3225679F1004C6106 /* LineTextField.swift */,
 				73CF4BE4225679F2004C6106 /* LoadingButton.swift */,
+				73D0BA08225B5C5E00CD5978 /* UIButton.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				68B598EB2256E39400D8A836 /* ConfirmationPageViewController.swift in Sources */,
 				73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */,
 				6811FC7822574AB900B0AAB4 /* ClaimCOnfirmViewController.swift in Sources */,
+				73D0BA09225B5C5E00CD5978 /* UIButton.swift in Sources */,
 				68A69F272256940200EEB71E /* WebService.swift in Sources */,
 				68A69F2522568F5D00EEB71E /* LeaveChatModal.swift in Sources */,
 				68B598ED2256EA0600D8A836 /* FinalConfirmationViewController.swift in Sources */,

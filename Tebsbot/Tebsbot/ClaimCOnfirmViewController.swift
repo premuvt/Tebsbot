@@ -18,27 +18,38 @@ class ClaimConfirmViewController: UIViewController {
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    var isZooming = false
+    var originalImageCenter:CGPoint?
     
+    
+    @IBOutlet var imagePanGesture: UIPanGestureRecognizer!
+    @IBOutlet weak var scrollViewImage: UIScrollView!
+    @IBOutlet var claimImagePanGesture: UIPinchGestureRecognizer!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var reciptImageview: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLable: UILabel!
+    var lastScale:CGFloat!
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        // pinch gesture
+         self.claimImagePanGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
+        self.reciptImageview.addGestureRecognizer(self.claimImagePanGesture)
+        self.claimImagePanGesture.delegate = self
+        
+        // pangesture
+       imagePanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.pan(sender:)))
+    self.reciptImageview.addGestureRecognizer(imagePanGesture)
+        imagePanGesture.delegate = self
+        
+        reciptImageview.isUserInteractionEnabled = true
         reciptImageview.image = selectedImage
         typeLabel.text = "Claim Type - \(responceClaimString ?? "no type")"
         dateLabel.text = "Date - \(responceDateString ?? "no date")"
         amountLable.text = "Claim Amount - \(responceFareString ?? "no amount")"
-    }
-    func updateUI(){
-        cancelButton.layer.cornerRadius = cancelButton.frame.height / 2
-        cancelButton.layer.masksToBounds = true
-        confirmButton.layer.cornerRadius = confirmButton.frame.height / 2
-        confirmButton.layer.masksToBounds = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,9 +60,14 @@ class ClaimConfirmViewController: UIViewController {
         let imageView = UIImageView(image:logo)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
-
+        
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
+
+    
+
+    
+    
     @IBAction func confirmButtonTapped(_ sender: UIButton) {
         self.activityIndicator("Confirming...")
         sender.isEnabled = false
@@ -109,4 +125,95 @@ class ClaimConfirmViewController: UIViewController {
         activityIndicator.removeFromSuperview()
         effectView.removeFromSuperview()
     }
+    
+    
+    func updateUI(){
+        self.confirmButton.setCornerRaius()
+        self.cancelButton.setCornerRaius()
+    }
+}
+
+
+extension ClaimConfirmViewController:UIGestureRecognizerDelegate{
+    
+     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    @objc func pan(sender: UIPanGestureRecognizer) {
+        if self.isZooming && sender.state == .began {
+            self.originalImageCenter = sender.view?.center
+        } else if self.isZooming && sender.state == .changed {
+            let translation = sender.translation(in: self.view)
+            if let view = sender.view {
+                view.center = CGPoint(x:view.center.x + translation.x,
+                                      y:view.center.y + translation.y)
+            }
+            sender.setTranslation(CGPoint.zero, in: self.reciptImageview.superview)
+        }
+    }
+    
+    
+    @objc func pinch(sender:UIPinchGestureRecognizer) {
+        if sender.state == .began {
+            let currentScale = self.reciptImageview.frame.size.width / self.reciptImageview.bounds.size.width
+            let newScale = currentScale*sender.scale
+            debugPrint("zoomlevel : ",newScale)
+            if newScale < 1  && newScale > 7 {
+                guard let center = self.originalImageCenter else {return}
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.reciptImageview.transform = CGAffineTransform.identity
+                    self.reciptImageview.center = center
+                }, completion: { _ in
+                    self.isZooming = false
+                })
+                
+            }else if newScale > 1 && newScale < 7{
+                self.isZooming = true
+            }else{
+                self.isZooming = false
+            }
+            
+        } else if sender.state == .changed {
+            guard let view = sender.view else {return}
+            let pinchCenter = CGPoint(x: sender.location(in: view).x - view.bounds.midX,
+                                      y: sender.location(in: view).y - view.bounds.midY)
+            let transform = view.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
+                .scaledBy(x: sender.scale, y: sender.scale)
+                .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
+            let currentScale = self.reciptImageview.frame.size.width / self.reciptImageview.bounds.size.width
+            var newScale = currentScale*sender.scale
+            if newScale < 1 && newScale > 7{
+                newScale = 1
+                let transform = CGAffineTransform(scaleX: newScale, y: newScale)
+                
+                guard let center = self.originalImageCenter else {return}
+                UIView.animate(withDuration: 0.3, animations: {
+                    view.transform =  CGAffineTransform.identity
+                    self.reciptImageview.transform = CGAffineTransform.identity
+                    self.reciptImageview.center = center
+                    sender.scale = 1
+                }, completion: { _ in
+                    self.isZooming = false
+                })
+            }else if newScale > 1 && newScale < 7{
+                view.transform = transform
+                sender.scale = 1
+            }else {
+                view.transform = transform
+                sender.scale = 1
+            }
+        } else if sender.state == .ended || sender.state == .failed || sender.state == .cancelled {
+            guard let center = self.originalImageCenter else {return}
+            UIView.animate(withDuration: 0.3, animations: {
+                self.reciptImageview.transform = CGAffineTransform.identity
+                self.reciptImageview.center = center
+            }, completion: { _ in
+                self.isZooming = false
+            })
+        }
+        
+    }
+    
+    
 }

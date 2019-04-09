@@ -56,22 +56,20 @@ class UploadReceiptViewController: UIViewController {
         button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
         let barButton = UIBarButtonItem.init(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
-//        self.buttonupload.isUserInteractionEnabled = false
-//        self.buttonupload.isEnabled = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
     @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
     }
+    
     func setUpUI(){
-        buttonbrowse.layer.cornerRadius = buttonbrowse.frame.height / 2
-        buttonbrowse.layer.masksToBounds = true
-        buttonupload.layer.cornerRadius = buttonupload.frame.height / 2
-        buttonupload.layer.masksToBounds = true
+        self.buttonbrowse.setCornerRaius()
+        self.buttonupload.setCornerRaius()
     }
 
     @IBAction func onBrowse(_ sender: UIButton) {
@@ -85,27 +83,17 @@ class UploadReceiptViewController: UIViewController {
         self.activityIndicator("Uploading..")
         if selectedImage != nil {
             if let data = selectedImage.jpegData(compressionQuality: 0.75) {
-                //            let parameters: Parameters = [
-                //                "access_token" : "YourToken"
-                //            ]
-                // You can change your image name here, i use NSURL image and convert into string
-                
                 // Start Alamofire
                 
                 Alamofire.upload(multipartFormData: { (multipartFormData) in
                     multipartFormData.append(self.selectedImage.jpegData(compressionQuality: 0.75)!, withName: "file", fileName: "file", mimeType: "image/jpeg")
-                    //                for (key, value) in parameters {
-                    //                    multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
-                    //                }
                 }, to:BASE_URL+FILE_UPLOAD)
                 { (result) in
                     switch result {
                     case .success(let upload, _, _):
-                        
                         upload.uploadProgress(closure: { (Progress) in
                             print("Upload Progress: \(Progress.fractionCompleted)")
                         })
-                        
                         upload.responseJSON { response in
                             //self.delegate?.showSuccessAlert()
                             print(response.request)  // original URL request
@@ -114,6 +102,17 @@ class UploadReceiptViewController: UIViewController {
                             print(response.result)   // result of response serialization
                             //                        self.showSuccesAlert()
                             //self.removeImage("frame", fileExtension: "txt")
+                            if  response.result.description == "FAILURE"{
+                                DispatchQueue.main.async {
+                                    self.stopActivity()
+                                }
+                                print("faild processing")
+                                let alert = UIAlertController(title: "Information", message: "Processing faild", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: { (action) in
+                                    alert.dismiss(animated: true, completion: nil)
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }
                             if let JSON = response.result.value {
                                 print("JSON: \(JSON)")
                                 let responseJSON = response.result.value as! [String:AnyObject]
@@ -138,17 +137,12 @@ class UploadReceiptViewController: UIViewController {
                                     }))
                                     self.present(alert, animated: true, completion: nil)
                                 }
-                                
-                                
-                                
-                            }
+                             }
                         }
-                        
                     case .failure(let encodingError):
                         //self.delegate?.showFailAlert()
                         print(encodingError)
                     }
-                    
                 }
             }
         }
@@ -160,9 +154,7 @@ class UploadReceiptViewController: UIViewController {
             }))
             self.present(alert, animated: true, completion: nil)
         }
-        
     }
-    
 }
 
 extension UploadReceiptViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {

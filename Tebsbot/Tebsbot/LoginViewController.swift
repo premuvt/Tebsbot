@@ -38,9 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textFieldUserName.becomeFirstResponder()
     }
     func setUI(){
-        buttonLogin.layer.cornerRadius = buttonLogin.frame.height / 2
-        buttonLogin.layer.masksToBounds = true
-        
+        buttonLogin.setCornerRaius()        
         textFieldUserName.delegate = self
         textFieldPassword.delegate = self
     }

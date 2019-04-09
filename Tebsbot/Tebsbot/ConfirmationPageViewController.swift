@@ -110,10 +110,12 @@ let dayArray = string.split(separator: "-")
         synth.stopSpeaking(at: .immediate)
     }
     func setUpUI(){
-        buttonConfirm.layer.cornerRadius = buttonConfirm.frame.height / 2
-        buttonConfirm.layer.masksToBounds = true
-        buttonCancel.layer.cornerRadius = buttonCancel.frame.height / 2
-        buttonCancel.layer.masksToBounds = true
+        self.buttonConfirm.setCornerRaius()
+        self.buttonCancel.setCornerRaius()
+//        buttonConfirm.layer.cornerRadius = buttonConfirm.frame.height / 2
+//        buttonConfirm.layer.masksToBounds = true
+//        buttonCancel.layer.cornerRadius = buttonCancel.frame.height / 2
+//        buttonCancel.layer.masksToBounds = true
         
         if leaveConfirm != nil{
             self.leaveTypeLabel.text = leaveConfirm?.data?.type
