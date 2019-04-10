@@ -111,6 +111,7 @@
 		68E78BEE225664EF00BFD976 /* Tebsbot */ = {
 			isa = PBXGroup;
 			children = (
+				68E78BFB225664F200BFD976 /* Info.plist */,
 				73BABC9822587185001A6149 /* Manager */,
 				73CF4BE12256793F004C6106 /* Extension */,
 				737A30E4225DC89E00CA866D /* Startup-delegate */,
@@ -170,7 +171,6 @@
 		737A30E3225DC89000CA866D /* Plists */ = {
 			isa = PBXGroup;
 			children = (
-				68E78BFB225664F200BFD976 /* Info.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
