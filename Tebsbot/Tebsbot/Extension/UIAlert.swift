@@ -15,7 +15,7 @@ public enum Actions{
 }
 extension UIAlertController{
     func alertWithOkCancelButton(view:UIViewController,okAction:Actions){
-        let okAction = UIAlertAction.init(title: "Logout", style: .default) { (success) in
+        let okAction = UIAlertAction.init(title: "Yes", style: .default) { (success) in
             switch okAction{
             case .logout:
                 (UIApplication.shared.delegate as! AppDelegate).navigatetoLoginPage()
@@ -23,7 +23,7 @@ extension UIAlertController{
                 self.dismiss(animated: true, completion: nil)
             }
         }
-        let cancelAction = UIAlertAction.init(title: "Continue", style: .cancel) { (success) in
+        let cancelAction = UIAlertAction.init(title: "No", style: .cancel) { (success) in
                 self.dismiss(animated: true, completion: nil)
            }
         self.addAction(okAction)

@@ -82,11 +82,11 @@ class UploadReceiptViewController: UIViewController {
         print("upload initiated")
         self.activityIndicator("Uploading..")
         if selectedImage != nil {
-            if let data = selectedImage.jpegData(compressionQuality: 0.75) {
+            if let data = selectedImage.jpegData(compressionQuality:1.0) {
                 // Start Alamofire
                 
                 Alamofire.upload(multipartFormData: { (multipartFormData) in
-                    multipartFormData.append(self.selectedImage.jpegData(compressionQuality: 0.75)!, withName: "file", fileName: "file", mimeType: "image/jpeg")
+                    multipartFormData.append(self.selectedImage.jpegData(compressionQuality: 1)!, withName: "file", fileName: "file.JPG", mimeType: "image/jpeg")
                 }, to:BASE_URL+FILE_UPLOAD)
                 { (result) in
                     switch result {

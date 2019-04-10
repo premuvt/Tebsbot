@@ -53,7 +53,7 @@ class FinalConfirmationViewController: UIViewController {
         
     }
     @objc func logout(sender:UIButton){
-        let alert = UIAlertController.init(title: "Confirm", message: "Do you really want to continue", preferredStyle: .alert)
+        let alert = UIAlertController.init(title: "Confirm", message: "Are you sure you want to logout?", preferredStyle: .alert)
         alert.alertWithOkCancelButton(view: self, okAction: .logout)
     }
 
