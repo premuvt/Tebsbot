@@ -53,9 +53,8 @@ class FinalConfirmationViewController: UIViewController {
         
     }
     @objc func logout(sender:UIButton){
-        UserDefaults.standard.removeObject(forKey: "user")
-        UserDefaults.standard.removeObject(forKey: "pass")
-        (UIApplication.shared.delegate as! AppDelegate).navigatetoLoginPage()
+        let alert = UIAlertController.init(title: "Confirm", message: "Do you really want to continue", preferredStyle: .alert)
+        alert.alertWithOkCancelButton(view: self, okAction: .logout)
     }
 
     //MARK:- text to speech
