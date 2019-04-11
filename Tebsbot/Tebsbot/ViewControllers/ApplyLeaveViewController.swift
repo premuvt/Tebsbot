@@ -52,6 +52,10 @@ class ApplyLeaveViewController: UIViewController{
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if messageArray.count != 0{
+            self.chatTableView.reloadData()
+            self.scrollToBottom()
+        }
         
 //        self.speakText(message: "Hi sir, now you can also apply leave by speak. Please tap the mic button on bottom right corner to speak.")
     }

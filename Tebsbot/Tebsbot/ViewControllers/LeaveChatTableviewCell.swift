@@ -23,10 +23,20 @@ class LeaveChatTableviewCell: UITableViewCell {
     }
     
     func setChatForIndex(chat:LeaveChatModal,message:String) {
-        self.timeLabelSend.text = setTime(curDate: chat.currentDate)
-        self.messageSendLable.text = message
-        self.messageReceiveLabel.text = chat.data?.question
-        self.timeLabelReceiv.text = self.setTime(curDate: Date())
+        if chat.data?.question != "NULL"{
+            self.messageReceiveLabel.isHidden = false
+            self.timeLabelReceiv.isHidden = false
+            self.timeLabelSend.text = setTime(curDate: chat.currentDate)
+            self.messageSendLable.text = message
+            self.messageReceiveLabel.text = chat.data?.question
+            self.timeLabelReceiv.text = self.setTime(curDate: Date())
+        }else{
+             self.messageReceiveLabel.isHidden = true
+            self.timeLabelReceiv.isHidden = true
+            self.timeLabelSend.text = setTime(curDate: chat.currentDate)
+            self.messageSendLable.text = message
+        }
+
     }
     func setTime(curDate:Date) -> String{
         let formatter = DateFormatter()
