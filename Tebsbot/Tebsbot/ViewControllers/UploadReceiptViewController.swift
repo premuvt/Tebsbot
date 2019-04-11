@@ -107,7 +107,7 @@ class UploadReceiptViewController: UIViewController {
                                     self.stopActivity()
                                 }
                                 print("faild processing")
-                                let alert = UIAlertController(title: "Information", message: "Processing faild", preferredStyle: .alert)
+                                let alert = UIAlertController(title: "Information", message: "Processing failed", preferredStyle: .alert)
                                 alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: { (action) in
                                     alert.dismiss(animated: true, completion: nil)
                                 }))

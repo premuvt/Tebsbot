@@ -85,6 +85,7 @@ class ApplyLeaveViewController: UIViewController{
     }
     func sendMessage(message: String? = ""){
         if message != ""{
+            debugPrint("message : ========= ",message!)
             self.activityIndicator("Sending...")
             WebService.shared.applyLeaveChat(message: message!) { (status, errorMessage, chatModel) in
                 DispatchQueue.main.sync {
@@ -150,6 +151,7 @@ class ApplyLeaveViewController: UIViewController{
     }
     @IBAction func onSend(_ sender: Any) {
         print("on send click")
+        chatMessage.removeAll()
         let message = self.messageTextView.text!
         if message.count != 0 && message != ""{
             self.messageTextView.resignFirstResponder()
@@ -160,10 +162,16 @@ class ApplyLeaveViewController: UIViewController{
             
             messageArray.append(message)
             if chatArray.count != 0 {
-                chatMessage = "\((chatArray[chatArray.count - 1].data?.sentence!))\(message)"
+                
+                for i in 0 ..< messageArray.count{
+                    chatMessage.append(" ")
+                    chatMessage.append(messageArray[i])
+                }
+//                chatMessage.append(chatMessage)
             }else{
                 chatMessage = message
             }
+            debugPrint("Chat Message : =========== ",chatMessage)
             self.sendMessage(message: chatMessage)
             self.sendButton.isEnabled = false
         }else{
