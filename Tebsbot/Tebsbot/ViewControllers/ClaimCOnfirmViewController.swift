@@ -71,7 +71,7 @@ class ClaimConfirmViewController: UIViewController {
     @IBAction func confirmButtonTapped(_ sender: UIButton) {
         self.activityIndicator("Confirming...")
         sender.isEnabled = false
-        let dictionaryClaim: Dictionary<String,String> = ["date":dateLabel.text!,"claim_type":typeLabel.text!,"fare_amount":amountLable.text!]
+        let dictionaryClaim: Dictionary<String,String> = ["date":responceDateString,"claim_type":responceClaimString,"fare_amount":responceFareString]
         WebService.shared.confirmClaim(parameter: dictionaryClaim) { (success, errorMessage, successMessage) in
             sender.isEnabled = true
             if success{

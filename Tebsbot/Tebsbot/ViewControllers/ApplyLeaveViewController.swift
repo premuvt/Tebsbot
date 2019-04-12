@@ -266,6 +266,7 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     func speakText(message:String) {
         let utterance = AVSpeechUtterance(string: message)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.volume = 1.0
         synth.speak(utterance)
     }
     

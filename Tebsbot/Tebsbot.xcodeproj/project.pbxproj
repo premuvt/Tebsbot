@@ -14,6 +14,7 @@
 		68A69F292256AADD00EEB71E /* LeaveChatTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */; };
 		68B598EB2256E39400D8A836 /* ConfirmationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B598EA2256E39400D8A836 /* ConfirmationPageViewController.swift */; };
 		68B598ED2256EA0600D8A836 /* FinalConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B598EC2256EA0600D8A836 /* FinalConfirmationViewController.swift */; };
+		68BB24032260AF01006F2BF4 /* LeaveConfirmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB24022260AF00006F2BF4 /* LeaveConfirmModel.swift */; };
 		68E78BF0225664EF00BFD976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E78BEF225664EF00BFD976 /* AppDelegate.swift */; };
 		68E78BF2225664EF00BFD976 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E78BF1225664EF00BFD976 /* ViewController.swift */; };
 		68E78BF5225664EF00BFD976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E78BF3225664EF00BFD976 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		68A69F282256AADD00EEB71E /* LeaveChatTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveChatTableviewCell.swift; sourceTree = "<group>"; };
 		68B598EA2256E39400D8A836 /* ConfirmationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPageViewController.swift; sourceTree = "<group>"; };
 		68B598EC2256EA0600D8A836 /* FinalConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalConfirmationViewController.swift; sourceTree = "<group>"; };
+		68BB24022260AF00006F2BF4 /* LeaveConfirmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveConfirmModel.swift; sourceTree = "<group>"; };
 		68E78BEC225664EF00BFD976 /* Tebsbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tebsbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E78BEF225664EF00BFD976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68E78BF1225664EF00BFD976 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		73BABC9B22587215001A6149 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				68BB24022260AF00006F2BF4 /* LeaveConfirmModel.swift */,
 				68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */,
 				73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */,
 			);
@@ -373,6 +376,7 @@
 				73CF4BE7225679F2004C6106 /* LoadingButton.swift in Sources */,
 				73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */,
 				73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */,
+				68BB24032260AF01006F2BF4 /* LeaveConfirmModel.swift in Sources */,
 				68A69F292256AADD00EEB71E /* LeaveChatTableviewCell.swift in Sources */,
 				68E78BF2225664EF00BFD976 /* ViewController.swift in Sources */,
 				73BABC9D22588CDA001A6149 /* ClaimConfirmationPageViewController.swift in Sources */,

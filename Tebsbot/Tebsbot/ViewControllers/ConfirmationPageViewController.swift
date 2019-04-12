@@ -31,9 +31,13 @@ class ConfirmationPageViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        dateString = changeDateFormat(string:leaveConfirm!.data!.date!)
-        setUpUI()
-        self.speakText(message: "Sir, do you like to apply \(String(leaveConfirm!.data!.type!)) on \(String(describing: dateString)). Please confirm.")
+        if leaveConfirm!.data != nil {
+            dateString = changeDateFormat(string:leaveConfirm!.data!.date!)
+            self.speakText(message: "Sir, do you like to apply \(String(leaveConfirm!.data!.type!)) on \(String(describing: dateString)). Please confirm.")
+           
+        }
+         setUpUI()
+        
         //setUpUI()
     }
     func setday(daystring:String)-> String{
@@ -127,18 +131,21 @@ let dayArray = string.split(separator: "-")
     @IBAction func buttonConfirmPressed(_ sender: UIButton) {
         sender.isEnabled = false
         self.activityIndicator("Confirming...")
-        WebService.shared.confirmLeave(parameter: leaveConfirm?.data , completionBlock: { (success, errorMessage, successMessage) in
-            sender.isEnabled = true
-            if success{
-                DispatchQueue.main.sync {
-                    self.stopActivity()
-                    let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                    let finalConfirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "FinalConfirmationViewController") as! FinalConfirmationViewController
-                self.navigationController?.pushViewController(finalConfirmatioCcontroller, animated: true)
-                } }else{
-                debugPrint("errorMessage")
-            }
-        })
+        if leaveConfirm?.data != nil {
+            WebService.shared.confirmLeave(parameter: leaveConfirm?.data , completionBlock: { (success, errorMessage, successMessage) in
+                sender.isEnabled = true
+                if success{
+                    DispatchQueue.main.sync {
+                        self.stopActivity()
+                        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                        let finalConfirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "FinalConfirmationViewController") as! FinalConfirmationViewController
+                        self.navigationController?.pushViewController(finalConfirmatioCcontroller, animated: true)
+                    } }else{
+                    debugPrint("errorMessage")
+                }
+            })
+        }
+
     }
     
     @IBAction func buttonCancelPressed(_ sender: UIButton) {

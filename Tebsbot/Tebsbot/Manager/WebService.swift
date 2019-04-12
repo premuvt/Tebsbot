@@ -56,9 +56,16 @@ class WebService {
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 do{
                     let jsonDecoder = JSONDecoder()
+                    
                     if data != nil{
-                        let responseModel = try jsonDecoder.decode(LeaveChatModal.self, from: data!)
-                        completionBlock(true,nil,"success")
+                        let responseModel = try jsonDecoder.decode(LeaveConfirmModel.self, from: data!)
+                        if responseModel.flag! {
+                            completionBlock(true,nil,"success")
+                        }
+                        else{
+                            completionBlock(false,nil,"fail")
+                        }
+                        
                     }else{
                         completionBlock(false,"no data",nil)
                     }
@@ -88,8 +95,14 @@ class WebService {
                 do{
                     let jsonDecoder = JSONDecoder()
                     if data != nil{
-                        let responseModel = try jsonDecoder.decode(LeaveChatModal.self, from: data!)
-                        completionBlock(true,nil,"success")
+                        let responseModel = try jsonDecoder.decode(LeaveConfirmModel.self, from: data!)
+                        if responseModel.flag! {
+                            completionBlock(true,nil,"success")
+                        }
+                        else{
+                            completionBlock(false,nil,"fail")
+                        }
+                        
                     }else{
                         completionBlock(false,"no data",nil)
                     }
