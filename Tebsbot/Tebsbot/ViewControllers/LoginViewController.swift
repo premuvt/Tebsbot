@@ -18,10 +18,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     
+    
+    //MARK: Dummy creds
+    let userid = "sujith"
+    let pwd = "1234"
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-//        setDemoCred()
+        setDemoCred()
         setUpTapToDismissKeyboard()
         setUpKeyboardNotification()
         
@@ -43,8 +47,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textFieldPassword.delegate = self
     }
     func setDemoCred() {
-        self.textFieldUserName.text = "ranjit"
-        self.textFieldPassword.text = "1234"
+        self.textFieldUserName.text = userid
+        self.textFieldPassword.text = pwd
     }
     func setUpTapToDismissKeyboard() {
         //Looks for single or multiple taps.
@@ -63,12 +67,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBAction func buttonLoginPressed(_ sender: UIButton) {
-        if textFieldUserName.text == "ranjit" && textFieldPassword.text == "1234"{
+        if textFieldUserName.text == userid && textFieldPassword.text == pwd {
             debugPrint("Valid Credentials")
             UserDefaults.standard.set(textFieldUserName.text, forKey: "user")
             UserDefaults.standard.set(textFieldPassword.text, forKey: "pass")
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController")
+            let controller = storyboard.instantiateViewController(withIdentifier: "LeaveHomeSummaryNavigationViewController")
             self.present(controller, animated: true, completion: nil)
         }else{
             debugPrint("Invalid Credentials")

@@ -116,6 +116,40 @@ class WebService {
             print(error)
         }
     }
+    func getLeaveList(CompletionBlock:((Bool,String?, MyLeaveListModal?) -> Void)!){
+        let user:String = UserDefaults.standard.object(forKey: "user") as! String
+        let url = URL(string: BASE_URL + LEAVE_LIST + user)
+        var request = URLRequest(url: url!)
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "GET"
+        
+        do{
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                do{
+                    let jsonDecoder = JSONDecoder()
+                    if data != nil{
+                        let responseModel = try jsonDecoder.decode(MyLeaveListModal.self, from: data!)
+                        if responseModel.flag! {
+                            CompletionBlock(true,nil,responseModel)
+                        }
+                        else{
+                            CompletionBlock(false,nil,nil)
+                        }
+                        
+                    }else{
+                        CompletionBlock(false,"no data",nil)
+                    }
+                }catch let error as Error {
+                    print("\(error)")
+                }
+            }
+            
+            task.resume()
+        }catch {
+            print(error)
+        }
+    }
 
 }
 

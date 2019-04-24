@@ -25,7 +25,7 @@ class ApplyLeaveViewController: UIViewController{
     @IBOutlet weak var sendButton: UIButton!
     //MARK:- speet to text
     let audioEngine = AVAudioEngine()
-    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer(locale: NSLocale.current)
     let request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask: SFSpeechRecognitionTask?
     var isRecording = false
@@ -47,6 +47,10 @@ class ApplyLeaveViewController: UIViewController{
         setUpKeyBoardNotification()
         setUIBoarder()
 
+        print("laguage code - ",Locale.current.languageCode!)
+        print("reagin local - ", NSLocale.current.identifier)
+        print("Supported locals - ",SFSpeechRecognizer.supportedLocales())
+        
         //for speech recogonition
         self.requestSpeechAuthorization()
     }
@@ -265,7 +269,7 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     //MARK:- text to speech
     func speakText(message:String) {
         let utterance = AVSpeechUtterance(string: message)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.voice = AVSpeechSynthesisVoice(language: NSLocale.current.identifier)
         utterance.volume = 1.0
         synth.speak(utterance)
     }

@@ -61,7 +61,9 @@ class FinalConfirmationViewController: UIViewController {
     func speakText(message:String) {
         print("test to voice - ",message)
         let utterance = AVSpeechUtterance(string: message)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.voice = AVSpeechSynthesisVoice(language: NSLocale.current.identifier)
+        utterance.volume = 1.0
+        
         self.synth.speak(utterance)
     }
 }
