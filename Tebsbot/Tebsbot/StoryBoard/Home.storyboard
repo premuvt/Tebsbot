@@ -909,7 +909,7 @@
                                 <sections/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.2500535102739726" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.70438035102739727" alpha="0.30069028253424657" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qy6-OJ-GDS" firstAttribute="bottom" secondItem="Xda-SJ-8FJ" secondAttribute="bottom" constant="-40" id="OXu-xk-xKB"/>
                             <constraint firstItem="qy6-OJ-GDS" firstAttribute="trailing" secondItem="Xda-SJ-8FJ" secondAttribute="trailing" id="Qro-b5-o8J"/>
