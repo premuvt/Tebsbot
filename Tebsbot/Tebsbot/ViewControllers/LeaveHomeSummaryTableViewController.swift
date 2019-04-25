@@ -25,23 +25,29 @@ class LeaveHomeSummaryNavigationViewController: UINavigationController {
         self.navigationItem.rightBarButtonItems = [bell,menu]
     }
 }
-class LeaveHomeSummaryTableViewController: UITableViewController {
+class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, LeaveTypePickerDelegate {
     
     
     //variables
     var myLeaves:MyLeaveListModal?
+    var roundButton = UIButton()
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var applyLeaveButton: UIButton!
+    @IBOutlet weak var botButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         getLeavelist()
-        
+        setupFooter()
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 2
@@ -54,7 +60,7 @@ class LeaveHomeSummaryTableViewController: UITableViewController {
             return 2
         }
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
         if indexPath.section == 0 {
             switch indexPath.row {
@@ -83,7 +89,7 @@ class LeaveHomeSummaryTableViewController: UITableViewController {
         
         return cell
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
             if indexPath.section == 0 {
@@ -116,5 +122,32 @@ class LeaveHomeSummaryTableViewController: UITableViewController {
                 
             }
         }
+    }
+    func setupFooter() {
+        self.applyLeaveButton.layer.masksToBounds = true
+        self.applyLeaveButton.layer.cornerRadius = self.applyLeaveButton.frame.height/2
+        
+        self.botButton.layer.masksToBounds = true
+        self.botButton.layer.cornerRadius = self.botButton.frame.height/2
+        
+    }
+    @IBAction func applyAction(_ sender: Any) {
+        print("Apply action")
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let controller:LeaveTypePickerViewController = storyboard.instantiateViewController(withIdentifier: "LeaveTypePickerViewController") as! LeaveTypePickerViewController
+        controller.delegate = self
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func botAction(_ sender: Any) {
+        print("Bot action")
+    }
+    
+    //leavetype picker delegate methords
+    func didSelectLeaveType(leaveatype:String){
+        print(leaveatype)
+    }
+    func cancelledLeavePicker(){
+        print("cancelled picker")
     }
 }
