@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A956A33564BF2F8F167370F /* libPods-Tebsbot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D312610B008524C5EC8050C /* libPods-Tebsbot.a */; };
 		6811FC7822574AB900B0AAB4 /* ClaimCOnfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6811FC7722574AB900B0AAB4 /* ClaimCOnfirmViewController.swift */; };
 		6811FC7A22585A5700B0AAB4 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6811FC7922585A5700B0AAB4 /* Definitions.swift */; };
 		68A69F2522568F5D00EEB71E /* LeaveChatModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */; };
@@ -33,13 +34,10 @@
 		73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE3225679F1004C6106 /* LineTextField.swift */; };
 		73CF4BE7225679F2004C6106 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE4225679F2004C6106 /* LoadingButton.swift */; };
 		73D0BA09225B5C5E00CD5978 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D0BA08225B5C5E00CD5978 /* UIButton.swift */; };
-		962E7C96CF1001D4AF6A8301 /* Pods_Tebsbot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089CD5EAE19B5718C2A651E7 /* Pods_Tebsbot.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		089CD5EAE19B5718C2A651E7 /* Pods_Tebsbot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tebsbot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27DAD86F6B1F901AF5907ABD /* Pods-Tebsbot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.debug.xcconfig"; path = "Target Support Files/Pods-Tebsbot/Pods-Tebsbot.debug.xcconfig"; sourceTree = "<group>"; };
-		3A84BCF9D7F3AA1116683F2A /* Pods-Tebsbot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot.debug.xcconfig"; sourceTree = "<group>"; };
 		6811FC7722574AB900B0AAB4 /* ClaimCOnfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimCOnfirmViewController.swift; sourceTree = "<group>"; };
 		6811FC7922585A5700B0AAB4 /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 		68A69F2422568F5D00EEB71E /* LeaveChatModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveChatModal.swift; sourceTree = "<group>"; };
@@ -68,7 +66,9 @@
 		73CF4BE3225679F1004C6106 /* LineTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTextField.swift; sourceTree = "<group>"; };
 		73CF4BE4225679F2004C6106 /* LoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		73D0BA08225B5C5E00CD5978 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
-		A0F20FEE18995FFFD549E9F0 /* Pods-Tebsbot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot.release.xcconfig"; sourceTree = "<group>"; };
+		7D312610B008524C5EC8050C /* libPods-Tebsbot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tebsbot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFCA029128777379900CFAB4 /* Pods-Tebsbot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot.release.xcconfig"; sourceTree = "<group>"; };
+		E60534923A899FDDE50AC7E1 /* Pods-Tebsbot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot.debug.xcconfig"; sourceTree = "<group>"; };
 		FA64164E40FF11376348DF4F /* Pods-Tebsbot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tebsbot.release.xcconfig"; path = "Target Support Files/Pods-Tebsbot/Pods-Tebsbot.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				962E7C96CF1001D4AF6A8301 /* Pods_Tebsbot.framework in Frameworks */,
+				4A956A33564BF2F8F167370F /* libPods-Tebsbot.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +87,7 @@
 		21F494C78598DA497B03CEAE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				089CD5EAE19B5718C2A651E7 /* Pods_Tebsbot.framework */,
+				7D312610B008524C5EC8050C /* libPods-Tebsbot.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -222,8 +222,8 @@
 			children = (
 				27DAD86F6B1F901AF5907ABD /* Pods-Tebsbot.debug.xcconfig */,
 				FA64164E40FF11376348DF4F /* Pods-Tebsbot.release.xcconfig */,
-				3A84BCF9D7F3AA1116683F2A /* Pods-Tebsbot.debug.xcconfig */,
-				A0F20FEE18995FFFD549E9F0 /* Pods-Tebsbot.release.xcconfig */,
+				E60534923A899FDDE50AC7E1 /* Pods-Tebsbot.debug.xcconfig */,
+				DFCA029128777379900CFAB4 /* Pods-Tebsbot.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -239,7 +239,6 @@
 				68E78BE8225664EE00BFD976 /* Sources */,
 				68E78BE9225664EE00BFD976 /* Frameworks */,
 				68E78BEA225664EE00BFD976 /* Resources */,
-				9387912917C140CC1086DF29 /* [CP] Embed Pods Frameworks */,
 				685D26742258E432007F44F3 /* Set build number */,
 			);
 			buildRules = (
@@ -304,15 +303,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Tebsbot-checkManifestLockResult.txt",
 			);
@@ -326,44 +321,14 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 			);
 			name = "Set build number";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(git rev-list --all --count)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
-		};
-		9387912917C140CC1086DF29 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -470,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -525,7 +490,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
