@@ -31,17 +31,17 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="MCi-Nn-5nU" customClass="LoginViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="os1-mm-Sni">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ad8-K9-sGd">
-                                <rect key="frame" x="80" y="187" width="215" height="50"/>
+                                <rect key="frame" x="80" y="0.0" width="160" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="UbW-nv-a6H"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w2m-tb-7aO" customClass="LineTextField" customModule="Tebsbot" customModuleProvider="target">
-                                <rect key="frame" x="50" y="267" width="275" height="30"/>
+                                <rect key="frame" x="50" y="80" width="220" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="iwp-F8-YqP"/>
                                 </constraints>
@@ -58,7 +58,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vl1-W6-hyU" customClass="LineTextField" customModule="Tebsbot" customModuleProvider="target">
-                                <rect key="frame" x="50" y="312" width="275" height="30"/>
+                                <rect key="frame" x="50" y="125" width="220" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Fkd-HQ-Cue"/>
                                 </constraints>
@@ -75,7 +75,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftX-NE-k14">
-                                <rect key="frame" x="60" y="357" width="255" height="36"/>
+                                <rect key="frame" x="60" y="170" width="200" height="36"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.21960784310000001" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="dqQ-dG-Fcb"/>
@@ -213,7 +213,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uez-xW-S7c"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pQf-LZ-1Xl">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -228,30 +228,20 @@
         <!--Leave Application View Controller-->
         <scene sceneID="NKO-Wt-JA2">
             <objects>
-                <viewController id="iD1-mw-jKo" customClass="LeaveApplicationViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeaveApplicationViewController" id="iD1-mw-jKo" customClass="LeaveApplicationViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QQ5-i3-OXN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NaV-ev-baZ">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NaV-ev-baZ">
+                                <rect key="frame" x="0.0" y="64" width="320" height="350"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reason" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3el-Kg-RRm">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="FbU-0o-W4d"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell1" rowHeight="65" id="ovc-iF-D3g" customClass="LeaveApplicationCell" customModule="Tebsbot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49" width="320" height="65"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ovc-iF-D3g" id="kVv-NI-7A7">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJF-u2-7Pr">
@@ -264,7 +254,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.80707762557077622" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="Ql9-RD-hWk" secondAttribute="trailing" constant="75" id="1ui-hF-P15"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ql9-RD-hWk" secondAttribute="trailing" constant="50" id="1ui-hF-P15"/>
                                                         <constraint firstItem="Ql9-RD-hWk" firstAttribute="top" secondItem="eJF-u2-7Pr" secondAttribute="top" id="4As-ZP-hQ3"/>
                                                         <constraint firstAttribute="bottom" secondItem="Ql9-RD-hWk" secondAttribute="bottom" id="ZOR-G4-Tv8"/>
                                                         <constraint firstItem="Ql9-RD-hWk" firstAttribute="leading" secondItem="eJF-u2-7Pr" secondAttribute="leading" id="exc-Il-CbR"/>
@@ -301,30 +291,30 @@
                                             <outlet property="progressView" destination="eJF-u2-7Pr" id="Igt-xP-8Gr"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell2" rowHeight="121" id="gVf-lU-Jox">
-                                        <rect key="frame" x="0.0" y="114" width="320" height="121"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell2" rowHeight="106" id="gVf-lU-Jox" customClass="LeaveApplicationCell" customModule="Tebsbot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="93" width="320" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gVf-lU-Jox" id="reV-nD-08u">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HF2-Xa-sXQ">
-                                                    <rect key="frame" x="15" y="26" width="30" height="30"/>
-                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HF2-Xa-sXQ">
+                                                    <rect key="frame" x="15" y="26" width="40" height="40"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="MTn-Gj-O2m"/>
-                                                        <constraint firstAttribute="width" constant="30" id="YeA-pd-VKS"/>
+                                                        <constraint firstAttribute="height" constant="40" id="MTn-Gj-O2m"/>
+                                                        <constraint firstAttribute="width" constant="40" id="YeA-pd-VKS"/>
                                                     </constraints>
-                                                    <state key="normal" title="Plus"/>
+                                                    <state key="normal" image="plus"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCc-de-mVC">
-                                                    <rect key="frame" x="53" y="19" width="161" height="44"/>
+                                                    <rect key="frame" x="63" y="19" width="161" height="54"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="161" id="VHN-7k-v3D"/>
                                                     </constraints>
                                                     <string key="text">Scan your 
 Medical Prescription</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -334,7 +324,7 @@ Medical Prescription</string>
                                                         <constraint firstAttribute="height" constant="21" id="SL8-SJ-ubY"/>
                                                         <constraint firstAttribute="width" constant="35" id="V8p-J3-WI9"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <color key="textColor" white="0.36310288245342459" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -343,18 +333,23 @@ Medical Prescription</string>
                                                 <constraint firstItem="HF2-Xa-sXQ" firstAttribute="top" secondItem="reV-nD-08u" secondAttribute="topMargin" constant="15" id="CUR-4H-Uit"/>
                                                 <constraint firstItem="zCc-de-mVC" firstAttribute="top" secondItem="reV-nD-08u" secondAttribute="topMargin" constant="8" id="JAn-tZ-OOp"/>
                                                 <constraint firstItem="zCc-de-mVC" firstAttribute="centerY" secondItem="HF2-Xa-sXQ" secondAttribute="centerY" id="T54-dP-Na5"/>
-                                                <constraint firstItem="EV7-PU-KnK" firstAttribute="top" secondItem="HF2-Xa-sXQ" secondAttribute="bottom" constant="30" id="ZWH-eV-8hp"/>
+                                                <constraint firstItem="EV7-PU-KnK" firstAttribute="top" secondItem="HF2-Xa-sXQ" secondAttribute="bottom" constant="20" id="ZWH-eV-8hp"/>
                                                 <constraint firstItem="EV7-PU-KnK" firstAttribute="leading" secondItem="reV-nD-08u" secondAttribute="leadingMargin" id="iCb-8s-432"/>
                                                 <constraint firstItem="HF2-Xa-sXQ" firstAttribute="leading" secondItem="reV-nD-08u" secondAttribute="leadingMargin" id="noY-3j-l2L"/>
                                                 <constraint firstItem="zCc-de-mVC" firstAttribute="leading" secondItem="HF2-Xa-sXQ" secondAttribute="trailing" constant="8" id="rXU-DE-rph"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="addButton" destination="HF2-Xa-sXQ" id="wgF-QK-Djl"/>
+                                            <outlet property="labelScan" destination="zCc-de-mVC" id="LYD-Li-BMd"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell3" rowHeight="69" id="7XY-rd-nz5">
-                                        <rect key="frame" x="0.0" y="235" width="320" height="69"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell3" rowHeight="69" id="7XY-rd-nz5" customClass="LeaveApplicationCell" customModule="Tebsbot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="199" width="320" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7XY-rd-nz5" id="K6B-1V-ZjX">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="68.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7XY-rd-nz5" id="K6B-1V-ZjX">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submit Leave Details " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jH8-1N-u5G">
@@ -362,7 +357,7 @@ Medical Prescription</string>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="9PJ-AA-l16"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                     <color key="textColor" red="0.23921568627450979" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -371,7 +366,7 @@ Medical Prescription</string>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="jtK-eQ-dj3"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.20392156862745098" green="0.20392156862745098" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -387,81 +382,97 @@ Medical Prescription</string>
                                                 <constraint firstAttribute="trailingMargin" secondItem="jH8-1N-u5G" secondAttribute="trailing" constant="4" id="u00-jk-HIa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelPickdates" destination="Msv-pT-E3d" id="wWK-qI-3m2"/>
+                                            <outlet property="labelSubmitDetails" destination="jH8-1N-u5G" id="2h6-vK-CG3"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell4" rowHeight="65" id="Okv-cS-DGQ">
-                                        <rect key="frame" x="0.0" y="304" width="320" height="65"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell4" rowHeight="65" id="Okv-cS-DGQ" customClass="LeaveApplicationCell" customModule="Tebsbot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="268" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Okv-cS-DGQ" id="Nhx-zg-HPN">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" placeholder="Start Date    to   End Date" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="5wb-Yg-fCw">
-                                                    <rect key="frame" x="49" y="17.5" width="245" height="30"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" placeholder="Start Date    to   End Date" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="5wb-Yg-fCw" customClass="LineTextField" customModule="Tebsbot" customModuleProvider="target">
+                                                    <rect key="frame" x="45" y="17.5" width="250" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="dmw-Oq-kDg"/>
+                                                        <constraint firstAttribute="height" constant="30" id="5fA-bz-iBD"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Start Date">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.81568627450980391" green="0.82745098039215681" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" metaFont="smallSystem"/>
+                                                                <font key="NSFont" size="19" name=".SFNSText"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content="   ">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" metaFont="smallSystem"/>
+                                                                <font key="NSFont" size="19" name=".SFNSText"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content=" to ">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.33333333333333331" green="0.38823529411764707" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" metaFont="smallSystem"/>
+                                                                <font key="NSFont" size="19" name=".SFNSText"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content="  ">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" metaFont="smallSystem"/>
+                                                                <font key="NSFont" size="19" name=".SFNSText"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment content="End Date">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.81568627450980391" green="0.82745098039215681" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" metaFont="smallSystem"/>
+                                                                <font key="NSFont" size="19" name=".SFNSText"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                            <color key="value" white="0.59349136708904104" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bs-Ye-VQQ">
-                                                    <rect key="frame" x="15" y="20.5" width="24" height="24"/>
+                                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bs-Ye-VQQ">
+                                                    <rect key="frame" x="15" y="17.5" width="30" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="jpg-Ro-iOG"/>
-                                                        <constraint firstAttribute="width" constant="24" id="lhR-9v-eum"/>
+                                                        <constraint firstAttribute="height" constant="30" id="B29-AL-Ej6"/>
+                                                        <constraint firstAttribute="width" constant="30" id="SJk-0s-lvd"/>
                                                     </constraints>
-                                                    <state key="normal" image="calendar"/>
+                                                    <state key="normal" backgroundImage="calendar"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2Bs-Ye-VQQ" firstAttribute="leading" secondItem="Nhx-zg-HPN" secondAttribute="leadingMargin" id="KW5-lg-Fwc"/>
-                                                <constraint firstItem="5wb-Yg-fCw" firstAttribute="leading" secondItem="2Bs-Ye-VQQ" secondAttribute="trailing" constant="10" id="ZFr-ik-cEv"/>
-                                                <constraint firstItem="2Bs-Ye-VQQ" firstAttribute="centerY" secondItem="Nhx-zg-HPN" secondAttribute="centerY" id="ep3-PV-DJN"/>
-                                                <constraint firstItem="5wb-Yg-fCw" firstAttribute="centerY" secondItem="Nhx-zg-HPN" secondAttribute="centerY" id="qMe-LQ-uHZ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="5wb-Yg-fCw" secondAttribute="trailing" constant="11" id="sTk-Bh-epL"/>
+                                                <constraint firstItem="2Bs-Ye-VQQ" firstAttribute="centerY" secondItem="Nhx-zg-HPN" secondAttribute="centerY" id="2Li-Y4-Abu"/>
+                                                <constraint firstItem="5wb-Yg-fCw" firstAttribute="centerY" secondItem="Nhx-zg-HPN" secondAttribute="centerY" id="Obg-af-c1N"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5wb-Yg-fCw" secondAttribute="trailing" constant="10" id="T1B-Ln-Hqw"/>
+                                                <constraint firstItem="2Bs-Ye-VQQ" firstAttribute="leading" secondItem="Nhx-zg-HPN" secondAttribute="leadingMargin" id="hex-yu-EHs"/>
+                                                <constraint firstItem="5wb-Yg-fCw" firstAttribute="leading" secondItem="2Bs-Ye-VQQ" secondAttribute="trailing" id="vRy-dv-Vt7"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="buttonCalender" destination="2Bs-Ye-VQQ" id="cFJ-qR-Lvs"/>
+                                            <outlet property="dateTextField" destination="5wb-Yg-fCw" id="p8g-d8-Qcs"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell5" rowHeight="153" id="EgI-02-wOb">
-                                        <rect key="frame" x="0.0" y="369" width="320" height="153"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell5" rowHeight="153" id="EgI-02-wOb" customClass="LeaveApplicationCell" customModule="Tebsbot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="333" width="320" height="153"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EgI-02-wOb" id="xVS-2d-HlF">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="152.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="153"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reason" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xJ-N3-5H4">
@@ -469,12 +480,12 @@ Medical Prescription</string>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="u6e-II-RX3"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <color key="textColor" red="0.23921568627450979" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eSa-eS-VJh">
-                                                    <rect key="frame" x="15" y="40" width="290" height="102.5"/>
+                                                    <rect key="frame" x="15" y="40" width="290" height="103"/>
                                                     <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -492,9 +503,13 @@ Medical Prescription</string>
                                                 <constraint firstItem="1xJ-N3-5H4" firstAttribute="centerX" secondItem="xVS-2d-HlF" secondAttribute="centerX" id="zUv-yy-DyL"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lbelReason" destination="1xJ-N3-5H4" id="GJx-dO-AZi"/>
+                                            <outlet property="reasonTextView" destination="eSa-eS-VJh" id="lX7-5r-eXQ"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell6" rowHeight="150" id="RKb-V0-epX">
-                                        <rect key="frame" x="0.0" y="522" width="320" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell6" rowHeight="150" id="RKb-V0-epX" customClass="LeaveApplicationCell" customModule="Tebsbot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="486" width="320" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RKb-V0-epX" id="R1N-WP-toH">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
@@ -505,7 +520,7 @@ Medical Prescription</string>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="xwk-4j-aHB"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <color key="textColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -515,13 +530,13 @@ Medical Prescription</string>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R1c-2u-Sa9">
                                                             <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VG0-CC-lhg">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VG0-CC-lhg">
                                                             <rect key="frame" x="77" y="8" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="Jla-EM-U2A"/>
                                                                 <constraint firstAttribute="height" constant="20" id="o4O-v8-aes"/>
                                                             </constraints>
-                                                            <state key="normal" title="de"/>
+                                                            <state key="normal" image="remove"/>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -546,6 +561,11 @@ Medical Prescription</string>
                                                 <constraint firstItem="KyK-46-Dw3" firstAttribute="top" secondItem="aWO-ps-lWg" secondAttribute="bottom" constant="8" id="yTL-bI-zHt"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="buttonDelete" destination="VG0-CC-lhg" id="rM2-Ha-dRo"/>
+                                            <outlet property="labelAttachment" destination="aWO-ps-lWg" id="cXC-bv-OdA"/>
+                                            <outlet property="recieptImageView" destination="R1c-2u-Sa9" id="S0r-xj-v3Z"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -558,7 +578,7 @@ Medical Prescription</string>
                         <constraints>
                             <constraint firstItem="NaV-ev-baZ" firstAttribute="leading" secondItem="GGW-47-j0E" secondAttribute="leading" id="8jp-MR-Fn0"/>
                             <constraint firstItem="NaV-ev-baZ" firstAttribute="top" secondItem="GGW-47-j0E" secondAttribute="top" id="Y65-9j-a6O"/>
-                            <constraint firstItem="NaV-ev-baZ" firstAttribute="bottom" secondItem="GGW-47-j0E" secondAttribute="bottom" id="sgi-DP-spu"/>
+                            <constraint firstItem="NaV-ev-baZ" firstAttribute="bottom" secondItem="GGW-47-j0E" secondAttribute="bottom" constant="-66" id="sgi-DP-spu"/>
                             <constraint firstItem="NaV-ev-baZ" firstAttribute="trailing" secondItem="GGW-47-j0E" secondAttribute="trailing" id="zXv-Im-Xlv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GGW-47-j0E"/>
@@ -593,7 +613,7 @@ Medical Prescription</string>
         <!--Navigation Controller-->
         <scene sceneID="hyb-jl-8s3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yKo-Sl-YIQ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LeaveApplicationViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="yKo-Sl-YIQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9xP-dZ-8RO">
                         <rect key="frame" x="0.0" y="20" width="320" height="50"/>
@@ -612,5 +632,7 @@ Medical Prescription</string>
     <resources>
         <image name="calendar" width="24" height="24"/>
         <image name="logo" width="200" height="66"/>
+        <image name="plus" width="24" height="24"/>
+        <image name="remove" width="24" height="24"/>
     </resources>
 </document>

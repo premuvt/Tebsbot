@@ -145,6 +145,17 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
     
     //leavetype picker delegate methords
     func didSelectLeaveType(leaveatype:String){
+        if leaveatype == "Medical"{
+            self.dismiss(animated: false) {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller:LeaveApplicationViewController = storyboard.instantiateViewController(withIdentifier: "LeaveApplicationViewController") as! LeaveApplicationViewController
+                        let navigationController = UINavigationController(rootViewController: controller)
+//                controller.delegate = self
+                self.present(navigationController, animated: true, completion: nil)
+            }
+        }else{
+            
+        }
         print(leaveatype)
     }
     func cancelledLeavePicker(){
