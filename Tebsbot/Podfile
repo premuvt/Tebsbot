@@ -6,6 +6,7 @@ target 'Tebsbot' do
   use_frameworks!
    pod 'Alamofire-SwiftyJSON'
    pod 'Alamofire', '~> 4.0'
+   pod 'CalendarDateRangePickerViewController'
 
   # Pods for Tebsbot
 
