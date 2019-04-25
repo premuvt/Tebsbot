@@ -33,6 +33,7 @@
 		73B48E2F2256EFA0000186A2 /* UploadResponceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */; };
 		73BABC9A225871B4001A6149 /* ParameterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BABC99225871B4001A6149 /* ParameterManager.swift */; };
 		73BABC9D22588CDA001A6149 /* ClaimConfirmationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BABC9C22588CDA001A6149 /* ClaimConfirmationPageViewController.swift */; };
+		73C43A8C2271817D00952D00 /* LeaveApplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C43A8B2271817D00952D00 /* LeaveApplicationViewController.swift */; };
 		73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BDF2256716B004C6106 /* LoginViewController.swift */; };
 		73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE2225679F1004C6106 /* LabelTextField.swift */; };
 		73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE3225679F1004C6106 /* LineTextField.swift */; };
@@ -72,6 +73,7 @@
 		73B48E2E2256EFA0000186A2 /* UploadResponceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResponceDataModel.swift; sourceTree = "<group>"; };
 		73BABC99225871B4001A6149 /* ParameterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterManager.swift; sourceTree = "<group>"; };
 		73BABC9C22588CDA001A6149 /* ClaimConfirmationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimConfirmationPageViewController.swift; sourceTree = "<group>"; };
+		73C43A8B2271817D00952D00 /* LeaveApplicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveApplicationViewController.swift; sourceTree = "<group>"; };
 		73CF4BDF2256716B004C6106 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		73CF4BE2225679F1004C6106 /* LabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
 		73CF4BE3225679F1004C6106 /* LineTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTextField.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				6811FC7722574AB900B0AAB4 /* ClaimCOnfirmViewController.swift */,
 				73BABC9C22588CDA001A6149 /* ClaimConfirmationPageViewController.swift */,
 				68BB245622685B10006F2BF4 /* LeaveHomeSummaryTableViewController.swift */,
+				73C43A8B2271817D00952D00 /* LeaveApplicationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				73B48E2F2256EFA0000186A2 /* UploadResponceDataModel.swift in Sources */,
 				68E78BF0225664EF00BFD976 /* AppDelegate.swift in Sources */,
 				73BABC9A225871B4001A6149 /* ParameterManager.swift in Sources */,
+				73C43A8C2271817D00952D00 /* LeaveApplicationViewController.swift in Sources */,
 				68E78C0622567D1300BFD976 /* ApplyLeaveViewController.swift in Sources */,
 				737A30DE225DAF4B00CA866D /* UIAlert.swift in Sources */,
 				68B598EB2256E39400D8A836 /* ConfirmationPageViewController.swift in Sources */,
@@ -543,6 +547,7 @@
 		};
 		68E78BFF225664F200BFD976 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27DAD86F6B1F901AF5907ABD /* Pods-Tebsbot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -562,6 +567,7 @@
 		};
 		68E78C00225664F200BFD976 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA64164E40FF11376348DF4F /* Pods-Tebsbot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
