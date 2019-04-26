@@ -43,7 +43,6 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
         getLeavelist()
         setupFooter()
         
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         setNavigationButtons()
@@ -147,18 +146,18 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
         self.navigationItem.leftBarButtonItems = [barButton]
         
         //right navigation items
-        let rigthbutton1 = UIButton(type: UIButton.ButtonType.custom)
-        rigthbutton1.setImage(UIImage(named: "bell"), for: .normal)
-        rigthbutton1.addTarget(self, action: #selector(onNotificationAction), for: .touchUpInside)
-        let rightbarButton1 = UIBarButtonItem(customView: rigthbutton1)
+//        let rigthbutton1 = UIButton(type: UIButton.ButtonType.custom)
+//        rigthbutton1.setImage(UIImage(named: "bell"), for: .normal)
+//        rigthbutton1.addTarget(self, action: #selector(onNotificationAction), for: .touchUpInside)
+//        let rightbarButton1 = UIBarButtonItem(customView: rigthbutton1)
         
         let rigthbutton2 = UIButton(type: UIButton.ButtonType.custom)
-        rigthbutton2.setImage(UIImage(named: "menu"), for: .normal)
-        rigthbutton2.addTarget(self, action: #selector(onMenuAction), for: .touchUpInside)
+        rigthbutton2.setImage(UIImage(named: "logout"), for: .normal)
+        rigthbutton2.addTarget(self, action: #selector(onLogout), for: .touchUpInside)
         let rightbarButton2 = UIBarButtonItem(customView: rigthbutton2)
         let fixedSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         fixedSpace.width = 20.0
-        self.navigationItem.rightBarButtonItems = [rightbarButton2,fixedSpace,rightbarButton1]
+        self.navigationItem.rightBarButtonItems = [rightbarButton2]
     }
     @IBAction func applyAction(_ sender: Any) {
         print("Apply action")
@@ -201,8 +200,18 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
     @objc func onNotificationAction() {
         print("onNotificationAction")
     }
-    @objc func onMenuAction() {
+    @objc func onLogout() {
         print("onMenuAction")
+        let alert:UIAlertController = UIAlertController.init(title: "Logout", message: "Are you sure want to logout?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction.init(title: "Ok", style: .destructive, handler: { (al) in
+            alert.dismiss(animated: true, completion: nil)
+            (UIApplication.shared.delegate as! AppDelegate).navigatetoLoginPage()
+        }))
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: { (al) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
     }
 }
 

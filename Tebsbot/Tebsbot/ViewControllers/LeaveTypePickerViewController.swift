@@ -41,19 +41,19 @@ class LeaveTypePickerViewController: UIViewController,UITableViewDelegate,UITabl
             cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
             switch indexPath.row {
             case 0:
-                cell.textLabel?.text = "Medical Leaves"
+                cell.textLabel?.text = "Medical"
                 cell.detailTextLabel?.text = "10/12"
             case 1:
-                cell.textLabel?.text = "Annual Leaves"
+                cell.textLabel?.text = "Annual"
                 cell.detailTextLabel?.text = "10/12"
             case 2:
-                cell.textLabel?.text = "Compensatory Off"
+                cell.textLabel?.text = "Compensatory"
                 cell.detailTextLabel?.text = "1/1"
             case 3:
-                cell.textLabel?.text = "Child Care Leave"
+                cell.textLabel?.text = "Child Care"
                 cell.detailTextLabel?.text = "8/10"
             default:
-                cell.textLabel?.text = "Medical Leaves"
+                cell.textLabel?.text = "Medical"
                 cell.detailTextLabel?.text = "10/12"
             }
         }

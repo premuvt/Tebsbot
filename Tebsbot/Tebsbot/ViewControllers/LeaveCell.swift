@@ -29,12 +29,13 @@ class LeaveCell: UITableViewCell {
         
         //set cell data
         
-        switch data.leaveType {
-        case "sick":
-            self.leaveTypeLabel.text = "Medical Leave"
-        default:
-            self.leaveTypeLabel.text = data.leaveType
-        }
+//        switch data.leaveType {
+//        case "sick":
+//            self.leaveTypeLabel.text = "Medical"
+//        default:
+//            self.leaveTypeLabel.text = data.leaveType
+//        }
+        self.leaveTypeLabel.text = data.leaveType
         self.leaveDescriptionLabel.text = getLeaveDescriptionFrom(timeStamp:data.appliedDateTime!)
         if data.leaveStatus == "PENDING" {
             self.leaveStatusLabel.text = "Approval Pending"
@@ -54,15 +55,15 @@ class LeaveCell: UITableViewCell {
         let date = Date.init(timeIntervalSinceNow: TimeInterval(exactly: timeStamp/1000000)!)
         print(date.debugDescription)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy h:mm a"
+        dateFormatter.dateFormat = "dd/MM/yyyy h:mm a"
         
         print(dateFormatter.string(from: date))
         let datetimeString =  dateFormatter.string(from: date)
-        var datetimeArr = datetimeString.components(separatedBy: CharacterSet(charactersIn: " "))
-        let firstdate: String = datetimeArr[0]
-        let secondtime: String? = datetimeArr.count > 1 ? datetimeArr[1] : ""
-        let secondAMPM: String? = datetimeArr.count > 2 ? datetimeArr[2] : ""
-        let dstr = "Applied on \(firstdate) at \(secondtime!) \(secondAMPM!)"
+//        var datetimeArr = datetimeString.components(separatedBy: CharacterSet(charactersIn: " "))
+//        let firstdate: String = datetimeArr[0]
+//        let secondtime: String? = datetimeArr.count > 1 ? datetimeArr[1] : ""
+//        let secondAMPM: String? = datetimeArr.count > 2 ? datetimeArr[2] : ""
+        let dstr = "Applied on : \(datetimeString)"
         return dstr
     }
     

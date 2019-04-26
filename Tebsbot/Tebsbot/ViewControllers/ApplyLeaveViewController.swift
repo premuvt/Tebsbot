@@ -45,7 +45,6 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     var imagePicker = UIImagePickerController()
     var selectedImage: UIImage? = nil
     var fileName:String? = ""
-    var alert : UIAlertController?
     
 //    let messageFrame = UIView()
     var activityIndicator = UIActivityIndicatorView()
@@ -156,14 +155,8 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
                     }else{
                         debugPrint("move to next page")
                         DispatchQueue.main.sync {
-                            self.chatArray.append(chatModel!)
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let controller:LeaveApplicationViewController = storyboard.instantiateViewController(withIdentifier: "LeaveApplicationViewController") as! LeaveApplicationViewController
-                            controller.selectedImage = self.selectedImage
-                            let navigationController =  UINavigationController(rootViewController: controller)
-                            self.present(navigationController, animated: true, completion: nil)
+                            self.goNextStep(chatModel: chatModel!)
                         }
-                        
                     }
                 }else{
                     debugPrint("No chat Available")
@@ -186,6 +179,9 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
             removeLeaveTypeViewAddMessageView()
             self.document = "0"
             self.reason = "1"
+        }
+        else if chatModal.data?.date_flag == "1"{
+            removeOptionsViewAddMessageView()
         }
     }
     func updateMessageAndSendTime(message:String) {
@@ -306,14 +302,14 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
         let message = "Show my Leave Balance"
         
         self.sendMessage(message: message)
-        removeOptionsViewAddMessageView()
+//        removeOptionsViewAddMessageView()
     }
     @IBAction func onNoThanks() {
         print("onNoThanks")
-        let message = "No thanks, Im good"
+        let message = "No thanks, Im good!"
         
         self.sendMessage(message: message)
-        removeOptionsViewAddMessageView()
+//        removeOptionsViewAddMessageView()
     }
     @IBAction func onSelectLeaveType() {
         print("onSelectLeaveType")
@@ -329,6 +325,27 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     @IBAction func onCamera() {
         print("onCamera")
         self.openCamera()
+    }
+    @IBAction func onSkip() {
+        print("onSkip")
+        sendMessage(message: "file")
+//        let chat:LeaveChatModal = self.chatArray.last!
+//        goNextStep(chatModel: chat)
+    }
+    func goNextStep(chatModel:LeaveChatModal) {
+        self.chatArray.append(chatModel)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller:LeaveApplicationViewController = storyboard.instantiateViewController(withIdentifier: "LeaveApplicationViewController") as! LeaveApplicationViewController
+        if self.selectedImage != nil {
+            controller.selectedImage = self.selectedImage
+            controller.imageSelected = true
+        }
+        
+        controller.startDate = self.getDate(stringDate: (chatModel.data?.from_date!)!)
+        controller.endDate = self.getDate(stringDate: (chatModel.data?.end_date!)!)
+        controller.reason = chatModel.data?.reason
+        let navigationController =  UINavigationController(rootViewController: controller)
+        self.present(navigationController, animated: true, completion: nil)
     }
     func removeOptionsViewAddMessageView() {
         self.optionsView.removeFromSuperview()
@@ -377,7 +394,6 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     }
     
     func openCamera(){
-        self.alert!.dismiss(animated: true, completion: nil)
         if(UIImagePickerController .isSourceTypeAvailable(.camera)){
             imagePicker.sourceType = .camera
             self.present(imagePicker, animated: true, completion: nil)
@@ -394,13 +410,11 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
         }
     }
     func openGallery(){
-        self.alert?.dismiss(animated: true, completion: nil)
         imagePicker.sourceType = .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
     }
     
     func dismissAlert() {
-        self.alert!.dismiss(animated: false, completion: nil)
     }
     
     
@@ -467,7 +481,8 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
             else{
                 imageCell.docImage.isHidden = true
             }
-            
+            imageCell.receivedMessageLabel.layer.masksToBounds = true
+            imageCell.receivedMessageLabel.layer.cornerRadius = 10
             imageCell.receivedMessageLabel.text = chat.data?.query
             imageCell.receivedTimeLabel.text = self.setTime(curDate: chat.receivedDate)
             return imageCell
@@ -495,6 +510,14 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
         
         let myString = formatter.string(from: curDate)
         return myString// string
+    }
+    func getDate(stringDate:String) -> Date{
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date / server String
+        formatter.dateFormat = "dd-MM-yyyy"
+        
+        let date = formatter.date(from: stringDate)
+        return date!// string
     }
         
     //MARK:- text to speech

@@ -29,7 +29,10 @@ class LeaveApplicationViewController: UIViewController {
     @IBOutlet weak var buttonEdit: UIButton!
     @IBOutlet weak var inputAccessoryHight: NSLayoutConstraint!
     @IBOutlet weak var buttonSubmit: UIButton!
+    @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var buttonConfirm: UIButton!
+    @IBOutlet var submitView: UIView!
+    @IBOutlet var confirmEditView: UIView!
     
     // Upload local variable
     var leaveType: String? = ""
@@ -296,7 +299,7 @@ extension LeaveApplicationViewController:UITableViewDelegate{
         case 2:
             return 69.0
         case 3:
-            return 65.0
+            return 70.0
         case 4:
             return 153.0
         case 5:
@@ -353,6 +356,7 @@ extension LeaveApplicationViewController: UITableViewDataSource{
         case 4:
             cell = (tableView.dequeueReusableCell(withIdentifier: "Cell5", for: indexPath) as! LeaveApplicationCell)
             cell?.reasonTextView.delegate = self
+            cell?.reasonTextView.text = reason
         default:
             cell = (UITableViewCell() as! LeaveApplicationCell)
         }

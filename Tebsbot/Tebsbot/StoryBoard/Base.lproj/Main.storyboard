@@ -213,7 +213,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uez-xW-S7c"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pQf-LZ-1Xl">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -449,7 +449,7 @@ Medical Prescription</string>
                                                     <state key="normal" backgroundImage="calendar"/>
                                                 </button>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0K5-mS-zjV">
-                                                    <rect key="frame" x="15" y="49.5" width="280" height="1"/>
+                                                    <rect key="frame" x="15" y="53" width="280" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" red="0.1176470588" green="0.13725490200000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -459,9 +459,9 @@ Medical Prescription</string>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2Bs-Ye-VQQ" firstAttribute="centerY" secondItem="Nhx-zg-HPN" secondAttribute="centerY" id="2Li-Y4-Abu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0K5-mS-zjV" secondAttribute="bottom" id="6TN-IX-a8b"/>
                                                 <constraint firstItem="5wb-Yg-fCw" firstAttribute="centerY" secondItem="Nhx-zg-HPN" secondAttribute="centerY" id="Obg-af-c1N"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="5wb-Yg-fCw" secondAttribute="trailing" constant="10" id="T1B-Ln-Hqw"/>
-                                                <constraint firstItem="0K5-mS-zjV" firstAttribute="top" secondItem="5wb-Yg-fCw" secondAttribute="bottom" constant="2" id="Ugv-7N-C5X"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="0K5-mS-zjV" secondAttribute="trailing" constant="10" id="acc-nn-DMz"/>
                                                 <constraint firstItem="2Bs-Ye-VQQ" firstAttribute="leading" secondItem="Nhx-zg-HPN" secondAttribute="leadingMargin" id="hex-yu-EHs"/>
                                                 <constraint firstItem="0K5-mS-zjV" firstAttribute="leading" secondItem="Nhx-zg-HPN" secondAttribute="leadingMargin" id="sdh-kF-l4T"/>
@@ -583,26 +583,8 @@ Medical Prescription</string>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jtq-2o-Ez2">
                                 <rect key="frame" x="0.0" y="415" width="320" height="65"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8CB-Up-h4d">
-                                        <rect key="frame" x="85" y="5" width="150" height="46"/>
-                                        <color key="backgroundColor" red="0.1176470588" green="0.13725490200000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="3LF-Ua-GH9"/>
-                                            <constraint firstAttribute="height" constant="46" id="OAX-Bf-NdY"/>
-                                        </constraints>
-                                        <state key="normal" title="Submit">
-                                            <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="buttonSubmitClicked:" destination="iD1-mw-jKo" eventType="touchUpInside" id="7iM-oc-qwe"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="8CB-Up-h4d" firstAttribute="top" secondItem="Jtq-2o-Ez2" secondAttribute="top" constant="5" id="DzB-6n-HCQ"/>
-                                    <constraint firstItem="8CB-Up-h4d" firstAttribute="centerX" secondItem="Jtq-2o-Ez2" secondAttribute="centerX" id="sg5-kf-gF8"/>
                                     <constraint firstAttribute="height" constant="65" id="vf0-av-f0B"/>
                                 </constraints>
                             </view>
@@ -623,9 +605,12 @@ Medical Prescription</string>
                     <connections>
                         <outlet property="buttonConfirm" destination="Elt-5G-whZ" id="xUI-DF-yCb"/>
                         <outlet property="buttonEdit" destination="lsH-PH-Iwt" id="zQN-Na-KdQ"/>
-                        <outlet property="buttonSubmit" destination="8CB-Up-h4d" id="Cqc-AB-MEh"/>
+                        <outlet property="buttonSubmit" destination="cdH-vT-DN6" id="19l-fX-LAe"/>
+                        <outlet property="confirmEditView" destination="801-Ko-dIv" id="Awu-9g-mRB"/>
+                        <outlet property="footerView" destination="Jtq-2o-Ez2" id="CIx-3U-HK3"/>
                         <outlet property="inputAccessoryHight" destination="vf0-av-f0B" id="RR6-U4-xtw"/>
                         <outlet property="leaveTableView" destination="NaV-ev-baZ" id="tDq-Ys-sNo"/>
+                        <outlet property="submitView" destination="rjH-Z3-tHg" id="xoH-iv-XZz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKN-kj-oBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
