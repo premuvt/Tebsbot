@@ -213,7 +213,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uez-xW-S7c"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pQf-LZ-1Xl">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -493,6 +493,9 @@ Medical Prescription</string>
                                                     <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="iD1-mw-jKo" id="8zL-Je-7cG"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -535,7 +538,7 @@ Medical Prescription</string>
                                                             <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VG0-CC-lhg">
-                                                            <rect key="frame" x="77" y="8" width="20" height="20"/>
+                                                            <rect key="frame" x="85" y="0.0" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="Jla-EM-U2A"/>
                                                                 <constraint firstAttribute="height" constant="20" id="o4O-v8-aes"/>
@@ -581,7 +584,7 @@ Medical Prescription</string>
                                 <rect key="frame" x="0.0" y="415" width="320" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8CB-Up-h4d">
-                                        <rect key="frame" x="85" y="9.5" width="150" height="46"/>
+                                        <rect key="frame" x="85" y="5" width="150" height="46"/>
                                         <color key="backgroundColor" red="0.1176470588" green="0.13725490200000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="3LF-Ua-GH9"/>
@@ -590,11 +593,14 @@ Medical Prescription</string>
                                         <state key="normal" title="Submit">
                                             <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="buttonSubmitClicked:" destination="iD1-mw-jKo" eventType="touchUpInside" id="7iM-oc-qwe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="8CB-Up-h4d" firstAttribute="centerY" secondItem="Jtq-2o-Ez2" secondAttribute="centerY" id="558-QM-d0V"/>
+                                    <constraint firstItem="8CB-Up-h4d" firstAttribute="top" secondItem="Jtq-2o-Ez2" secondAttribute="top" constant="5" id="DzB-6n-HCQ"/>
                                     <constraint firstItem="8CB-Up-h4d" firstAttribute="centerX" secondItem="Jtq-2o-Ez2" secondAttribute="centerX" id="sg5-kf-gF8"/>
                                     <constraint firstAttribute="height" constant="65" id="vf0-av-f0B"/>
                                 </constraints>
@@ -614,13 +620,84 @@ Medical Prescription</string>
                     </view>
                     <navigationItem key="navigationItem" id="1Ec-kG-41k"/>
                     <connections>
+                        <outlet property="buttonConfirm" destination="Elt-5G-whZ" id="xUI-DF-yCb"/>
+                        <outlet property="buttonEdit" destination="lsH-PH-Iwt" id="zQN-Na-KdQ"/>
                         <outlet property="buttonSubmit" destination="8CB-Up-h4d" id="Cqc-AB-MEh"/>
+                        <outlet property="inputAccessoryHight" destination="vf0-av-f0B" id="RR6-U4-xtw"/>
                         <outlet property="leaveTableView" destination="NaV-ev-baZ" id="tDq-Ys-sNo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKN-kj-oBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="rjH-Z3-tHg">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdH-vT-DN6">
+                            <rect key="frame" x="85" y="5" width="150" height="46"/>
+                            <color key="backgroundColor" red="0.1176470588" green="0.13725490200000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="Oxf-dg-XkK"/>
+                                <constraint firstAttribute="width" constant="150" id="W0z-cY-8BS"/>
+                            </constraints>
+                            <state key="normal" title="Submit">
+                                <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonSubmitClicked:" destination="iD1-mw-jKo" eventType="touchUpInside" id="ePQ-VN-oFp"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="cdH-vT-DN6" firstAttribute="top" secondItem="LCe-TI-rGG" secondAttribute="top" constant="5" id="4iA-GL-ltP"/>
+                        <constraint firstItem="cdH-vT-DN6" firstAttribute="centerX" secondItem="rjH-Z3-tHg" secondAttribute="centerX" id="8BS-Mp-z4L"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="LCe-TI-rGG"/>
+                </view>
+                <view contentMode="scaleToFill" id="801-Ko-dIv">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elt-5G-whZ">
+                            <rect key="frame" x="180" y="5" width="125" height="46"/>
+                            <color key="backgroundColor" red="0.1176470588" green="0.13725490200000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="B62-UO-ABs"/>
+                            </constraints>
+                            <state key="normal" title="Confirm">
+                                <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonConfirmClicked:" destination="iD1-mw-jKo" eventType="touchUpInside" id="jOl-2y-5od"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsH-PH-Iwt">
+                            <rect key="frame" x="15" y="5" width="125" height="46"/>
+                            <color key="backgroundColor" red="0.29803921568627451" green="0.50196078431372548" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="wh6-SQ-1Hl"/>
+                            </constraints>
+                            <state key="normal" title="Edit">
+                                <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonEditClicked:" destination="iD1-mw-jKo" eventType="touchUpInside" id="gdr-A1-0jN"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="lsH-PH-Iwt" firstAttribute="width" secondItem="Elt-5G-whZ" secondAttribute="width" id="8Xa-Rw-trF"/>
+                        <constraint firstItem="Elt-5G-whZ" firstAttribute="leading" secondItem="lsH-PH-Iwt" secondAttribute="trailing" constant="40" id="CQN-5k-PPb"/>
+                        <constraint firstItem="Elt-5G-whZ" firstAttribute="top" secondItem="qXt-Sx-Y0O" secondAttribute="top" constant="5" id="SEJ-QL-QaK"/>
+                        <constraint firstItem="qXt-Sx-Y0O" firstAttribute="trailing" secondItem="Elt-5G-whZ" secondAttribute="trailing" constant="15" id="cSL-ga-GjX"/>
+                        <constraint firstItem="lsH-PH-Iwt" firstAttribute="top" secondItem="qXt-Sx-Y0O" secondAttribute="top" constant="5" id="mPQ-I4-ija"/>
+                        <constraint firstItem="lsH-PH-Iwt" firstAttribute="leading" secondItem="qXt-Sx-Y0O" secondAttribute="leading" constant="15" id="tgD-rg-FiZ"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="qXt-Sx-Y0O"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="408.75" y="993.75"/>
+            <point key="canvasLocation" x="396" y="1055"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Br0-nK-fAk">
@@ -646,7 +723,7 @@ Medical Prescription</string>
                 <navigationController storyboardIdentifier="LeaveApplicationViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="yKo-Sl-YIQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9xP-dZ-8RO">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

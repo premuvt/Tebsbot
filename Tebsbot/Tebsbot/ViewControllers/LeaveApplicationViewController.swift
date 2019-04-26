@@ -22,18 +22,80 @@ class LeaveApplicationViewController: UIViewController {
     var defaultTextFieldText = DEFAULT_TEXT
     var attributedText:NSAttributedString?
     
+    
+    
+    
+    @IBOutlet weak var buttonEdit: UIButton!
+    @IBOutlet weak var inputAccessoryHight: NSLayoutConstraint!
     @IBOutlet weak var buttonSubmit: UIButton!
+    @IBOutlet weak var buttonConfirm: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(cancelClicked))
-        self.buttonSubmit.layer.cornerRadius = self.buttonSubmit.frame.height / 2
-        self.buttonSubmit.layer.masksToBounds = true
+        setButtons()
+        setUpKeyBoardNotification()
+        setUpView()
         
         
     }
     
-    // MARK:- Button Actions
+    func setButtons(){
+        self.buttonSubmit.layer.cornerRadius = self.buttonSubmit.frame.height / 2
+        self.buttonSubmit.layer.masksToBounds = true
+        self.buttonEdit.layer.cornerRadius = self.buttonEdit.frame.height / 2
+        self.buttonEdit.layer.masksToBounds = true
+        self.buttonConfirm.layer.cornerRadius = self.buttonConfirm.frame.height / 2
+        self.buttonConfirm.layer.masksToBounds = true
+    }
+    func setUpView(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        leaveTableView.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
+    }
+    
+    func setUpKeyBoardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    //MARK:- keyboard notification
+    
+    @objc func keyboardShow(notification:Notification){
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            inputAccessoryHight.constant += keyboardHeight - 5
+            let duration = notification.userInfo as! Dictionary<String,Any>
+            UIView.animate(withDuration: duration["UIKeyboardAnimationDurationUserInfoKey"]! as! TimeInterval, animations: {
+                self.leaveTableView.scrollToRow(at: IndexPath(row: self.leaveTableView.numberOfRows(inSection: 0) - 1 , section: 0), at: .bottom, animated: true)
+            })
+
+        }
+    }
+    
+    @objc func keyboardHide(notification:Notification){
+        inputAccessoryHight.constant = 65
+
+    }
+    
+    
+    
+    // MARK:-  Button Actions
+    
+    @IBAction func buttonSubmitClicked(_ sender: Any) {
+        
+        
+    }
+    @IBAction func buttonEditClicked(_ sender: Any) {
+    }
+    @IBAction func buttonConfirmClicked(_ sender: Any) {
+    }
+    
+    
+    // MARK:- cell Button Actions
     
     @objc func cancelClicked(){
         self.navigationController?.dismiss(animated: true, completion: nil)
@@ -239,6 +301,7 @@ extension LeaveApplicationViewController: UITableViewDataSource{
             cell?.dateTextField.attributedText = setAttributedText()
         case 4:
             cell = (tableView.dequeueReusableCell(withIdentifier: "Cell5", for: indexPath) as! LeaveApplicationCell)
+            cell?.reasonTextView.delegate = self
         default:
             cell = (UITableViewCell() as! LeaveApplicationCell)
         }
@@ -312,4 +375,13 @@ class LeaveApplicationCell:UITableViewCell{
         
         
     }
+}
+
+extension LeaveApplicationViewController:UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        debugPrint(canBecomeFirstResponder)
+        textView.becomeFirstResponder()
+    }
+    
+
 }
