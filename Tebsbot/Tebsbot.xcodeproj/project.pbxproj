@@ -36,6 +36,7 @@
 		73BABC9D22588CDA001A6149 /* ClaimConfirmationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BABC9C22588CDA001A6149 /* ClaimConfirmationPageViewController.swift */; };
 		73C43A8C2271817D00952D00 /* LeaveApplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C43A8B2271817D00952D00 /* LeaveApplicationViewController.swift */; };
 		73CE61022273438600BBA72D /* LeveApplicaionUploadModdel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE61012273438600BBA72D /* LeveApplicaionUploadModdel.swift */; };
+		73CE61042273AAAB00BBA72D /* LeaveConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE61032273AAA600BBA72D /* LeaveConfirmationViewController.swift */; };
 		73CF4BE02256716B004C6106 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BDF2256716B004C6106 /* LoginViewController.swift */; };
 		73CF4BE5225679F2004C6106 /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE2225679F1004C6106 /* LabelTextField.swift */; };
 		73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF4BE3225679F1004C6106 /* LineTextField.swift */; };
@@ -79,6 +80,7 @@
 		73BABC9C22588CDA001A6149 /* ClaimConfirmationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimConfirmationPageViewController.swift; sourceTree = "<group>"; };
 		73C43A8B2271817D00952D00 /* LeaveApplicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveApplicationViewController.swift; sourceTree = "<group>"; };
 		73CE61012273438600BBA72D /* LeveApplicaionUploadModdel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeveApplicaionUploadModdel.swift; sourceTree = "<group>"; };
+		73CE61032273AAA600BBA72D /* LeaveConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveConfirmationViewController.swift; sourceTree = "<group>"; };
 		73CF4BDF2256716B004C6106 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		73CF4BE2225679F1004C6106 /* LabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
 		73CF4BE3225679F1004C6106 /* LineTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTextField.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				73BABC9C22588CDA001A6149 /* ClaimConfirmationPageViewController.swift */,
 				68BB245622685B10006F2BF4 /* LeaveHomeSummaryTableViewController.swift */,
 				73C43A8B2271817D00952D00 /* LeaveApplicationViewController.swift */,
+				73CE61032273AAA600BBA72D /* LeaveConfirmationViewController.swift */,
 				6831C9DC22718E840064D536 /* LeaveTypePickerViewController.swift */,
 			);
 			path = ViewControllers;
@@ -406,6 +409,7 @@
 				73C43A8C2271817D00952D00 /* LeaveApplicationViewController.swift in Sources */,
 				68E78C0622567D1300BFD976 /* ApplyLeaveViewController.swift in Sources */,
 				737A30DE225DAF4B00CA866D /* UIAlert.swift in Sources */,
+				73CE61042273AAAB00BBA72D /* LeaveConfirmationViewController.swift in Sources */,
 				68B598EB2256E39400D8A836 /* ConfirmationPageViewController.swift in Sources */,
 				68BB245722685B10006F2BF4 /* LeaveHomeSummaryTableViewController.swift in Sources */,
 				73CF4BE6225679F2004C6106 /* LineTextField.swift in Sources */,
