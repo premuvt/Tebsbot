@@ -16,8 +16,6 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
   
 
     @IBOutlet weak var textViewConstraint: NSLayoutConstraint!
-    @IBOutlet weak var micButtonConstraint: NSLayoutConstraint!
-    @IBOutlet weak var sendButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var messageTextView: UITextView!
     
@@ -428,19 +426,16 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            let endFrameY = endFrame!.origin.y ?? 0
+            let endFrameY = endFrame!.origin.y
             let duration:TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
             let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
             if endFrameY >= UIScreen.main.bounds.size.height {
-                self.textViewConstraint?.constant = 20.0
-                self.sendButtonConstraint?.constant = 20.0
-                self.micButtonConstraint?.constant = 20.0
+                self.textViewConstraint?.constant = 0.0
             } else {
-                self.textViewConstraint?.constant = endFrame?.size.height ?? 20.0
-                self.sendButtonConstraint?.constant = endFrame?.size.height ?? 20.0
-                self.micButtonConstraint?.constant = endFrame?.size.height ?? 20.0
+                self.textViewConstraint?.constant = (-1 * (endFrame?.size.height)!) 
+                
             }
             UIView.animate(withDuration: duration,
                            delay: TimeInterval(0),
