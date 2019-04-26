@@ -721,11 +721,74 @@ Medical Prescription</string>
             </objects>
             <point key="canvasLocation" x="-530.39999999999998" y="994.45277361319347"/>
         </scene>
+        <!--Leave Confirmation View Controller-->
+        <scene sceneID="VQm-RY-SSl">
+            <objects>
+                <viewController storyboardIdentifier="LeaveConfirmationViewController" id="MOo-D0-kcO" customClass="LeaveConfirmationViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g68-pW-HD0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your leave has been applied !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py5-QN-Bhf">
+                                <rect key="frame" x="10" y="225" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Iuz-vc-1sv"/>
+                                    <constraint firstAttribute="height" constant="30" id="XSc-ow-5kP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                <color key="textColor" red="0.15294117647058825" green="0.2196078431372549" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success" translatesAutoresizingMaskIntoConstraints="NO" id="xOA-mX-4YQ">
+                                <rect key="frame" x="130" y="140" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="qfC-qB-yPn"/>
+                                    <constraint firstAttribute="width" constant="60" id="sQB-He-RjO"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4R-ix-bKf">
+                                <rect key="frame" x="60" y="280" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.29803921568627451" green="0.50196078431372548" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="edO-yi-fzm"/>
+                                </constraints>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonOKClickedWithSender:" destination="MOo-D0-kcO" eventType="touchUpInside" id="g1w-0Q-LVZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Py5-QN-Bhf" firstAttribute="top" secondItem="xOA-mX-4YQ" secondAttribute="bottom" constant="25" id="CoX-cb-g6M"/>
+                            <constraint firstItem="J4R-ix-bKf" firstAttribute="top" secondItem="Py5-QN-Bhf" secondAttribute="bottom" constant="25" id="Ifs-6c-7Wv"/>
+                            <constraint firstItem="Old-GV-e6J" firstAttribute="trailing" secondItem="Py5-QN-Bhf" secondAttribute="trailing" constant="10" id="Owg-9m-1GS"/>
+                            <constraint firstItem="Py5-QN-Bhf" firstAttribute="centerY" secondItem="g68-pW-HD0" secondAttribute="centerY" id="PY8-vC-EiF"/>
+                            <constraint firstItem="Py5-QN-Bhf" firstAttribute="centerX" secondItem="g68-pW-HD0" secondAttribute="centerX" id="Qyn-4U-UfN"/>
+                            <constraint firstItem="Py5-QN-Bhf" firstAttribute="leading" secondItem="Old-GV-e6J" secondAttribute="leading" constant="10" id="cPx-Hf-Qgu"/>
+                            <constraint firstItem="J4R-ix-bKf" firstAttribute="centerX" secondItem="g68-pW-HD0" secondAttribute="centerX" id="haL-eL-xX1"/>
+                            <constraint firstItem="J4R-ix-bKf" firstAttribute="leading" secondItem="Old-GV-e6J" secondAttribute="leading" constant="60" id="iyZ-WY-1EK"/>
+                            <constraint firstItem="Old-GV-e6J" firstAttribute="trailing" secondItem="J4R-ix-bKf" secondAttribute="trailing" constant="60" id="sfv-Ha-EF1"/>
+                            <constraint firstItem="xOA-mX-4YQ" firstAttribute="centerX" secondItem="g68-pW-HD0" secondAttribute="centerX" id="vB2-7j-loR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Old-GV-e6J"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonOk" destination="J4R-ix-bKf" id="44g-1S-sVo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vcl-J0-8Fo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1314" y="-976"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calendar" width="24" height="24"/>
         <image name="logo" width="200" height="66"/>
         <image name="plus" width="24" height="24"/>
         <image name="remove" width="24" height="24"/>
+        <image name="success" width="87" height="87"/>
     </resources>
 </document>

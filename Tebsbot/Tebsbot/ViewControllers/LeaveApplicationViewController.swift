@@ -114,6 +114,8 @@ class LeaveApplicationViewController: UIViewController {
     // MARK:-  Button Actions
     
     @IBAction func buttonSubmitClicked(_ sender: Any) {
+        self.dismissKeyboard()
+        resignFirstResponder()
         validation()
     }
     
@@ -257,6 +259,8 @@ extension LeaveApplicationViewController{
     }
     
     func setAlert(message:String){
+        resignFirstResponder()
+        self.dismissKeyboard()
         alertWarning = UIAlertController(title: "TebsBot", message: message, preferredStyle: .alert)//UIAlertView(title:"Warning", message: "You don't have camera", delegate:nil, cancelButtonTitle:"OK", otherButtonTitles:"")
         let okAction = UIAlertAction(title: "OK", style: .default)
         {
@@ -323,6 +327,9 @@ extension LeaveApplicationViewController{
                 
                 upload.responseJSON { response in
                     //print response.result
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "LeaveConfirmationViewController")
+                    self.navigationController?.present(controller, animated: true)
                 }
                 
             case .failure(let encodingError): break
@@ -492,9 +499,9 @@ extension LeaveApplicationViewController: UITableViewDataSource{
             .foregroundColor: UIColor(red: 85.0 / 255.0, green: 99.0 / 255.0, blue: 151.0 / 255.0, alpha: 1),
             .backgroundColor: UIColor.white]
         if textLength > 12{
-            attributedString.addAttributes(secondAttributes, range: NSRange(location: 0, length: 12))
+            attributedString.addAttributes(firstAttributes, range: NSRange(location: 0, length: 12))
             attributedString.addAttributes(secondAttributes, range: NSRange(location: 12, length: 6))
-            attributedString.addAttributes(firstAttributes, range: NSRange(location: textLength - 11, length: 10))
+            attributedString.addAttributes(firstAttributes, range: NSRange(location: textLength - 11, length: 11))
         }else{
             attributedString.addAttributes(firstAttributes, range: NSRange(location: 0, length: textLength))
         }
@@ -561,6 +568,16 @@ extension LeaveApplicationViewController:UITextViewDelegate{
             self.reason = ""
         }else{
             self.reason = textView.text
+        }
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if textView.text.isEmpty || textView.text == ""{
+            reason = ""
+            return true
+        }
+        else{
+            reason = textView.text
+            return true
         }
     }
     
