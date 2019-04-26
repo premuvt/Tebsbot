@@ -42,8 +42,11 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
         self.tableView.dataSource = self
         getLeavelist()
         setupFooter()
-        setNavigationButtons()
         
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        setNavigationButtons()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -134,6 +137,9 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
         
     }
     func setNavigationButtons() {
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
         //left navigation item
         let button = UIButton(type: UIButton.ButtonType.custom)
         button.setImage(UIImage(named: "nav-logo"), for: .normal)
