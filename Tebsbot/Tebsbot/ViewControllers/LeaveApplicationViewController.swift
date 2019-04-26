@@ -31,6 +31,7 @@ class LeaveApplicationViewController: UIViewController {
     var strLabel = UILabel()
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
+    var isFromBot:Bool = false
     
     
     @IBOutlet weak var buttonEdit: UIButton!
@@ -54,7 +55,16 @@ class LeaveApplicationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(cancelClicked))
+        if isFromBot {
+            self.footerView.addSubview(self.confirmEditView)
+            self.confirmEditView.bindFrameToSuperviewBounds()
+        }
+        else{
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(cancelClicked))
+            self.footerView.addSubview(self.submitView)
+            self.submitView.bindFrameToSuperviewBounds()
+        }
+        
         setButtons()
         setUpKeyBoardNotification()
         setUpView()
@@ -110,8 +120,13 @@ class LeaveApplicationViewController: UIViewController {
     
     
     @IBAction func buttonEditClicked(_ sender: Any) {
+        self.isFromBot = !self.isFromBot
+        self.buttonEdit.backgroundColor = self.isFromBot ? EDIT_BACKGROUND_COLOR:EDIT_BACKGROUND_COLOR_SELECTED
+        self.leaveTableView.reloadData()
     }
     @IBAction func buttonConfirmClicked(_ sender: Any) {
+        self.setUploadDate()
+        self.buttonSubmit.sendActions(for: .touchUpInside)
     }
     
     
@@ -427,9 +442,11 @@ extension LeaveApplicationViewController: UITableViewDataSource{
                 cell = (tableView.dequeueReusableCell(withIdentifier: "Cell6", for: indexPath) as! LeaveApplicationCell)
                 cell?.recieptImageView.image = self.selectedImage
                 cell?.buttonDelete.addTarget(self, action: #selector(buttonDeleteTapped(sender:)), for: .touchUpInside)
+                cell?.buttonDelete.isEnabled = !isFromBot
             }else{
                 cell = (tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath) as! LeaveApplicationCell)
                 cell?.addButton.addTarget(self, action: #selector(buttonAddClicked(sender:)), for: .touchUpInside)
+                cell?.addButton.isEnabled = !isFromBot
             }
             
         case 2:
@@ -438,6 +455,8 @@ extension LeaveApplicationViewController: UITableViewDataSource{
             cell = (tableView.dequeueReusableCell(withIdentifier: "Cell4", for: indexPath) as! LeaveApplicationCell)
             cell?.buttonCalender.addTarget(self, action: #selector(buttonCalendarClicked(sender:)), for: .touchUpInside)
             cell?.dateTextField.addTarget(self, action: #selector(buttonCalendarClicked(sender:)), for: .touchUpInside)
+            cell?.buttonCalender.isEnabled = !isFromBot
+            cell?.dateTextField.isEnabled = !isFromBot
             
             if startDate != nil {
                 if endDate == startDate{
@@ -453,8 +472,10 @@ extension LeaveApplicationViewController: UITableViewDataSource{
             cell?.dateTextField.attributedText = setAttributedText()
         case 4:
             cell = (tableView.dequeueReusableCell(withIdentifier: "Cell5", for: indexPath) as! LeaveApplicationCell)
-            cell?.reasonTextView.delegate = self
             cell?.reasonTextView.text = reason
+            cell?.reasonTextView.delegate = self
+            cell?.reasonTextView.isUserInteractionEnabled = !isFromBot
+            
         default:
             cell = (UITableViewCell() as! LeaveApplicationCell)
         }

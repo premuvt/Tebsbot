@@ -121,9 +121,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
             if reason == "1" {
                 reasonText = message!
             }
-            else{
-                reasonText = ""
-            }
+            
             WebService.shared.applyLeaveChat(message: chatMessage, reason: reason, document: document, start: start, reasonText: reasonText) { (status, errorMessage, chatModel) in
                 
                 if self.start == "1" {
@@ -343,7 +341,8 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
         
         controller.startDate = self.getDate(stringDate: (chatModel.data?.from_date!)!)
         controller.endDate = self.getDate(stringDate: (chatModel.data?.end_date!)!)
-        controller.reason = chatModel.data?.reason
+        controller.reason = reasonText
+        controller.isFromBot = true
         let navigationController =  UINavigationController(rootViewController: controller)
         self.present(navigationController, animated: true, completion: nil)
     }

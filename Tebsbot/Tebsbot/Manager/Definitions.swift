@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 //let BASE_URL:String                     = "https://tebsbot.uvionicstech.com/teBS-botver03/"
 let BASE_URL:String                     = "http://192.168.0.44:8082/"
@@ -26,4 +27,6 @@ let DEFAULT_TEXT: String                = "Select Dates"
 //validationMessages
 let NO_REASON : String                  = "Please select reason"
 let NO_DATERANGESELECTED : String       = "No date range is selected. Select leave date that you are applying for."
+let EDIT_BACKGROUND_COLOR :UIColor      = UIColor.init(red: 76/255, green: 128/255, blue: 248/255, alpha: 1.0)
+let EDIT_BACKGROUND_COLOR_SELECTED :UIColor      = UIColor.init(red: 76/255, green: 128/255, blue: 248/255, alpha: 0.7)
 
