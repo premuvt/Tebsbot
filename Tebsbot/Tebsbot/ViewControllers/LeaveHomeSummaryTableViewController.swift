@@ -184,6 +184,9 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller:LeaveApplicationViewController = storyboard.instantiateViewController(withIdentifier: "LeaveApplicationViewController") as! LeaveApplicationViewController
                         let navigationController = UINavigationController(rootViewController: controller)
+                controller.leaveType = leaveatype
+                controller.totalLeave = total
+                controller.takenLeave = taken
 //                controller.delegate = self
                 self.present(navigationController, animated: true, completion: nil)
             }

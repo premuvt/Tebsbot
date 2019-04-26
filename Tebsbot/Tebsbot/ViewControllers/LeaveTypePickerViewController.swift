@@ -31,20 +31,8 @@ class LeaveTypePickerViewController: UIViewController,UITableViewDelegate,UITabl
         return 5
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            return 80
-        case 1:
+       
             return 50
-        case 2:
-            return 50
-        case 3:
-            return 50
-        case 4:
-            return 50
-        default:
-            return 50
-        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell

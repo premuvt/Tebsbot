@@ -213,7 +213,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uez-xW-S7c"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pQf-LZ-1Xl">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -288,6 +288,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="progressOuterView" destination="Ql9-RD-hWk" id="YaW-Y2-oWc"/>
+                                            <outlet property="progressValueLabel" destination="GBP-k0-ckB" id="iMk-tT-12S"/>
                                             <outlet property="progressView" destination="eJF-u2-7Pr" id="Igt-xP-8Gr"/>
                                         </connections>
                                     </tableViewCell>
