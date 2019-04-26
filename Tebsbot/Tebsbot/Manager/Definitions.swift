@@ -16,3 +16,4 @@ let FILE_UPLOAD:String                  = "user/file/text"
 let CONFIRM_CLAIM:String                = "user/confirm-claim"
 let LEAVE_LIST:String                = "user/leave/list/"
 
+let DEFAULT_TEXT: String                = "Select Dates"

@@ -167,11 +167,24 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "ApplyLeaveViewController")
         self.navigationController?.pushViewController(controller, animated: true)
+
     }
     
     //leavetype picker delegate methords
     func didSelectLeaveType(leaveatype:String,total:Int,taken:Int){
-        print("type ",leaveatype,"max - ",total,"tacken - ",taken)
+
+        if leaveatype == "Medical"{
+            self.dismiss(animated: false) {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller:LeaveApplicationViewController = storyboard.instantiateViewController(withIdentifier: "LeaveApplicationViewController") as! LeaveApplicationViewController
+                        let navigationController = UINavigationController(rootViewController: controller)
+//                controller.delegate = self
+                self.present(navigationController, animated: true, completion: nil)
+            }
+        }else{
+            
+        }
+        print(leaveatype)
     }
     func cancelledLeavePicker(){
         print("cancelled picker")
@@ -183,6 +196,7 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
         print("onMenuAction")
     }
 }
+
 @IBDesignable extension UIButton {
     
     @IBInspectable var borderWidth: CGFloat {
@@ -214,3 +228,4 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
         }
     }
 }
+
