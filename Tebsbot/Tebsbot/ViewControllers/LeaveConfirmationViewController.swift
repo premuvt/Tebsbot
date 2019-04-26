@@ -13,6 +13,7 @@ class LeaveConfirmationViewController: UIViewController {
     
     var synth:AVSpeechSynthesizer = AVSpeechSynthesizer()
     
+    @IBOutlet weak var buttonOk: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +21,8 @@ class LeaveConfirmationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.speakText(message: "Your leave has been applied. Thank you.")
+        self.buttonOk.layer.cornerRadius = self.buttonOk.frame.height / 2
+        self.buttonOk.layer.masksToBounds = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -41,6 +44,8 @@ class LeaveConfirmationViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: true)
         
     }
+    
+    
 
     
     //MARK:- text to speech
