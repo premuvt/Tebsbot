@@ -10,7 +10,7 @@
 import Foundation
 import UIKit
 protocol LeaveTypePickerDelegate {
-    func didSelectLeaveType(leaveatype:String)
+    func didSelectLeaveType(leaveatype:String,total:Int,taken:Int)
     func cancelledLeavePicker()
 }
 
@@ -80,19 +80,19 @@ class LeaveTypePickerViewController: UIViewController,UITableViewDelegate,UITabl
         case 0:
             //to do
             print("Medical leave")
-            self.delegate?.didSelectLeaveType(leaveatype: "Medical")
+            self.delegate?.didSelectLeaveType(leaveatype: "Medical",total: 12,taken: 10)
         case 1:
             //to do
             print("Annual leave")
-            self.delegate?.didSelectLeaveType(leaveatype: "Annual")
+            self.delegate?.didSelectLeaveType(leaveatype: "Annual",total: 12,taken: 10)
         case 2:
             //to do
             print("Compensatory leave")
-            self.delegate?.didSelectLeaveType(leaveatype: "Compensatory")
+            self.delegate?.didSelectLeaveType(leaveatype: "Compensatory",total: 1,taken: 1)
         case 3:
             //to do
             print("Child Care leave")
-            self.delegate?.didSelectLeaveType(leaveatype: "Child Care")
+            self.delegate?.didSelectLeaveType(leaveatype: "Child Care",total: 10,taken: 8)
         case 4:
             //to do
             print("Medical leave")

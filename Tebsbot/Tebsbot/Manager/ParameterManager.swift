@@ -8,14 +8,14 @@
 
 import Foundation
 struct ConfirmLeave {
-    static func requestBody(stringParam:StringData) -> [String: Any] {
+    static func requestBody(stringParam:LeaveChatModal) -> [String: Any] {
 
         let body:[String : Any] = ["Flag": stringParam.flag!,
-                    "Question": stringParam.question!,
-        "Sentence": stringParam.sentence!,
-        "Leave": stringParam.leave!,
-        "Type": stringParam.type!,
-        "Date": stringParam.date!,
+                                   "Question": stringParam.data!.query!,
+        "Sentence": stringParam.data!.sentence!,
+        "Leave": stringParam.data!.leave!,
+        "Type": stringParam.data!.type!,
+        "Date": stringParam.data!.date!,
         ]
         return body
     }

@@ -12,14 +12,21 @@ import AVFoundation
 import Speech
 
 
-class ApplyLeaveViewController: UIViewController{
+class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
   
+
+    @IBOutlet weak var textViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var micButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var sendButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var messageTextView: UITextView!
-    @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
-    @IBOutlet var sendButtonboardHeightLayoutConstraint: NSLayoutConstraint?
-    @IBOutlet var voiceButtonboardHeightLayoutConstraint: NSLayoutConstraint?
     
+    
+    @IBOutlet var optionsView: UIView!
+    @IBOutlet var chatVoiceAndTextView: UIView!
+    @IBOutlet var selectLeaveTypeView: UIView!
+    @IBOutlet weak var footerContinerView: UIView!
+    @IBOutlet var documentView: UIView!
     @IBOutlet weak var recordButton: UIButton!
     
     @IBOutlet weak var sendButton: UIButton!
@@ -30,6 +37,13 @@ class ApplyLeaveViewController: UIViewController{
     var recognitionTask: SFSpeechRecognitionTask?
     var isRecording = false
     var synth:AVSpeechSynthesizer = AVSpeechSynthesizer()
+    var start:String = "1"
+    var reson:String = "0"
+    var document:String = "0"
+    var reasonText:String = ""
+    
+    
+    
     
 //    let messageFrame = UIView()
     var activityIndicator = UIActivityIndicatorView()
@@ -39,17 +53,25 @@ class ApplyLeaveViewController: UIViewController{
     
     
     var chatArray:[LeaveChatModal]! = []
-    var messageArray: [String] = []
+    var messageArray: [String] = [""]
     var chatMessage: String = ""
     var autoSendTimer:Timer!
+    
+    var leaveBalanceFlag = false
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpKeyBoardNotification()
         setUIBoarder()
+        speakText(message: sayIntroMessage())
+        self.footerContinerView.addSubview(self.optionsView)
+        self.optionsView.bindFrameToSuperviewBounds()
+        
+        self.chatTableView.rowHeight = UITableView.automaticDimension
+        self.chatTableView.estimatedRowHeight = 200.0
 
-        print("laguage code - ",Locale.current.languageCode!)
-        print("reagin local - ", NSLocale.current.identifier)
-        print("Supported locals - ",SFSpeechRecognizer.supportedLocales())
+//        print("laguage code - ",Locale.current.languageCode!)
+//        print("reagin local - ", NSLocale.current.identifier)
+//        print("Supported locals - ",SFSpeechRecognizer.supportedLocales())
         
         //for speech recogonition
         self.requestSpeechAuthorization()
@@ -91,7 +113,13 @@ class ApplyLeaveViewController: UIViewController{
         if message != ""{
             debugPrint("message : ========= ",message!)
             self.activityIndicator("Sending...")
-            WebService.shared.applyLeaveChat(message: message!) { (status, errorMessage, chatModel) in
+            updateMessageAndSendTime(message: message!)
+
+            WebService.shared.applyLeaveChat(message: chatMessage, reason: reson, document: document, start: start, reasonText: reasonText) { (status, errorMessage, chatModel) in
+                
+                if self.start == "1" {
+                    self.start = "0"
+                }
                 DispatchQueue.main.sync {
                     self.sendButton.isEnabled = true
                     self.stopActivity()
@@ -100,12 +128,18 @@ class ApplyLeaveViewController: UIViewController{
 
                 if status{
                     if chatModel?.message == "continue"{
+                         DispatchQueue.main.sync {
+                        self.updateFooterViewBasedOn(chatModal: chatModel!)
+                        }
                         self.chatArray.append(chatModel!)
                         DispatchQueue.main.sync {
+                            if message?.range(of: "Show my Leave Balance") != nil {
+                                 self.leaveBalanceFlag = true
+                            }
                             self.chatTableView.reloadData()
                             self.scrollToBottom()
                         }
-                        if let question = chatModel?.data?.question {
+                        if let question = chatModel?.data?.query {
                             self.speakText(message: question)
                         }
                         
@@ -128,7 +162,77 @@ class ApplyLeaveViewController: UIViewController{
             debugPrint("no message")
         }
     }
-    
+    func updateFooterViewBasedOn(chatModal:LeaveChatModal) {
+        if chatModal.data?.doc_flag! == "1"{
+            self.document = "1"
+            self.reson = "0"
+            removeMessageViewAddDocumentView()
+        }
+        else if chatModal.data?.type_flag! == "1"{
+            removeMessageViewAddLeaveTypeView()
+        }
+        else if chatModal.data?.reason_flag! == "1"{
+            removeLeaveTypeViewAddMessageView()
+            self.document = "0"
+            self.reson = "1"
+        }
+    }
+    func updateMessageAndSendTime(message:String) {
+        if messageArray.count == 1 && messageArray[0].count == 0 {
+            messageArray.removeAll()
+            messageArray = []
+            self.messageArray.append(message)
+            chatMessage = message
+        }
+        else{
+            self.messageArray.append(message)
+            for i in 0 ..< messageArray.count{
+
+                chatMessage.append(messageArray[i])
+                chatMessage.append(" ")
+            }
+        }
+        
+        var chat = chatArray[chatArray.count - 1]
+        chat.sendDate = Date()
+        chatArray[chatArray.count - 1] = chat
+        self.chatTableView.reloadData()
+        
+    }
+//    func updateChat(chat:LeaveChatModal) {
+//        let lastChatObj = self.chatArray[self.chatArray.count - 1]
+//        lastChatObj
+//
+//    }
+    let jsonString = """
+{
+    "data": {
+        "final_flag": 0,
+        "query": "Hi, Im Leevo, I will help you apply for a leave. Do you wish to check your leave balance before we start?",
+        "Sentence": null,
+        "Leave": null,
+        "type": "not specified",
+        "Date": null,
+        "from_date": "",
+        "end_date": "",
+        "date_flag": "0",
+        "type_flag": "0",
+        "reason_flag": "0",
+        "doc_flag": "0"
+    },
+    "message": "",
+    "flag": true
+}
+"""
+    func sayIntroMessage() -> String {
+        let jsonData = jsonString.data(using: .utf8)!
+        let initialChat = try! JSONDecoder().decode(LeaveChatModal.self, from: jsonData)
+        print(initialChat.data?.query!)
+        self.chatArray.append(initialChat)
+        self.chatTableView.reloadData()
+        
+        return (initialChat.data?.query!)!
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -163,20 +267,8 @@ class ApplyLeaveViewController: UIViewController{
             if isRecording {
                 self.recordButton.sendActions(for: .touchUpInside)
             }
-            
-            messageArray.append(message)
-            if chatArray.count != 0 {
-                
-                for i in 0 ..< messageArray.count{
-                    chatMessage.append(" ")
-                    chatMessage.append(messageArray[i])
-                }
-//                chatMessage.append(chatMessage)
-            }else{
-                chatMessage = message
-            }
-            debugPrint("Chat Message : =========== ",chatMessage)
-            self.sendMessage(message: chatMessage)
+            debugPrint("Chat Message : =========== ",message)
+            self.sendMessage(message: message)
             self.sendButton.isEnabled = false
         }else{
             debugPrint("enter a message a to send")
@@ -198,7 +290,54 @@ class ApplyLeaveViewController: UIViewController{
             recordButton.tintColor = UIColor.red
         }
     }
-    
+    @IBAction func onLeaveBalance() {
+        print("onLeaveBalance")
+        let message = "Show my Leave Balance"
+        
+        self.sendMessage(message: message)
+        removeOptionsViewAddMessageView()
+    }
+    @IBAction func onNoThanks() {
+        print("onNoThanks")
+        let message = "No thanks, Im good"
+        
+        self.sendMessage(message: message)
+        removeOptionsViewAddMessageView()
+    }
+    @IBAction func onSelectLeaveType() {
+        print("onSelectLeaveType")
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let controller:LeaveTypePickerViewController = storyboard.instantiateViewController(withIdentifier: "LeaveTypePickerViewController") as! LeaveTypePickerViewController
+        controller.delegate = self
+        self.present(controller, animated: true, completion: nil)
+    }
+    @IBAction func onAttach() {
+        print("onAttach")
+    }
+    @IBAction func onCamera() {
+        print("onCamera")
+    }
+    func removeOptionsViewAddMessageView() {
+        self.optionsView.removeFromSuperview()
+        self.footerContinerView.addSubview(self.chatVoiceAndTextView)
+        self.chatVoiceAndTextView.bindFrameToSuperviewBounds()
+    }
+    func removeMessageViewAddLeaveTypeView() {
+        self.chatVoiceAndTextView.removeFromSuperview()
+        self.footerContinerView.addSubview(self.selectLeaveTypeView)
+        self.selectLeaveTypeView.bindFrameToSuperviewBounds()
+    }
+    func removeLeaveTypeViewAddMessageView() {
+        self.selectLeaveTypeView.removeFromSuperview()
+        self.footerContinerView.subviews.forEach({ $0.removeFromSuperview() })
+        self.footerContinerView.addSubview(self.chatVoiceAndTextView)
+        self.chatVoiceAndTextView.bindFrameToSuperviewBounds()
+    }
+    func removeMessageViewAddDocumentView() {
+        self.chatVoiceAndTextView.removeFromSuperview()
+        self.footerContinerView.addSubview(self.documentView)
+        self.documentView.bindFrameToSuperviewBounds()
+    }
 }
 //MARK:- extension
 extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, SFSpeechRecognizerDelegate, UITextViewDelegate {
@@ -220,13 +359,13 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
             let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
             if endFrameY >= UIScreen.main.bounds.size.height {
-                self.keyboardHeightLayoutConstraint?.constant = 20.0
-                self.sendButtonboardHeightLayoutConstraint?.constant = 20.0
-                self.voiceButtonboardHeightLayoutConstraint?.constant = 20.0
+                self.textViewConstraint?.constant = 20.0
+                self.sendButtonConstraint?.constant = 20.0
+                self.micButtonConstraint?.constant = 20.0
             } else {
-                self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 20.0
-                self.sendButtonboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 20.0
-                self.voiceButtonboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 20.0
+                self.textViewConstraint?.constant = endFrame?.size.height ?? 20.0
+                self.sendButtonConstraint?.constant = endFrame?.size.height ?? 20.0
+                self.micButtonConstraint?.constant = endFrame?.size.height ?? 20.0
             }
             UIView.animate(withDuration: duration,
                            delay: TimeInterval(0),
@@ -254,14 +393,19 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:LeaveChatTableviewCell = tableView.dequeueReusableCell(withIdentifier: "LeaveChatTableviewCell", for: indexPath) as! LeaveChatTableviewCell
-        if chatArray.count != 0{
-            cell.setChatForIndex(chat: self.chatArray[indexPath.row],message:messageArray[indexPath.row])
-            if (self.chatArray.count - 1) == indexPath.row {
-                cell.loadingImage.isHidden = true//false
+        if chatArray.count != 0 {
+            var sendMessage:String! = ""
+            if messageArray.count > indexPath.row
+            {
+                sendMessage = messageArray[indexPath.row]
             }
-            else{
-                cell.loadingImage.isHidden = true
+            cell.setChatForIndex(chat: self.chatArray[indexPath.row],message:sendMessage)
+            if leaveBalanceFlag && indexPath.row == 1 && messageArray[0] == "Show my Leave Balance" {
+//                leaveBalanceFlag = false
+                let leaveBalanceMessage = "Medical Leaves       10/12\nAnnual Leaves      8/12\nCompensatory Off        5/12\nChild Care Leave      10/12\n\n"
+                cell.messageReceiveLabel.text = leaveBalanceMessage + cell.messageReceiveLabel.text!
             }
+            
         }
         return cell
     }
@@ -391,5 +535,30 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     @objc func sendAction() {
         self.sendButton.sendActions(for: .touchUpInside)
     }
+    //leavetype picker delegate methords
+    func didSelectLeaveType(leaveatype:String,total:Int,taken:Int){
+        print(leaveatype,total,taken)
+        self.sendMessage(message: leaveatype)
+    }
+    func cancelledLeavePicker(){
+        print("cancelled picker")
+    }
+}
+extension UIView {
     
+    /// Adds constraints to this `UIView` instances `superview` object to make sure this always has the same size as the superview.
+    /// Please note that this has no effect if its `superview` is `nil` – add this `UIView` instance as a subview before calling this.
+    func bindFrameToSuperviewBounds() {
+        guard let superview = self.superview else {
+            print("Error! `superview` was nil – call `addSubview(view: UIView)` before calling `bindFrameToSuperviewBounds()` to fix this.")
+            return
+        }
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.topAnchor.constraint(equalTo: superview.topAnchor, constant: 0).isActive = true
+        self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0).isActive = true
+        self.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 0).isActive = true
+        self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 0).isActive = true
+        
+    }
 }

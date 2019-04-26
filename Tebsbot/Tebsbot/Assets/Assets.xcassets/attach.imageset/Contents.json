@@ -2,25 +2,22 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "microphone.png",
+      "filename" : "clip.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "microphone_2.png",
+      "filename" : "clip_2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "microphone_3.png",
+      "filename" : "clip_3.png",
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

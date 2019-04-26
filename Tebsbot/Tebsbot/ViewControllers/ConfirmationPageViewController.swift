@@ -132,7 +132,7 @@ let dayArray = string.split(separator: "-")
         sender.isEnabled = false
         self.activityIndicator("Confirming...")
         if leaveConfirm?.data != nil {
-            WebService.shared.confirmLeave(parameter: leaveConfirm?.data , completionBlock: { (success, errorMessage, successMessage) in
+            WebService.shared.confirmLeave(parameter: leaveConfirm , completionBlock: { (success, errorMessage, successMessage) in
                 sender.isEnabled = true
                 if success{
                     DispatchQueue.main.sync {

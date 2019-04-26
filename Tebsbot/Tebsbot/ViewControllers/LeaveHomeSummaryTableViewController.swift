@@ -164,11 +164,14 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
     
     @IBAction func botAction(_ sender: Any) {
         print("Bot action")
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "ApplyLeaveViewController")
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     //leavetype picker delegate methords
-    func didSelectLeaveType(leaveatype:String){
-        print(leaveatype)
+    func didSelectLeaveType(leaveatype:String,total:Int,taken:Int){
+        print("type ",leaveatype,"max - ",total,"tacken - ",taken)
     }
     func cancelledLeavePicker(){
         print("cancelled picker")
@@ -178,5 +181,36 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
     }
     @objc func onMenuAction() {
         print("onMenuAction")
+    }
+}
+@IBDesignable extension UIButton {
+    
+    @IBInspectable var borderWidth: CGFloat {
+        set {
+            layer.borderWidth = newValue
+        }
+        get {
+            return layer.borderWidth
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        set {
+            layer.cornerRadius = newValue
+        }
+        get {
+            return layer.cornerRadius
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor? {
+        set {
+            guard let uiColor = newValue else { return }
+            layer.borderColor = uiColor.cgColor
+        }
+        get {
+            guard let color = layer.borderColor else { return nil }
+            return UIColor(cgColor: color)
+        }
     }
 }
