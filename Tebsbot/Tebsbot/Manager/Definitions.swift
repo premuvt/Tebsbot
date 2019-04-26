@@ -8,7 +8,7 @@
 
 import Foundation
 
-//let BASE_URL:String                     = "https://tebsbot.uvionicstech.com/teBSbot/"
+//let BASE_URL:String                     = "https://tebsbot.uvionicstech.com/teBS-botver03/"
 let BASE_URL:String                     = "http://192.168.0.44:8082/"
 let USER_MESSAGE:String                 = "user/message"
 let CONFIRM_LEAVE:String                = "user/confirm-leave"

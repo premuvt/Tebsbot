@@ -38,12 +38,14 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     var isRecording = false
     var synth:AVSpeechSynthesizer = AVSpeechSynthesizer()
     var start:String = "1"
-    var reson:String = "0"
+    var reason:String = "0"
     var document:String = "0"
     var reasonText:String = ""
     
-    
-    
+    var imagePicker = UIImagePickerController()
+    var selectedImage: UIImage? = nil
+    var fileName:String? = ""
+    var alert : UIAlertController?
     
 //    let messageFrame = UIView()
     var activityIndicator = UIActivityIndicatorView()
@@ -68,6 +70,9 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
         
         self.chatTableView.rowHeight = UITableView.automaticDimension
         self.chatTableView.estimatedRowHeight = 200.0
+        
+        imagePicker.modalPresentationStyle = UIModalPresentationStyle.currentContext
+        imagePicker.delegate = self
 
 //        print("laguage code - ",Locale.current.languageCode!)
 //        print("reagin local - ", NSLocale.current.identifier)
@@ -114,8 +119,13 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
             debugPrint("message : ========= ",message!)
             self.activityIndicator("Sending...")
             updateMessageAndSendTime(message: message!)
-
-            WebService.shared.applyLeaveChat(message: chatMessage, reason: reson, document: document, start: start, reasonText: reasonText) { (status, errorMessage, chatModel) in
+            if reason == "1" {
+                reasonText = message!
+            }
+            else{
+                reasonText = ""
+            }
+            WebService.shared.applyLeaveChat(message: chatMessage, reason: reason, document: document, start: start, reasonText: reasonText) { (status, errorMessage, chatModel) in
                 
                 if self.start == "1" {
                     self.start = "0"
@@ -147,10 +157,11 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
                         debugPrint("move to next page")
                         DispatchQueue.main.sync {
                             self.chatArray.append(chatModel!)
-                            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                            let confirmatioCcontroller = storyboard.instantiateViewController(withIdentifier: "ConfirmationPageViewController") as! ConfirmationPageViewController
-                            confirmatioCcontroller.leaveConfirm = self.chatArray.last
-                            self.navigationController?.pushViewController(confirmatioCcontroller, animated: true)
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller:LeaveApplicationViewController = storyboard.instantiateViewController(withIdentifier: "LeaveApplicationViewController") as! LeaveApplicationViewController
+                            controller.selectedImage = self.selectedImage
+                            let navigationController =  UINavigationController(rootViewController: controller)
+                            self.present(navigationController, animated: true, completion: nil)
                         }
                         
                     }
@@ -165,7 +176,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     func updateFooterViewBasedOn(chatModal:LeaveChatModal) {
         if chatModal.data?.doc_flag! == "1"{
             self.document = "1"
-            self.reson = "0"
+            self.reason = "0"
             removeMessageViewAddDocumentView()
         }
         else if chatModal.data?.type_flag! == "1"{
@@ -174,7 +185,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
         else if chatModal.data?.reason_flag! == "1"{
             removeLeaveTypeViewAddMessageView()
             self.document = "0"
-            self.reson = "1"
+            self.reason = "1"
         }
     }
     func updateMessageAndSendTime(message:String) {
@@ -313,9 +324,11 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     }
     @IBAction func onAttach() {
         print("onAttach")
+        self.openGallery()
     }
     @IBAction func onCamera() {
         print("onCamera")
+        self.openCamera()
     }
     func removeOptionsViewAddMessageView() {
         self.optionsView.removeFromSuperview()
@@ -338,9 +351,58 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
         self.footerContinerView.addSubview(self.documentView)
         self.documentView.bindFrameToSuperviewBounds()
     }
+    
+    
 }
 //MARK:- extension
-extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, SFSpeechRecognizerDelegate, UITextViewDelegate {
+extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, SFSpeechRecognizerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        imagePicker.dismiss(animated: true, completion: nil)
+        self.sendMessage(message: "file")
+        self.chatTableView.reloadData()
+        //        self.buttonupload.isUserInteractionEnabled = true
+        //        self.buttonupload.isEnabled = true
+        if imagePicker.sourceType != .camera{
+            let imageURL = info[UIImagePickerController.InfoKey.referenceURL] as! NSURL
+            
+            self.fileName = imageURL.absoluteString
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func openCamera(){
+        self.alert!.dismiss(animated: true, completion: nil)
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            imagePicker.sourceType = .camera
+            self.present(imagePicker, animated: true, completion: nil)
+        } else {
+            let alertWarning = UIAlertController(title: "TebsBot", message: "You don't have camera", preferredStyle: .alert)//UIAlertView(title:"Warning", message: "You don't have camera", delegate:nil, cancelButtonTitle:"OK", otherButtonTitles:"")
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+            {
+                UIAlertAction in
+                self.dismiss(animated: false, completion: nil)
+                
+            }
+            alertWarning.addAction(cancelAction)
+            self.present(alertWarning, animated: true, completion: nil)
+        }
+    }
+    func openGallery(){
+        self.alert?.dismiss(animated: true, completion: nil)
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func dismissAlert() {
+        self.alert!.dismiss(animated: false, completion: nil)
+    }
+    
     
     //MARK:- textview returnkey
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -393,6 +455,23 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:LeaveChatTableviewCell = tableView.dequeueReusableCell(withIdentifier: "LeaveChatTableviewCell", for: indexPath) as! LeaveChatTableviewCell
+        if document == "1" && indexPath.row == (chatArray.count - 1)
+        {
+            let chat = self.chatArray[indexPath.row]
+            
+            let imageCell:LeaveChatImageCell = tableView.dequeueReusableCell(withIdentifier: "LeaveChatImageCell", for: indexPath) as! LeaveChatImageCell
+            if selectedImage != nil {
+                imageCell.docImage.isHidden = false
+                imageCell.docImage.image = selectedImage
+            }
+            else{
+                imageCell.docImage.isHidden = true
+            }
+            
+            imageCell.receivedMessageLabel.text = chat.data?.query
+            imageCell.receivedTimeLabel.text = self.setTime(curDate: chat.receivedDate)
+            return imageCell
+        }
         if chatArray.count != 0 {
             var sendMessage:String! = ""
             if messageArray.count > indexPath.row
@@ -409,7 +488,15 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
         }
         return cell
     }
-    
+    func setTime(curDate:Date) -> String{
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date / server String
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let myString = formatter.string(from: curDate)
+        return myString// string
+    }
+        
     //MARK:- text to speech
     func speakText(message:String) {
         let utterance = AVSpeechUtterance(string: message)

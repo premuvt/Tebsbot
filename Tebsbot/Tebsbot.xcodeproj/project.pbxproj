@@ -18,6 +18,7 @@
 		68BB24032260AF01006F2BF4 /* LeaveConfirmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB24022260AF00006F2BF4 /* LeaveConfirmModel.swift */; };
 		68BB245722685B10006F2BF4 /* LeaveHomeSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB245622685B10006F2BF4 /* LeaveHomeSummaryTableViewController.swift */; };
 		68BB245922685CC3006F2BF4 /* LeaveSummaryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB245822685CC3006F2BF4 /* LeaveSummaryHeaderCell.swift */; };
+		68CD25FB22733C06008275CB /* LeaveChatImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD25FA22733C06008275CB /* LeaveChatImageCell.swift */; };
 		68CDEA3222703620006347AA /* MyCalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CDEA3122703620006347AA /* MyCalenderCell.swift */; };
 		68CDEA34227042BA006347AA /* LeaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CDEA33227042BA006347AA /* LeaveCell.swift */; };
 		68CDEA3622704864006347AA /* MyLeaveListModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CDEA3522704864006347AA /* MyLeaveListModal.swift */; };
@@ -58,6 +59,7 @@
 		68BB24022260AF00006F2BF4 /* LeaveConfirmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveConfirmModel.swift; sourceTree = "<group>"; };
 		68BB245622685B10006F2BF4 /* LeaveHomeSummaryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveHomeSummaryTableViewController.swift; sourceTree = "<group>"; };
 		68BB245822685CC3006F2BF4 /* LeaveSummaryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveSummaryHeaderCell.swift; sourceTree = "<group>"; };
+		68CD25FA22733C06008275CB /* LeaveChatImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveChatImageCell.swift; sourceTree = "<group>"; };
 		68CDEA3122703620006347AA /* MyCalenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCalenderCell.swift; sourceTree = "<group>"; };
 		68CDEA33227042BA006347AA /* LeaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveCell.swift; sourceTree = "<group>"; };
 		68CDEA3522704864006347AA /* MyLeaveListModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLeaveListModal.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				68BB245822685CC3006F2BF4 /* LeaveSummaryHeaderCell.swift */,
 				68CDEA3122703620006347AA /* MyCalenderCell.swift */,
 				68CDEA33227042BA006347AA /* LeaveCell.swift */,
+				68CD25FA22733C06008275CB /* LeaveChatImageCell.swift */,
 			);
 			name = TableViewCell;
 			path = ViewControllers;
@@ -357,7 +360,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/CalendarDateRangePickerViewController/CalendarDateRangePickerViewController.framework",
@@ -372,7 +375,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tebsbot/Pods-Tebsbot-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -392,6 +395,7 @@
 				6831C9DD22718E840064D536 /* LeaveTypePickerViewController.swift in Sources */,
 				68BB24032260AF01006F2BF4 /* LeaveConfirmModel.swift in Sources */,
 				68A69F292256AADD00EEB71E /* LeaveChatTableviewCell.swift in Sources */,
+				68CD25FB22733C06008275CB /* LeaveChatImageCell.swift in Sources */,
 				68E78BF2225664EF00BFD976 /* ViewController.swift in Sources */,
 				73BABC9D22588CDA001A6149 /* ClaimConfirmationPageViewController.swift in Sources */,
 				68E78C042256700A00BFD976 /* HomeViewcontroller.swift in Sources */,

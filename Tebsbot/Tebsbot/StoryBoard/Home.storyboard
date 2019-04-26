@@ -939,15 +939,15 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="430"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeaveChatTableviewCell" rowHeight="160" id="00L-MW-Qjw" customClass="LeaveChatTableviewCell" customModule="Tebsbot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="160"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeaveChatTableviewCell" rowHeight="196" id="00L-MW-Qjw" customClass="LeaveChatTableviewCell" customModule="Tebsbot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="196"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="00L-MW-Qjw" id="88Z-D0-Gkv">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLZ-s1-R64">
-                                                    <rect key="frame" x="15" y="55" width="290" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLZ-s1-R64">
+                                                    <rect key="frame" x="15" y="86" width="290" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="iN3-zO-NEd"/>
                                                     </constraints>
@@ -955,8 +955,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" ambiguous="YES" text="Label" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V7r-Hm-b1f" customClass="PaddingLabel" customModule="Tebsbot" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="11" width="35.5" height="36"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" text="Label" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V7r-Hm-b1f" customClass="PaddingLabel" customModule="Tebsbot" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="41" width="55.5" height="37"/>
                                                     <color key="backgroundColor" red="0.15294117647058825" green="0.2196078431372549" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="ii7-ax-JTJ"/>
@@ -965,8 +965,8 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" ambiguous="YES" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhw-3g-vQq" customClass="PaddingLabel" customModule="Tebsbot" customModuleProvider="target">
-                                                    <rect key="frame" x="269.5" y="79" width="35.5" height="38"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhw-3g-vQq" customClass="PaddingLabel" customModule="Tebsbot" customModuleProvider="target">
+                                                    <rect key="frame" x="249.5" y="110" width="55.5" height="43"/>
                                                     <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="OXf-zZ-u5K"/>
@@ -977,7 +977,7 @@
                                                     <color key="shadowColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5C-xe-1FC">
-                                                    <rect key="frame" x="15" y="125" width="290" height="16"/>
+                                                    <rect key="frame" x="15" y="161" width="290" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="edL-N3-NwQ"/>
                                                     </constraints>
@@ -985,11 +985,19 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatBot" translatesAutoresizingMaskIntoConstraints="NO" id="xYZ-Ou-udx">
+                                                    <rect key="frame" x="15" y="11" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="0tI-xO-Fck"/>
+                                                        <constraint firstAttribute="height" constant="25" id="IBl-4f-hLO"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="nhw-3g-vQq" firstAttribute="top" secondItem="ZLZ-s1-R64" secondAttribute="bottom" constant="8" id="19U-24-ePw"/>
-                                                <constraint firstItem="V7r-Hm-b1f" firstAttribute="top" secondItem="88Z-D0-Gkv" secondAttribute="topMargin" id="1xU-B4-mKO"/>
+                                                <constraint firstItem="V7r-Hm-b1f" firstAttribute="top" secondItem="88Z-D0-Gkv" secondAttribute="topMargin" constant="30" id="1xU-B4-mKO"/>
                                                 <constraint firstItem="V7r-Hm-b1f" firstAttribute="leading" secondItem="88Z-D0-Gkv" secondAttribute="leadingMargin" id="5hc-Bg-teQ"/>
+                                                <constraint firstItem="xYZ-Ou-udx" firstAttribute="leading" secondItem="88Z-D0-Gkv" secondAttribute="leadingMargin" id="7g2-2s-OEp"/>
                                                 <constraint firstItem="d5C-xe-1FC" firstAttribute="top" secondItem="nhw-3g-vQq" secondAttribute="bottom" constant="8" id="C3x-9J-jNe"/>
                                                 <constraint firstItem="ZLZ-s1-R64" firstAttribute="leading" secondItem="88Z-D0-Gkv" secondAttribute="leadingMargin" id="JeK-fo-jtQ"/>
                                                 <constraint firstItem="ZLZ-s1-R64" firstAttribute="top" secondItem="V7r-Hm-b1f" secondAttribute="bottom" constant="8" id="JvD-rl-4Xp"/>
@@ -999,6 +1007,7 @@
                                                 <constraint firstItem="d5C-xe-1FC" firstAttribute="leading" secondItem="88Z-D0-Gkv" secondAttribute="leadingMargin" id="Vif-WM-ImX"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="d5C-xe-1FC" secondAttribute="bottom" constant="8" id="WY3-ax-kCz"/>
                                                 <constraint firstItem="nhw-3g-vQq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="88Z-D0-Gkv" secondAttribute="leadingMargin" constant="20" id="cLL-yA-YAi"/>
+                                                <constraint firstItem="xYZ-Ou-udx" firstAttribute="top" secondItem="88Z-D0-Gkv" secondAttribute="topMargin" id="eYV-Ls-l1F"/>
                                                 <constraint firstItem="ZLZ-s1-R64" firstAttribute="trailing" secondItem="88Z-D0-Gkv" secondAttribute="trailingMargin" id="lOF-x7-mGc"/>
                                                 <constraint firstItem="V7r-Hm-b1f" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="88Z-D0-Gkv" secondAttribute="trailingMargin" constant="-20" id="nxH-IQ-JDc"/>
                                             </constraints>
@@ -1008,6 +1017,67 @@
                                             <outlet property="messageSendLable" destination="nhw-3g-vQq" id="fFr-uz-M3y"/>
                                             <outlet property="timeLabelReceiv" destination="ZLZ-s1-R64" id="ssR-bl-gYy"/>
                                             <outlet property="timeLabelSend" destination="d5C-xe-1FC" id="QD3-EZ-9S0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeaveChatImageCell" rowHeight="206" id="U2x-BK-ipA" customClass="LeaveChatImageCell" customModule="Tebsbot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="224" width="320" height="206"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U2x-BK-ipA" id="wFy-hN-TKQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcL-Ya-UAF">
+                                                    <rect key="frame" x="15" y="89" width="290" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="4av-vd-n21"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" text="Label" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qTy-cC-IN9" customClass="PaddingLabel" customModule="Tebsbot" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="44" width="55.5" height="37"/>
+                                                    <color key="backgroundColor" red="0.1529411765" green="0.21960784310000001" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="HrX-8m-6Xg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wcv-2d-DhU">
+                                                    <rect key="frame" x="196" y="110" width="109" height="109"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="109" id="BK0-HU-qBN"/>
+                                                        <constraint firstAttribute="width" constant="109" id="x4H-Rx-iqF"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatBot" translatesAutoresizingMaskIntoConstraints="NO" id="YQs-R4-xLH">
+                                                    <rect key="frame" x="15" y="11" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="5nE-WT-QyF"/>
+                                                        <constraint firstAttribute="height" constant="25" id="aaE-WV-nEa"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qTy-cC-IN9" firstAttribute="top" secondItem="wFy-hN-TKQ" secondAttribute="topMargin" constant="33" id="14C-jY-1Ii"/>
+                                                <constraint firstItem="gcL-Ya-UAF" firstAttribute="leading" secondItem="wFy-hN-TKQ" secondAttribute="leadingMargin" id="MCe-sb-FWs"/>
+                                                <constraint firstItem="wcv-2d-DhU" firstAttribute="top" secondItem="gcL-Ya-UAF" secondAttribute="bottom" constant="5" id="R2D-ik-uKz"/>
+                                                <constraint firstItem="wcv-2d-DhU" firstAttribute="trailing" secondItem="wFy-hN-TKQ" secondAttribute="trailingMargin" id="SxK-NW-LDy"/>
+                                                <constraint firstItem="qTy-cC-IN9" firstAttribute="leading" secondItem="wFy-hN-TKQ" secondAttribute="leadingMargin" id="Wf7-uy-aWW"/>
+                                                <constraint firstItem="wcv-2d-DhU" firstAttribute="bottom" secondItem="wFy-hN-TKQ" secondAttribute="bottomMargin" id="coa-26-Wfm"/>
+                                                <constraint firstItem="qTy-cC-IN9" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="wFy-hN-TKQ" secondAttribute="trailingMargin" constant="-20" id="eqU-Rx-Bdj"/>
+                                                <constraint firstItem="YQs-R4-xLH" firstAttribute="top" secondItem="wFy-hN-TKQ" secondAttribute="top" constant="11" id="loa-Bv-hxI"/>
+                                                <constraint firstItem="YQs-R4-xLH" firstAttribute="leading" secondItem="wFy-hN-TKQ" secondAttribute="leading" constant="15" id="nWY-iS-UCM"/>
+                                                <constraint firstItem="gcL-Ya-UAF" firstAttribute="trailing" secondItem="wFy-hN-TKQ" secondAttribute="trailingMargin" id="sv0-LT-E0Z"/>
+                                                <constraint firstItem="gcL-Ya-UAF" firstAttribute="top" secondItem="qTy-cC-IN9" secondAttribute="bottom" constant="8" id="us6-8a-QjB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="docImage" destination="wcv-2d-DhU" id="uTE-Cj-FnA"/>
+                                            <outlet property="receivedMessageLabel" destination="qTy-cC-IN9" id="WYZ-QA-PyW"/>
+                                            <outlet property="receivedTimeLabel" destination="gcL-Ya-UAF" id="AEz-UU-9W3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1633,6 +1703,7 @@ your account soon !</string>
         <image name="bot" width="111" height="110"/>
         <image name="calendar" width="24" height="24"/>
         <image name="camera" width="32" height="26"/>
+        <image name="chatBot" width="50" height="44"/>
         <image name="claim-icon" width="48" height="48"/>
         <image name="leave-icon" width="42" height="48"/>
         <image name="leave_status" width="248" height="238"/>

@@ -52,7 +52,7 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 2
+            return 1
         case 1:
             if let leaveCount = myLeaves?.data?.count {
                 return leaveCount
