@@ -14,6 +14,16 @@ let USER_MESSAGE:String                 = "user/message"
 let CONFIRM_LEAVE:String                = "user/confirm-leave"
 let FILE_UPLOAD:String                  = "user/file/text"
 let CONFIRM_CLAIM:String                = "user/confirm-claim"
-let LEAVE_LIST:String                = "user/leave/list/"
+let LEAVE_LIST:String                   = "user/leave/list/"
+
+// new
+
+let LEAVE_UPLOAD:String                 = "user/leave"
 
 let DEFAULT_TEXT: String                = "Select Dates"
+
+
+//validationMessages
+let NO_REASON : String                  = "Please select reason"
+let NO_DATERANGESELECTED : String       = "No date range is selected. Select leave date that you are applying for."
+

@@ -11,7 +11,15 @@ extension Date{
     func setTimeFormat() -> String{
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "dd-MM-yy"
+        
+        let myString = formatter.string(from: self)
+        return myString// string
+    }
+    func setTimeFormatwithYear() -> String{
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date / server String
+        formatter.dateFormat = "dd-MM-yyyy"
         
         let myString = formatter.string(from: self)
         return myString// string
