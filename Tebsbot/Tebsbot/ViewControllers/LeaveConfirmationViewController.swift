@@ -21,8 +21,7 @@ class LeaveConfirmationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.speakText(message: "Your leave has been applied. Thank you.")
-        self.buttonOk.layer.cornerRadius = self.buttonOk.frame.height / 2
-        self.buttonOk.layer.masksToBounds = true
+
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -37,11 +36,17 @@ class LeaveConfirmationViewController: UIViewController {
         let imageView = UIImageView(image:logo)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
+        self.buttonOk.layer.cornerRadius = self.buttonOk.frame.height / 2
+        self.buttonOk.layer.masksToBounds = true
         
     }
     
     @IBAction func buttonOKClicked(sender:UIButton){
-        self.navigationController?.popToRootViewController(animated: true)
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "LeaveHomeSummaryNavigationViewController")
+               (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = controller
+        self.present(controller, animated: false, completion: nil)
+ 
         
     }
     

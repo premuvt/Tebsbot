@@ -762,10 +762,9 @@ Medical Prescription</string>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4R-ix-bKf">
-                                <rect key="frame" x="120" y="280" width="80" height="40"/>
+                                <rect key="frame" x="60" y="280" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.29803921568627451" green="0.50196078431372548" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="8T8-0d-Cxm"/>
                                     <constraint firstAttribute="height" constant="40" id="edO-yi-fzm"/>
                                 </constraints>
                                 <state key="normal" title="OK">
@@ -785,6 +784,8 @@ Medical Prescription</string>
                             <constraint firstItem="Py5-QN-Bhf" firstAttribute="centerX" secondItem="g68-pW-HD0" secondAttribute="centerX" id="Qyn-4U-UfN"/>
                             <constraint firstItem="Py5-QN-Bhf" firstAttribute="leading" secondItem="Old-GV-e6J" secondAttribute="leading" constant="10" id="cPx-Hf-Qgu"/>
                             <constraint firstItem="J4R-ix-bKf" firstAttribute="centerX" secondItem="g68-pW-HD0" secondAttribute="centerX" id="haL-eL-xX1"/>
+                            <constraint firstItem="J4R-ix-bKf" firstAttribute="leading" secondItem="Old-GV-e6J" secondAttribute="leading" constant="60" id="iyZ-WY-1EK"/>
+                            <constraint firstItem="Old-GV-e6J" firstAttribute="trailing" secondItem="J4R-ix-bKf" secondAttribute="trailing" constant="60" id="sfv-Ha-EF1"/>
                             <constraint firstItem="xOA-mX-4YQ" firstAttribute="centerX" secondItem="g68-pW-HD0" secondAttribute="centerX" id="vB2-7j-loR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Old-GV-e6J"/>
