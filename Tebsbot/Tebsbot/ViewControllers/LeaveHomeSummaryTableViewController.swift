@@ -42,6 +42,8 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
         self.tableView.dataSource = self
         getLeavelist()
         setupFooter()
+        setNavigationButtons()
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,6 +133,27 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
         self.botButton.layer.cornerRadius = self.botButton.frame.height/2
         
     }
+    func setNavigationButtons() {
+        //left navigation item
+        let button = UIButton(type: UIButton.ButtonType.custom)
+        button.setImage(UIImage(named: "nav-logo"), for: .normal)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.leftBarButtonItems = [barButton]
+        
+        //right navigation items
+        let rigthbutton1 = UIButton(type: UIButton.ButtonType.custom)
+        rigthbutton1.setImage(UIImage(named: "bell"), for: .normal)
+        rigthbutton1.addTarget(self, action: #selector(onNotificationAction), for: .touchUpInside)
+        let rightbarButton1 = UIBarButtonItem(customView: rigthbutton1)
+        
+        let rigthbutton2 = UIButton(type: UIButton.ButtonType.custom)
+        rigthbutton2.setImage(UIImage(named: "menu"), for: .normal)
+        rigthbutton2.addTarget(self, action: #selector(onMenuAction), for: .touchUpInside)
+        let rightbarButton2 = UIBarButtonItem(customView: rigthbutton2)
+        let fixedSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        fixedSpace.width = 20.0
+        self.navigationItem.rightBarButtonItems = [rightbarButton2,fixedSpace,rightbarButton1]
+    }
     @IBAction func applyAction(_ sender: Any) {
         print("Apply action")
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
@@ -160,5 +183,11 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
     }
     func cancelledLeavePicker(){
         print("cancelled picker")
+    }
+    @objc func onNotificationAction() {
+        print("onNotificationAction")
+    }
+    @objc func onMenuAction() {
+        print("onMenuAction")
     }
 }
