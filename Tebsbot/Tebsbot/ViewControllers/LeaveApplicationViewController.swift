@@ -18,17 +18,30 @@ class LeaveApplicationViewController: UIViewController {
     var endDate: Date? = nil
     var fileName:String? = ""
     var imagePicker = UIImagePickerController()
-    var alert = UIAlertController(title: "Select", message: nil, preferredStyle: .actionSheet)
+    var alert : UIAlertController?
+    var defaultTextFieldText = DEFAULT_TEXT
+    var attributedText:NSAttributedString?
+    
+    @IBOutlet weak var buttonSubmit: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(cancelClicked))
-        //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(CalendarDateRangePickerViewController.didTapDone))
+        self.buttonSubmit.layer.cornerRadius = self.buttonSubmit.frame.height / 2
+        self.buttonSubmit.layer.masksToBounds = true
+        
         
     }
+    
+    // MARK:- Button Actions
+    
     @objc func cancelClicked(){
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
+    
     @objc func buttonAddClicked(sender:UIButton){
+        
+        alert = UIAlertController(title: "Select", message: nil, preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction(title: "Camera", style: .default)
         {
             UIAlertAction in
@@ -42,26 +55,25 @@ class LeaveApplicationViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         {
             UIAlertAction in
+            self.dismissAlert()
+            
         }
         
         // Add the actions
         imagePicker.modalPresentationStyle = UIModalPresentationStyle.currentContext
-        alert.addAction(cameraAction)
-        alert.addAction(gallaryAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-//        imagePicker.modalPresentationStyle = UIModalPresentationStyle.currentContext
-//        imagePicker.delegate = self
-//        self.present(imagePicker, animated: true, completion: nil)
-        
-//        imageSelected = true
-//        self.leaveTableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+        imagePicker.delegate = self
+        alert!.addAction(cameraAction)
+        alert!.addAction(gallaryAction)
+        alert!.addAction(cancelAction)
+        self.present(alert!, animated: true, completion: nil)
         debugPrint("add button tapped")
         
     }
     @objc func buttonDeleteTapped(sender:UIButton){
         imageSelected = false
+        selectedImage = nil
         self.leaveTableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+        
         debugPrint("delete tapped")
         
     }
@@ -77,6 +89,10 @@ class LeaveApplicationViewController: UIViewController {
     
 }
 
+
+
+// MARK:- UIImagePickerControllerDelegate
+
 extension LeaveApplicationViewController:UIImagePickerControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
@@ -85,9 +101,11 @@ extension LeaveApplicationViewController:UIImagePickerControllerDelegate{
         self.leaveTableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
 //        self.buttonupload.isUserInteractionEnabled = true
 //        self.buttonupload.isEnabled = true
+        if imagePicker.sourceType != .camera{
         let imageURL = info[UIImagePickerController.InfoKey.referenceURL] as! NSURL
         
         self.fileName = imageURL.absoluteString
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -96,24 +114,57 @@ extension LeaveApplicationViewController:UIImagePickerControllerDelegate{
     }
     
     func openCamera(){
-        alert.dismiss(animated: true, completion: nil)
+        self.alert!.dismiss(animated: true, completion: nil)
         if(UIImagePickerController .isSourceTypeAvailable(.camera)){
             imagePicker.sourceType = .camera
             self.present(imagePicker, animated: true, completion: nil)
         } else {
-            let alertWarning = UIAlertView(title:"Warning", message: "You don't have camera", delegate:nil, cancelButtonTitle:"OK", otherButtonTitles:"")
-            alertWarning.show()
+            let alertWarning = UIAlertController(title: "TebsBot", message: "You don't have camera", preferredStyle: .alert)//UIAlertView(title:"Warning", message: "You don't have camera", delegate:nil, cancelButtonTitle:"OK", otherButtonTitles:"")
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+            {
+                UIAlertAction in
+                self.dismiss(animated: false, completion: nil)
+                
+            }
+            alertWarning.addAction(cancelAction)
+            self.present(alertWarning, animated: true, completion: nil)
         }
     }
     func openGallery(){
-        alert.dismiss(animated: true, completion: nil)
+        self.alert?.dismiss(animated: true, completion: nil)
         imagePicker.sourceType = .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func dismissAlert() {
+        self.alert!.dismiss(animated: false, completion: nil)
     }
     
 }
 extension LeaveApplicationViewController:UINavigationControllerDelegate{
     
+}
+
+
+// MARK:- CalendarDateRangePickerViewControllerDelegate
+
+extension LeaveApplicationViewController: CalendarDateRangePickerViewControllerDelegate{
+    
+    func didTapCancel() {
+        debugPrint("Cancel Clicked")
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func didTapDoneWithDateRange(startDate: Date!, endDate: Date!) {
+        debugPrint("Start Date :",startDate!)
+        self.startDate =  startDate
+        debugPrint("End Date :",endDate!)
+        self.endDate =  endDate
+        self.navigationController?.dismiss(animated: false, completion: {
+            self.leaveTableView.reloadRows(at: [IndexPath(row: 3, section: 0)], with: .none)
+        })
+        
+    }
 }
 
 // MARK:- TableView Delegate and Datasource
@@ -144,21 +195,6 @@ extension LeaveApplicationViewController:UITableViewDelegate{
     }
 }
 
-extension LeaveApplicationViewController: CalendarDateRangePickerViewControllerDelegate{
-    
-    func didTapCancel() {
-        debugPrint("Cancel Clicked")
-        self.navigationController?.dismiss(animated: true, completion: nil)
-    }
-    
-    func didTapDoneWithDateRange(startDate: Date!, endDate: Date!) {
-        debugPrint("Start Date :",startDate!)
-        self.startDate =  startDate
-        debugPrint("End Date :",endDate!)
-        self.endDate =  endDate
-        self.navigationController?.dismiss(animated: true, completion: nil)
-    }
-}
 
 
 extension LeaveApplicationViewController: UITableViewDataSource{
@@ -188,6 +224,19 @@ extension LeaveApplicationViewController: UITableViewDataSource{
             cell = (tableView.dequeueReusableCell(withIdentifier: "Cell4", for: indexPath) as! LeaveApplicationCell)
             cell?.buttonCalender.addTarget(self, action: #selector(buttonCalendarClicked(sender:)), for: .touchUpInside)
             cell?.dateTextField.addTarget(self, action: #selector(buttonCalendarClicked(sender:)), for: .touchUpInside)
+            
+            if startDate != nil {
+                if endDate == startDate{
+                    defaultTextFieldText = (startDate?.setTimeFormat())!
+                }else{
+                    
+                    defaultTextFieldText = "\((self.startDate?.setTimeFormat())!)   to   \((self.endDate?.setTimeFormat())!)"
+                }
+            }else{
+                defaultTextFieldText = DEFAULT_TEXT
+            }
+            
+            cell?.dateTextField.attributedText = setAttributedText()
         case 4:
             cell = (tableView.dequeueReusableCell(withIdentifier: "Cell5", for: indexPath) as! LeaveApplicationCell)
         default:
@@ -196,7 +245,24 @@ extension LeaveApplicationViewController: UITableViewDataSource{
         return cell!
     }
     
-    
+    func setAttributedText() -> NSAttributedString{
+        let attributedString = NSMutableAttributedString(string: defaultTextFieldText)
+        let textLength = defaultTextFieldText.count
+        let firstAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor(red: 208.0 / 255.0, green: 211.0 / 255.0, blue: 222.0 / 255.0, alpha: 1),
+            .backgroundColor: UIColor.white]
+        let secondAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor(red: 85.0 / 255.0, green: 99.0 / 255.0, blue: 151.0 / 255.0, alpha: 1),
+            .backgroundColor: UIColor.white]
+        
+        attributedString.addAttributes(firstAttributes, range: NSRange(location: 0, length: 10))
+        if textLength > 11{
+            attributedString.addAttributes(secondAttributes, range: NSRange(location: 11, length: 6))
+            attributedString.addAttributes(firstAttributes, range: NSRange(location: textLength - 11, length: 10))
+        }
+        attributedText = attributedString
+        return attributedText!
+    }
 }
 
 

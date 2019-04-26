@@ -233,7 +233,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NaV-ev-baZ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NaV-ev-baZ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="350"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -248,7 +248,7 @@
                                                     <rect key="frame" x="15" y="35" width="290" height="9"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ql9-RD-hWk">
-                                                            <rect key="frame" x="0.0" y="0.0" width="215" height="9"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="9"/>
                                                             <color key="backgroundColor" red="0.23137254900000001" green="0.41176470590000003" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
                                                     </subviews>
@@ -414,16 +414,9 @@ Medical Prescription</string>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
-                                                        <fragment content=" to ">
+                                                        <fragment content=" to   ">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.33333333333333331" green="0.38823529411764707" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="19" name=".SFNSText"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                        <fragment content="  ">
-                                                            <attributes>
-                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <font key="NSFont" size="19" name=".SFNSText"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
@@ -439,7 +432,7 @@ Medical Prescription</string>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                            <real key="value" value="1"/>
+                                                            <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
                                                             <color key="value" white="0.59349136708904104" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -454,12 +447,23 @@ Medical Prescription</string>
                                                     </constraints>
                                                     <state key="normal" backgroundImage="calendar"/>
                                                 </button>
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0K5-mS-zjV">
+                                                    <rect key="frame" x="15" y="49.5" width="280" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" red="0.1176470588" green="0.13725490200000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="zah-Tp-xPI"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2Bs-Ye-VQQ" firstAttribute="centerY" secondItem="Nhx-zg-HPN" secondAttribute="centerY" id="2Li-Y4-Abu"/>
                                                 <constraint firstItem="5wb-Yg-fCw" firstAttribute="centerY" secondItem="Nhx-zg-HPN" secondAttribute="centerY" id="Obg-af-c1N"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="5wb-Yg-fCw" secondAttribute="trailing" constant="10" id="T1B-Ln-Hqw"/>
+                                                <constraint firstItem="0K5-mS-zjV" firstAttribute="top" secondItem="5wb-Yg-fCw" secondAttribute="bottom" constant="2" id="Ugv-7N-C5X"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="0K5-mS-zjV" secondAttribute="trailing" constant="10" id="acc-nn-DMz"/>
                                                 <constraint firstItem="2Bs-Ye-VQQ" firstAttribute="leading" secondItem="Nhx-zg-HPN" secondAttribute="leadingMargin" id="hex-yu-EHs"/>
+                                                <constraint firstItem="0K5-mS-zjV" firstAttribute="leading" secondItem="Nhx-zg-HPN" secondAttribute="leadingMargin" id="sdh-kF-l4T"/>
                                                 <constraint firstItem="5wb-Yg-fCw" firstAttribute="leading" secondItem="2Bs-Ye-VQQ" secondAttribute="trailing" id="vRy-dv-Vt7"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -476,7 +480,7 @@ Medical Prescription</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reason" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xJ-N3-5H4">
-                                                    <rect key="frame" x="15" y="11" width="290" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="304" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="u6e-II-RX3"/>
                                                     </constraints>
@@ -485,7 +489,7 @@ Medical Prescription</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eSa-eS-VJh">
-                                                    <rect key="frame" x="15" y="40" width="290" height="103"/>
+                                                    <rect key="frame" x="8" y="37" width="304" height="105.5"/>
                                                     <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -543,10 +547,10 @@ Medical Prescription</string>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="R1c-2u-Sa9" secondAttribute="trailing" id="0I8-Zo-Elk"/>
                                                         <constraint firstAttribute="height" constant="105" id="6dl-PR-YNg"/>
-                                                        <constraint firstAttribute="trailing" secondItem="VG0-CC-lhg" secondAttribute="trailing" constant="8" id="MdT-85-fJz"/>
+                                                        <constraint firstAttribute="trailing" secondItem="VG0-CC-lhg" secondAttribute="trailing" id="MdT-85-fJz"/>
                                                         <constraint firstAttribute="width" constant="105" id="Vgq-tm-Y3B"/>
                                                         <constraint firstItem="R1c-2u-Sa9" firstAttribute="top" secondItem="KyK-46-Dw3" secondAttribute="top" id="Yv1-HG-bEm"/>
-                                                        <constraint firstItem="VG0-CC-lhg" firstAttribute="top" secondItem="KyK-46-Dw3" secondAttribute="top" constant="8" id="n8K-TJ-7SD"/>
+                                                        <constraint firstItem="VG0-CC-lhg" firstAttribute="top" secondItem="KyK-46-Dw3" secondAttribute="top" id="n8K-TJ-7SD"/>
                                                         <constraint firstItem="R1c-2u-Sa9" firstAttribute="leading" secondItem="KyK-46-Dw3" secondAttribute="leading" id="tjR-3g-9oj"/>
                                                         <constraint firstAttribute="bottom" secondItem="R1c-2u-Sa9" secondAttribute="bottom" id="yjN-68-atP"/>
                                                     </constraints>
@@ -573,18 +577,44 @@ Medical Prescription</string>
                                     <outlet property="delegate" destination="iD1-mw-jKo" id="ugG-7P-4eN"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jtq-2o-Ez2">
+                                <rect key="frame" x="0.0" y="415" width="320" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8CB-Up-h4d">
+                                        <rect key="frame" x="85" y="9.5" width="150" height="46"/>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.13725490200000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="3LF-Ua-GH9"/>
+                                            <constraint firstAttribute="height" constant="46" id="OAX-Bf-NdY"/>
+                                        </constraints>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="8CB-Up-h4d" firstAttribute="centerY" secondItem="Jtq-2o-Ez2" secondAttribute="centerY" id="558-QM-d0V"/>
+                                    <constraint firstItem="8CB-Up-h4d" firstAttribute="centerX" secondItem="Jtq-2o-Ez2" secondAttribute="centerX" id="sg5-kf-gF8"/>
+                                    <constraint firstAttribute="height" constant="65" id="vf0-av-f0B"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NaV-ev-baZ" firstAttribute="leading" secondItem="GGW-47-j0E" secondAttribute="leading" id="8jp-MR-Fn0"/>
+                            <constraint firstItem="Jtq-2o-Ez2" firstAttribute="top" secondItem="NaV-ev-baZ" secondAttribute="bottom" constant="1" id="Fvc-Wy-mpZ"/>
+                            <constraint firstItem="Jtq-2o-Ez2" firstAttribute="bottom" secondItem="GGW-47-j0E" secondAttribute="bottom" id="Pgj-4l-TiU"/>
+                            <constraint firstItem="Jtq-2o-Ez2" firstAttribute="leading" secondItem="GGW-47-j0E" secondAttribute="leading" id="Uv7-TD-rPz"/>
                             <constraint firstItem="NaV-ev-baZ" firstAttribute="top" secondItem="GGW-47-j0E" secondAttribute="top" id="Y65-9j-a6O"/>
-                            <constraint firstItem="NaV-ev-baZ" firstAttribute="bottom" secondItem="GGW-47-j0E" secondAttribute="bottom" constant="-66" id="sgi-DP-spu"/>
+                            <constraint firstItem="Jtq-2o-Ez2" firstAttribute="trailing" secondItem="GGW-47-j0E" secondAttribute="trailing" id="qES-UK-mwH"/>
                             <constraint firstItem="NaV-ev-baZ" firstAttribute="trailing" secondItem="GGW-47-j0E" secondAttribute="trailing" id="zXv-Im-Xlv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GGW-47-j0E"/>
                     </view>
                     <navigationItem key="navigationItem" id="1Ec-kG-41k"/>
                     <connections>
+                        <outlet property="buttonSubmit" destination="8CB-Up-h4d" id="Cqc-AB-MEh"/>
                         <outlet property="leaveTableView" destination="NaV-ev-baZ" id="tDq-Ys-sNo"/>
                     </connections>
                 </viewController>
