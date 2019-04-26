@@ -17,13 +17,20 @@ class LeaveApplicationViewController: UIViewController {
     var imageSelected: Bool = false
     var startDate: Date? = nil
     var endDate: Date? = nil
+    
     var imagePicker = UIImagePickerController()
     var alert : UIAlertController?
     var defaultTextFieldText = DEFAULT_TEXT
     var attributedText:NSAttributedString?
     var alertWarning : UIAlertController?
+    
     var takenLeave:Int? = 10
     var totalLeave:Int? = 12
+    
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
     
     
     @IBOutlet weak var buttonEdit: UIButton!
@@ -42,6 +49,8 @@ class LeaveApplicationViewController: UIViewController {
     var fileName:String? = ""
     var username:String? = "sujith"
     var appliedDateTime:TimeZone?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -212,11 +221,13 @@ extension LeaveApplicationViewController:UIImagePickerControllerDelegate,UINavig
 
 extension LeaveApplicationViewController{
     func validation(){
-        if reason == "" && leaveType == "medical"{
-            noReasonMessage()
-        }
         if self.startDateString == "" {
             noDateMessage()
+        }
+        if reason! == "" {
+            if leaveType == "Medical"{
+                noReasonMessage()
+            }
         }
         else{
           uploadApplyLeaveData()
@@ -248,8 +259,95 @@ extension LeaveApplicationViewController{
     
     func uploadApplyLeaveData(){
         
+        //        print("upload initiated")
+        //        self.activityIndicator("Uploading..")
+        let parameters : [String : String]?
+        var name : String = ""
+        if self.fileName == ""{
+            parameters =  [
+                "leaveType": self.leaveType!,
+                "username": username!,
+                "reason": reason!,
+                "startDate": startDateString!,
+                "endDate": endDateString!,
+                "appliedDateTime": "\(Date().ticks)"
+            ]
+        }else{
+            name = self.fileName! + ".JPG"
+            parameters =  [
+                "file": name,
+                "leaveType": self.leaveType!,
+                "username": username!,
+                "reason": reason!,
+                "startDate": startDateString!,
+                "endDate": endDateString!,
+                "appliedDateTime": "\(Date().ticks)"
+            ]
+        }
+
+ 
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+
+            if self.selectedImage != nil{
+                multipartFormData.append(self.selectedImage!.jpegData(compressionQuality: 1)!, withName:"file", fileName: name, mimeType: "image/jpeg")
+                
+            }
+            for (key, value) in parameters! {
+                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to:BASE_URL+LEAVE_UPLOAD)
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (progress) in
+                    debugPrint("progress",progress)
+                    //Print progress
+                })
+                
+                upload.responseJSON { response in
+                    //print response.result
+                }
+                
+            case .failure(let encodingError): break
+                //print encodingError.description
+            }
+        }
+
     }
 
+    
+    func activityIndicator(_ title: String) {
+        
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
+        
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
+        strLabel.text = title
+        strLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
+        
+        effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
+        effectView.layer.cornerRadius = 15
+        effectView.layer.masksToBounds = true
+        
+        activityIndicator = UIActivityIndicatorView(style: .white)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+        activityIndicator.startAnimating()
+        
+        effectView.contentView.addSubview(activityIndicator)
+        effectView.contentView.addSubview(strLabel)
+        view.addSubview(effectView)
+    }
+    
+    func stopActivity() {
+        activityIndicator.stopAnimating()
+        strLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        effectView.removeFromSuperview()
+    }
 }
 
 
@@ -367,7 +465,7 @@ extension LeaveApplicationViewController: UITableViewDataSource{
         let attributedString = NSMutableAttributedString(string: defaultTextFieldText)
         let textLength = defaultTextFieldText.count
         let firstAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor(red: 208.0 / 255.0, green: 211.0 / 255.0, blue: 222.0 / 255.0, alpha: 1),
+            .foregroundColor: UIColor.black,
             .backgroundColor: UIColor.white]
         let secondAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor(red: 85.0 / 255.0, green: 99.0 / 255.0, blue: 151.0 / 255.0, alpha: 1),

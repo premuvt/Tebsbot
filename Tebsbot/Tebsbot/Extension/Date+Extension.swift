@@ -8,6 +8,10 @@
 
 import Foundation
 extension Date{
+    
+    var ticks: UInt64 {
+        return UInt64((self.timeIntervalSince1970 + 62_135_596_800) * 10_000_000)
+    }
     func setTimeFormat() -> String{
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
