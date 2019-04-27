@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if user != nil {
 
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "uploadReceiptNavigationController")
 //            self.window?.rootViewController = controller
         
             (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = controller
