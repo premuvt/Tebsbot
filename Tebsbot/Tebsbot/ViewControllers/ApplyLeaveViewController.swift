@@ -341,6 +341,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
         controller.endDate = self.getDate(stringDate: (chatModel.data?.end_date!)!)
         controller.reason = reasonText
         controller.isFromBot = true
+        controller.leaveType = chatModel.data?.type
         let navigationController =  UINavigationController(rootViewController: controller)
         self.present(navigationController, animated: true, completion: nil)
     }

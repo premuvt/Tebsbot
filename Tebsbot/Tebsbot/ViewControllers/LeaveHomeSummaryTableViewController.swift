@@ -40,12 +40,13 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        getLeavelist()
+        
         setupFooter()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         setNavigationButtons()
+        getLeavelist()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

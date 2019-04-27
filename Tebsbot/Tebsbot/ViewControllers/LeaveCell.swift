@@ -35,7 +35,7 @@ class LeaveCell: UITableViewCell {
 //        default:
 //            self.leaveTypeLabel.text = data.leaveType
 //        }
-        self.leaveTypeLabel.text = data.leaveType
+        self.leaveTypeLabel.text = data.leaveType?.capitalized
         self.leaveDescriptionLabel.text = getLeaveDescriptionFrom(timeStamp:data.appliedDateTime!)
         if data.leaveStatus == "PENDING" {
             self.leaveStatusLabel.text = "Approval Pending"

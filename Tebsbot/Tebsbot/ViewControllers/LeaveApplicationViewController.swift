@@ -48,7 +48,7 @@ class LeaveApplicationViewController: UIViewController {
     var startDateString : String? = ""
     var endDateString : String? = ""
     var fileName:String? = ""
-    var username:String? = "sujith"
+    var username:String? = UserDefaults.standard.object(forKey: "user") as! String
     var appliedDateTime:TimeZone?
     
     
@@ -242,7 +242,7 @@ extension LeaveApplicationViewController{
             noDateMessage()
         }
         if reason! == "" {
-            if leaveType == "Medical"{
+            if leaveType?.lowercased() == "medical"{
                 noReasonMessage()
             }
         }
