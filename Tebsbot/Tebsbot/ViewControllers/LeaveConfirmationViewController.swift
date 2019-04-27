@@ -42,11 +42,15 @@ class LeaveConfirmationViewController: UIViewController {
     }
     
     @IBAction func buttonOKClicked(sender:UIButton){
+//        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+//        let controller = storyboard.instantiateViewController(withIdentifier: "LeaveHomeSummaryNavigationViewController")
+//               (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = controller
+//        self.present(controller, animated: false, completion: nil)
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "LeaveHomeSummaryNavigationViewController")
-               (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = controller
-        self.present(controller, animated: false, completion: nil)
- 
+        //            self.window?.rootViewController = controller
+        
+        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = controller
         
     }
     

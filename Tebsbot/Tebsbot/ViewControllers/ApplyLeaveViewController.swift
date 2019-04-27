@@ -19,6 +19,12 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var messageTextView: UITextView!
     
+    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var attachButton: UIButton!
+    @IBOutlet weak var leaveTypeButton: UIButton!
+    @IBOutlet weak var noThanks: UIButton!
+    @IBOutlet weak var showBalance: UIButton!
     
     @IBOutlet var optionsView: UIView!
     @IBOutlet var chatVoiceAndTextView: UIView!
@@ -126,6 +132,12 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
                     self.start = "0"
                 }
                 DispatchQueue.main.sync {
+                    self.showBalance.isEnabled = true
+                    self.noThanks.isEnabled = true
+                    self.recordButton.isEnabled = true
+                    self.attachButton.isEnabled = true
+                    self.cameraButton.isEnabled = true
+                    self.skipButton.isEnabled = true
                     self.sendButton.isEnabled = true
                     self.stopActivity()
                     self.messageTextView.text = ""
@@ -296,12 +308,15 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     @IBAction func onLeaveBalance() {
         print("onLeaveBalance")
         let message = "Show my Leave Balance"
-        
+        self.showBalance.isEnabled = false
+        self.noThanks.isEnabled = false
         self.sendMessage(message: message)
 //        removeOptionsViewAddMessageView()
     }
     @IBAction func onNoThanks() {
         print("onNoThanks")
+        self.showBalance.isEnabled = false
+        self.noThanks.isEnabled = false
         let message = "No thanks, Im good!"
         
         self.sendMessage(message: message)
@@ -309,6 +324,8 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     }
     @IBAction func onSelectLeaveType() {
         print("onSelectLeaveType")
+        self.leaveTypeButton.isEnabled = false
+        
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let controller:LeaveTypePickerViewController = storyboard.instantiateViewController(withIdentifier: "LeaveTypePickerViewController") as! LeaveTypePickerViewController
         controller.delegate = self
@@ -316,14 +333,23 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     }
     @IBAction func onAttach() {
         print("onAttach")
+        self.attachButton.isEnabled = false
+        self.cameraButton.isEnabled = false
+        self.skipButton.isEnabled = false
         self.openGallery()
     }
     @IBAction func onCamera() {
         print("onCamera")
+        self.attachButton.isEnabled = false
+        self.cameraButton.isEnabled = false
+        self.skipButton.isEnabled = false
         self.openCamera()
     }
     @IBAction func onSkip() {
         print("onSkip")
+        self.attachButton.isEnabled = false
+        self.cameraButton.isEnabled = false
+        self.skipButton.isEnabled = false
         sendMessage(message: "file")
 //        let chat:LeaveChatModal = self.chatArray.last!
 //        goNextStep(chatModel: chat)
@@ -342,6 +368,19 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
         controller.reason = reasonText
         controller.isFromBot = true
         controller.leaveType = chatModel.data?.type
+        if ["medical","annual"].contains(chatModel.data?.type?.lowercased())
+        {
+            controller.totalLeave = 12
+            controller.takenLeave = 10
+        }
+        else if ["compensatory"].contains(chatModel.data?.type?.lowercased()) {
+            controller.totalLeave = 1
+            controller.takenLeave = 1
+        }
+        else {
+            controller.totalLeave = 10
+            controller.takenLeave = 8
+        }
         let navigationController =  UINavigationController(rootViewController: controller)
         self.present(navigationController, animated: true, completion: nil)
     }
@@ -375,6 +414,9 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         imagePicker.dismiss(animated: true, completion: nil)
+        self.attachButton.isEnabled = false
+        self.cameraButton.isEnabled = false
+        self.skipButton.isEnabled = false
         self.sendMessage(message: "file")
         self.chatTableView.reloadData()
         //        self.buttonupload.isUserInteractionEnabled = true
@@ -643,6 +685,7 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     //leavetype picker delegate methords
     func didSelectLeaveType(leaveatype:String,total:Int,taken:Int){
         print(leaveatype,total,taken)
+        self.leaveTypeButton.titleLabel?.text = leaveatype.capitalized
         self.sendMessage(message: leaveatype)
     }
     func cancelledLeavePicker(){

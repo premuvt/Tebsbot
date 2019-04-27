@@ -1,6 +1,6 @@
 import Foundation
 struct MyLeaveListModal : Codable {
-    let data : [Data]?
+    var data : [Data]?
     let message : String?
     let flag : Bool?
     

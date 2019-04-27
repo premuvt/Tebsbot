@@ -60,7 +60,7 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
             if let leaveCount = myLeaves?.data?.count {
                 return leaveCount
             }
-            return 0
+            return 1
         default:
             return 2
         }
@@ -101,14 +101,24 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
                 return 125
             }
             else{
-                return 120
+                if (myLeaves?.data?.count) != nil {
+                    return 135
+                }
+                else {
+                    return 40
+                }
             }
         default:
             if indexPath.section == 0 {
                return 25
             }
             else{
-                return 120
+                if (myLeaves?.data?.count) != nil {
+                    return 135
+                }
+                else {
+                    return 40
+                }
             }
             
         }
@@ -118,6 +128,7 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
         WebService.shared.getLeaveList { (status, errorMessage, resultLeaveList) in
             if status {
                 self.myLeaves = resultLeaveList
+                self.myLeaves?.data?.reverse()
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -178,9 +189,9 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
     
     //leavetype picker delegate methords
     func didSelectLeaveType(leaveatype:String,total:Int,taken:Int){
-
-        if leaveatype == "Medical"{
-            self.dismiss(animated: false) {
+        print(leaveatype,total,taken)
+//        if leaveatype == "Medical"{
+            self.dismiss(animated: true) {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller:LeaveApplicationViewController = storyboard.instantiateViewController(withIdentifier: "LeaveApplicationViewController") as! LeaveApplicationViewController
                         let navigationController = UINavigationController(rootViewController: controller)
@@ -190,9 +201,9 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
 //                controller.delegate = self
                 self.present(navigationController, animated: true, completion: nil)
             }
-        }else{
-            
-        }
+//        }else{
+//
+//        }
         print(leaveatype)
     }
     func cancelledLeavePicker(){

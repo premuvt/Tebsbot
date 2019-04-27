@@ -71,9 +71,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             debugPrint("Valid Credentials")
             UserDefaults.standard.set(textFieldUserName.text, forKey: "user")
             UserDefaults.standard.set(textFieldPassword.text, forKey: "pass")
+//            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+//            let controller = storyboard.instantiateViewController(withIdentifier: "LeaveHomeSummaryNavigationViewController")
+//            self.present(controller, animated: true, completion: nil)
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "LeaveHomeSummaryNavigationViewController")
-            self.present(controller, animated: true, completion: nil)
+            //            self.window?.rootViewController = controller
+            
+            (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = controller
         }else{
             debugPrint("Invalid Credentials")
         }

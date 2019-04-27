@@ -244,25 +244,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJF-u2-7Pr">
-                                                    <rect key="frame" x="15" y="35" width="290" height="9"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ql9-RD-hWk">
-                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="9"/>
-                                                            <color key="backgroundColor" red="0.23137254900000001" green="0.41176470590000003" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </view>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="0.80707762557077622" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="Ql9-RD-hWk" secondAttribute="trailing" constant="50" id="1ui-hF-P15"/>
-                                                        <constraint firstItem="Ql9-RD-hWk" firstAttribute="top" secondItem="eJF-u2-7Pr" secondAttribute="top" id="4As-ZP-hQ3"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Ql9-RD-hWk" secondAttribute="bottom" id="ZOR-G4-Tv8"/>
-                                                        <constraint firstItem="Ql9-RD-hWk" firstAttribute="leading" secondItem="eJF-u2-7Pr" secondAttribute="leading" id="exc-Il-CbR"/>
-                                                        <constraint firstAttribute="height" constant="9" id="iP0-lC-9Ka"/>
-                                                    </constraints>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBP-k0-ckB">
-                                                    <rect key="frame" x="240" y="11" width="60" height="16"/>
+                                                    <rect key="frame" x="240" y="11" width="60" height="19.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="jNi-a1-BGw"/>
                                                     </constraints>
@@ -276,20 +259,23 @@
                                                     </attributedString>
                                                     <color key="highlightedColor" red="0.1176470588" green="0.13725490200000001" blue="0.62497702209999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xm0-6a-MiV">
+                                                    <rect key="frame" x="15" y="34.5" width="285" height="2.5"/>
+                                                    <color key="progressTintColor" red="0.29803921570000003" green="0.50196078430000002" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </progressView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="eJF-u2-7Pr" secondAttribute="bottom" constant="10" id="Pg1-5J-Io8"/>
-                                                <constraint firstItem="eJF-u2-7Pr" firstAttribute="leading" secondItem="kVv-NI-7A7" secondAttribute="leadingMargin" id="f46-Fh-r9d"/>
+                                                <constraint firstItem="xm0-6a-MiV" firstAttribute="leading" secondItem="kVv-NI-7A7" secondAttribute="leading" constant="15" id="FD0-98-fL2"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="GBP-k0-ckB" secondAttribute="trailing" constant="5" id="flm-VX-eaZ"/>
-                                                <constraint firstItem="eJF-u2-7Pr" firstAttribute="top" secondItem="GBP-k0-ckB" secondAttribute="bottom" constant="8" id="iPV-gP-R4p"/>
                                                 <constraint firstItem="GBP-k0-ckB" firstAttribute="top" secondItem="kVv-NI-7A7" secondAttribute="topMargin" id="jen-GS-Dsf"/>
-                                                <constraint firstItem="eJF-u2-7Pr" firstAttribute="trailing" secondItem="kVv-NI-7A7" secondAttribute="trailingMargin" id="lsa-R7-Stc"/>
+                                                <constraint firstItem="xm0-6a-MiV" firstAttribute="top" secondItem="kVv-NI-7A7" secondAttribute="top" constant="34.5" id="rGw-Nv-lqI"/>
+                                                <constraint firstAttribute="trailing" secondItem="xm0-6a-MiV" secondAttribute="trailing" constant="20" id="yRH-9s-sga"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="progressOuterView" destination="Ql9-RD-hWk" id="YaW-Y2-oWc"/>
+                                            <outlet property="leaveStatusProgress" destination="xm0-6a-MiV" id="4OB-4q-dLb"/>
                                             <outlet property="progressValueLabel" destination="GBP-k0-ckB" id="iMk-tT-12S"/>
-                                            <outlet property="progressView" destination="eJF-u2-7Pr" id="Igt-xP-8Gr"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell2" rowHeight="106" id="gVf-lU-Jox" customClass="LeaveApplicationCell" customModule="Tebsbot" customModuleProvider="target">
@@ -520,7 +506,7 @@ Medical Prescription</string>
                                         <rect key="frame" x="0.0" y="486" width="320" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RKb-V0-epX" id="R1N-WP-toH">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attachment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWO-ps-lWg">
@@ -683,7 +669,7 @@ Medical Prescription</string>
                     <viewLayoutGuide key="safeArea" id="qXt-Sx-Y0O"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="396" y="1055"/>
+            <point key="canvasLocation" x="395.625" y="1055"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Br0-nK-fAk">

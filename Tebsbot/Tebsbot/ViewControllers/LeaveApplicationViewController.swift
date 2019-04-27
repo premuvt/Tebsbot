@@ -50,6 +50,7 @@ class LeaveApplicationViewController: UIViewController {
     var fileName:String? = ""
     var username:String? = UserDefaults.standard.object(forKey: "user") as! String
     var appliedDateTime:TimeZone?
+    var isProgressInit:Bool = false
     
     
     
@@ -241,10 +242,8 @@ extension LeaveApplicationViewController{
         if self.startDateString == "" {
             noDateMessage()
         }
-        if reason! == "" {
-            if leaveType?.lowercased() == "medical"{
-                noReasonMessage()
-            }
+        else if reason! == "" && leaveType?.lowercased() == "medical" {
+             noReasonMessage()
         }
         else{
           uploadApplyLeaveData()
@@ -411,10 +410,15 @@ extension LeaveApplicationViewController:UITableViewDelegate{
         case 0:
             return 65.0
         case 1:
-            if imageSelected{
-                return 150.0
-            }else{
-                return 105.0
+            if leaveType?.lowercased() == "medical" {
+                if imageSelected{
+                    return 150.0
+                }else{
+                    return 105.0
+                }
+            }
+            else {
+                return 0
             }
         case 2:
             return 69.0
@@ -444,6 +448,12 @@ extension LeaveApplicationViewController: UITableViewDataSource{
         case 0:
             cell = (tableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! LeaveApplicationCell)
             cell?.progressValueLabel.text = "\(takenLeave!) / \(totalLeave!)"
+            cell?.leaveStatusProgress.progress = Float(takenLeave!) / Float(totalLeave!)
+            if !self.isProgressInit {
+                self.isProgressInit = true
+                cell?.leaveStatusProgress.transform = (cell?.leaveStatusProgress.transform.scaledBy(x: 1, y: 2))!
+            }
+            
         case 1:
             if imageSelected {
                 cell = (tableView.dequeueReusableCell(withIdentifier: "Cell6", for: indexPath) as! LeaveApplicationCell)
@@ -517,9 +527,8 @@ class LeaveApplicationCell:UITableViewCell{
     
     // cell 1 progress view
     
-    @IBOutlet weak var progressView: UIView!
-    @IBOutlet weak var progressOuterView: UIView!
     
+    @IBOutlet weak var leaveStatusProgress: UIProgressView!
     @IBOutlet weak var progressValueLabel: UILabel!
     // cell 2
     
@@ -549,11 +558,9 @@ class LeaveApplicationCell:UITableViewCell{
     
     override func awakeFromNib() {
         // cell 1 progress view
-        if progressView != nil && progressOuterView != nil{
-            progressView.layer.cornerRadius = 3.0
-            progressView.layer.masksToBounds = true
-            progressOuterView.layer.cornerRadius = 3.0
-            progressOuterView.layer.masksToBounds = true
+        if leaveStatusProgress != nil{
+            leaveStatusProgress.layer.cornerRadius = 3
+            leaveStatusProgress.layer.masksToBounds = true
         }
     }
 }
