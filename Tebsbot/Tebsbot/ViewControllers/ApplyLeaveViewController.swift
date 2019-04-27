@@ -485,13 +485,18 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
                            options: animationCurve,
                            animations: { self.view.layoutIfNeeded() },
                            completion: nil)
+            self.scrollToBottom()
         }
     }
     
     func scrollToBottom(){
         DispatchQueue.main.asyncAfter(deadline: .now()) {
+            var rowCount = self.messageArray.count - 1
+            if self.chatArray.count > self.messageArray.count {
+                rowCount = self.chatArray.count - 1
+            }
             let indexPath = IndexPath(
-                row: self.chatArray.count - 1,
+                row: rowCount,
                 section: 0)
             self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }

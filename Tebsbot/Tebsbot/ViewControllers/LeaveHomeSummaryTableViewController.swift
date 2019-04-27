@@ -80,13 +80,18 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
             }
         } else{
-            
+            if (myLeaves?.data?.count) != nil {
             cell = tableView.dequeueReusableCell(withIdentifier: "LeaveCell", for: indexPath) as! LeaveCell
             if let data:Data = self.myLeaves?.data![indexPath.row]{
                 (cell as! LeaveCell).setCellData(data: data)
             }
             
             cell.separatorInset = UIEdgeInsets(top: 0, left: 35, bottom: 0, right: 20 )
+            }
+            else {
+                let emptyCell = tableView.dequeueReusableCell(withIdentifier: "empty", for: indexPath)
+                return emptyCell
+            }
             
         }
         

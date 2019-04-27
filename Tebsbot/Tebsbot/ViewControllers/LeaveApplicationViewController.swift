@@ -249,7 +249,14 @@ extension LeaveApplicationViewController{
           uploadApplyLeaveData()
         }
     }
-    
+    func scrollToBottom(){
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            let indexPath = IndexPath(
+                row: 4,
+                section: 0)
+            self.leaveTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+    }
     func noReasonMessage(){
         setAlert(message: NO_REASON)
     }
@@ -569,6 +576,7 @@ extension LeaveApplicationViewController:UITextViewDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
         debugPrint(canBecomeFirstResponder)
         textView.becomeFirstResponder()
+        scrollToBottom()
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == nil && textView.text.isEmpty{
