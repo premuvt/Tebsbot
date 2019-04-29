@@ -78,3 +78,8 @@ Tebsbot/Pods/Target Support Files/CalendarDateRangePickerViewController/Calendar
 Tebsbot/Pods/Target Support Files/CalendarDateRangePickerViewController/CalendarDateRangePickerViewController-umbrella.h
 Tebsbot/Pods/Target Support Files/CalendarDateRangePickerViewController/CalendarDateRangePickerViewController.modulemap
 Tebsbot/Pods/Target Support Files/CalendarDateRangePickerViewController/CalendarDateRangePickerViewController.xcconfig
+Tebsbot/Pods/Target Support Files/Alamofire/Info.plist
+Tebsbot/Pods/Target Support Files/Alamofire-SwiftyJSON/Info.plist
+Tebsbot/Pods/Target Support Files/CalendarDateRangePickerViewController/Info.plist
+Tebsbot/Pods/Target Support Files/Pods-Tebsbot/Info.plist
+Tebsbot/Pods/Target Support Files/SwiftyJSON/Info.plist
