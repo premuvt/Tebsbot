@@ -13,7 +13,6 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -22,8 +21,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2624.8000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="3156" y="134"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="nNa-5e-JzG">
@@ -154,7 +154,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tam-cm-QGR">
-                                <rect key="frame" x="126.5" y="290.5" width="122" height="46"/>
+                                <rect key="frame" x="126.5" y="334.5" width="122" height="46"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.21960784310000001" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="KHW-Zd-mbE"/>
@@ -173,28 +173,58 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1C-pQ-cCf">
+                                <rect key="frame" x="50" y="280.5" width="275" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="s31-mb-yMm"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="250" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Select Department" image="drop_down_arrow">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonDepartmentTapped:" destination="U6E-mM-WhF" eventType="touchUpInside" id="69C-UZ-nJQ"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPR-eT-WXD">
+                                <rect key="frame" x="64" y="313.5" width="247" height="1"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="RQX-7V-biB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="sPR-eT-WXD" firstAttribute="leading" secondItem="9HD-ep-Anc" secondAttribute="leadingMargin" constant="48" id="73E-oM-GhX"/>
                             <constraint firstItem="PkG-xY-EP8" firstAttribute="top" secondItem="zOF-OL-Bo4" secondAttribute="bottom" constant="15" id="BMe-Ev-igE"/>
                             <constraint firstItem="XIa-Si-JN8" firstAttribute="trailing" secondItem="PkG-xY-EP8" secondAttribute="trailing" constant="10" id="DqZ-yR-FdX"/>
                             <constraint firstItem="BbQ-iM-eUV" firstAttribute="top" secondItem="XIa-Si-JN8" secondAttribute="top" constant="20" id="EF6-7r-RtW"/>
                             <constraint firstItem="XIa-Si-JN8" firstAttribute="trailing" secondItem="kkw-ZW-OEw" secondAttribute="trailing" constant="10" id="HBR-bT-OL5"/>
+                            <constraint firstItem="tam-cm-QGR" firstAttribute="centerX" secondItem="9HD-ep-Anc" secondAttribute="centerX" id="I9H-bk-SE5"/>
+                            <constraint firstItem="tam-cm-QGR" firstAttribute="top" secondItem="sPR-eT-WXD" secondAttribute="bottom" constant="20" id="JJd-xb-Ho9"/>
                             <constraint firstItem="PkG-xY-EP8" firstAttribute="leading" secondItem="XIa-Si-JN8" secondAttribute="leading" constant="10" id="MjS-xB-821"/>
                             <constraint firstItem="BbQ-iM-eUV" firstAttribute="leading" secondItem="XIa-Si-JN8" secondAttribute="leading" constant="10" id="N8a-C2-aW5"/>
+                            <constraint firstItem="O1C-pQ-cCf" firstAttribute="centerX" secondItem="9HD-ep-Anc" secondAttribute="centerX" id="QuY-sa-bHO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sPR-eT-WXD" secondAttribute="trailing" constant="48" id="XO5-7l-UKC"/>
                             <constraint firstItem="XIa-Si-JN8" firstAttribute="trailing" secondItem="BbQ-iM-eUV" secondAttribute="trailing" constant="10" id="Zfz-KN-Pj6"/>
+                            <constraint firstItem="sPR-eT-WXD" firstAttribute="centerX" secondItem="9HD-ep-Anc" secondAttribute="centerX" id="chh-oC-PWP"/>
                             <constraint firstItem="zOF-OL-Bo4" firstAttribute="top" secondItem="kkw-ZW-OEw" secondAttribute="bottom" constant="25" id="daV-Tu-pJE"/>
+                            <constraint firstItem="O1C-pQ-cCf" firstAttribute="top" secondItem="PkG-xY-EP8" secondAttribute="bottom" constant="20" id="kmy-Oz-KBo"/>
                             <constraint firstItem="kkw-ZW-OEw" firstAttribute="leading" secondItem="XIa-Si-JN8" secondAttribute="leading" constant="10" id="lUs-oA-2h6"/>
                             <constraint firstItem="BbQ-iM-eUV" firstAttribute="centerX" secondItem="9HD-ep-Anc" secondAttribute="centerX" id="lyn-w7-Qyn"/>
                             <constraint firstItem="zOF-OL-Bo4" firstAttribute="centerX" secondItem="9HD-ep-Anc" secondAttribute="centerX" id="nnK-Ul-M6C"/>
                             <constraint firstItem="kkw-ZW-OEw" firstAttribute="top" secondItem="BbQ-iM-eUV" secondAttribute="bottom" constant="20" id="t4I-Gn-N94"/>
+                            <constraint firstItem="sPR-eT-WXD" firstAttribute="top" secondItem="O1C-pQ-cCf" secondAttribute="bottom" constant="3" id="wA2-K8-Da8"/>
+                            <constraint firstItem="XIa-Si-JN8" firstAttribute="trailing" secondItem="O1C-pQ-cCf" secondAttribute="trailing" constant="50" id="wT2-0k-pAs"/>
+                            <constraint firstItem="O1C-pQ-cCf" firstAttribute="leading" secondItem="XIa-Si-JN8" secondAttribute="leading" constant="50" id="wUU-Cz-uAV"/>
                             <constraint firstItem="tam-cm-QGR" firstAttribute="centerX" secondItem="9HD-ep-Anc" secondAttribute="centerX" id="xSS-Ui-hyS"/>
-                            <constraint firstItem="tam-cm-QGR" firstAttribute="top" secondItem="PkG-xY-EP8" secondAttribute="bottom" constant="30" id="zLg-38-8ry"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XIa-Si-JN8"/>
                     </view>
                     <navigationItem key="navigationItem" id="F9O-GE-boI"/>
                     <connections>
+                        <outlet property="buttonDepartment" destination="O1C-pQ-cCf" id="PTy-Dj-ovD"/>
                         <outlet property="buttonbrowse" destination="zOF-OL-Bo4" id="vr7-PI-JhZ"/>
                         <outlet property="buttonupload" destination="tam-cm-QGR" id="43m-gR-tcX"/>
                         <outlet property="fileNameLabel" destination="PkG-xY-EP8" id="LQU-c1-MIK"/>
@@ -204,6 +234,115 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Z3-Mr-NBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1412" y="133.5832083958021"/>
+        </scene>
+        <!--Department Selection View Controller-->
+        <scene sceneID="kfL-qW-cTk">
+            <objects>
+                <viewController storyboardIdentifier="DepartmentSelectionViewController" modalPresentationStyle="overCurrentContext" id="XTP-A2-EOm" customClass="DepartmentSelectionViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="duL-go-l7V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9CO-bf-lGt">
+                                <rect key="frame" x="60" y="243.5" width="255" height="180"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="AeY-3G-drq"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="departmentCell" id="1pX-oU-vbA" customClass="DepartmentTableViewCell" customModule="Tebsbot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="255" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1pX-oU-vbA" id="wIG-qR-Pg0">
+                                            <rect key="frame" x="0.0" y="0.0" width="255" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNp-hz-Tas">
+                                                    <rect key="frame" x="15" y="11" width="225" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jNp-hz-Tas" firstAttribute="leading" secondItem="wIG-qR-Pg0" secondAttribute="leadingMargin" id="DeS-Xg-xhs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jNp-hz-Tas" secondAttribute="trailing" id="HNF-as-jit"/>
+                                                <constraint firstItem="jNp-hz-Tas" firstAttribute="top" secondItem="wIG-qR-Pg0" secondAttribute="topMargin" id="NZI-ZU-HpZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jNp-hz-Tas" secondAttribute="bottom" id="w3u-iz-UrM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="departmentNameLabel" destination="jNp-hz-Tas" id="orf-YG-hu2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="XTP-A2-EOm" id="iRK-3i-hTJ"/>
+                                    <outlet property="delegate" destination="XTP-A2-EOm" id="26Z-Fb-tKj"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.1056025256849315" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9CO-bf-lGt" firstAttribute="centerX" secondItem="duL-go-l7V" secondAttribute="centerX" id="1KW-iS-qqY"/>
+                            <constraint firstItem="9CO-bf-lGt" firstAttribute="leading" secondItem="Ih6-0T-qX4" secondAttribute="leading" constant="60" id="h76-Kk-kil"/>
+                            <constraint firstItem="9CO-bf-lGt" firstAttribute="centerY" secondItem="duL-go-l7V" secondAttribute="centerY" id="rBn-vG-OYu"/>
+                            <constraint firstItem="Ih6-0T-qX4" firstAttribute="trailing" secondItem="9CO-bf-lGt" secondAttribute="trailing" constant="60" id="yat-No-dhV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ih6-0T-qX4"/>
+                    </view>
+                    <connections>
+                        <outlet property="departmentTableView" destination="9CO-bf-lGt" id="bVG-zZ-qVy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yne-ZK-hNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1480.8" y="939.58020989505258"/>
+        </scene>
+        <!--Department Selection Table View Controller-->
+        <scene sceneID="hn5-eH-zLC">
+            <objects>
+                <tableViewController storyboardIdentifier="DepartmentSelectionTableViewController" modalPresentationStyle="overCurrentContext" id="g3c-zf-s2E" customClass="DepartmentSelectionTableViewController" customModule="Tebsbot" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0wN-Ed-dC5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oO5-LY-nHe" customClass="DepartmentTableViewCell" customModule="Tebsbot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oO5-LY-nHe" id="VLu-l3-r63">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lA-nt-5xx">
+                                            <rect key="frame" x="16" y="11" width="343" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="9lA-nt-5xx" secondAttribute="bottom" id="JBh-ka-hDZ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="9lA-nt-5xx" secondAttribute="trailing" id="bWI-N3-hkk"/>
+                                        <constraint firstItem="9lA-nt-5xx" firstAttribute="top" secondItem="VLu-l3-r63" secondAttribute="topMargin" id="clp-Rb-dMV"/>
+                                        <constraint firstItem="9lA-nt-5xx" firstAttribute="leading" secondItem="VLu-l3-r63" secondAttribute="leadingMargin" id="thz-st-ni8"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="departmentNameLabel" destination="9lA-nt-5xx" id="dkn-1m-fNA"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="g3c-zf-s2E" id="OUA-w3-Q1W"/>
+                            <outlet property="delegate" destination="g3c-zf-s2E" id="pW3-1a-j1Y"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zCQ-Gj-9vc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="128"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lUG-Ga-SG2">
@@ -226,6 +365,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="drop_down_arrow" width="11" height="6"/>
         <image name="logo" width="200" height="66"/>
     </resources>
 </document>

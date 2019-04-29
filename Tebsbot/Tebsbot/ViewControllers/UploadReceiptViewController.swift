@@ -20,6 +20,7 @@ class UploadReceiptViewController: UIViewController {
     var strLabel = UILabel()
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
+//    @IBOutlet weak var departmentTextField: UITextField!
     // MARK: - outlets
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -29,6 +30,7 @@ class UploadReceiptViewController: UIViewController {
     @IBOutlet weak var buttonbrowse: UIButton!
     
     @IBOutlet weak var buttonupload: UIButton!
+    @IBOutlet weak var buttonDepartment: UIButton!
     
     
     var imagePicker = UIImagePickerController()
@@ -37,6 +39,7 @@ class UploadReceiptViewController: UIViewController {
     var responceDateString:String!
     var responceClaimString:String!
     var responceFareString:String!
+    var departmentString : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -68,10 +71,35 @@ class UploadReceiptViewController: UIViewController {
     }
     
     func setUpUI(){
+
+        buttonDepartment.imageEdgeInsets
+        .left = self.buttonDepartment.frame.maxX - 30
         self.buttonbrowse.setCornerRaius()
         self.buttonupload.setCornerRaius()
     }
 
+    @IBAction func buttonDepartmentTapped(_ sender: Any) {
+         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        /DepartmentSelectionViewController
+        
+        let departmentSlectionViewController = storyboard.instantiateViewController(withIdentifier: "DepartmentSelectionViewController") as! DepartmentSelectionViewController
+//        let departmentSlectionViewController = storyboard.instantiateViewController(withIdentifier: "DepartmentSelectionTableViewController") as! DepartmentSelectionTableViewController
+departmentSlectionViewController.departmentDelegate = self
+
+        self.navigationController?.present(departmentSlectionViewController, animated: true)
+        
+//        let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "DepartmentSelectionTableViewController") as! UIViewController
+//        let nav = UINavigationController(rootViewController: popoverContent)
+//        nav.modalPresentationStyle = .popover
+//        let popover = nav.popoverPresentationController
+//        popoverContent.preferredContentSize = CGSize(width: 200, height: 150)//(500,600)
+//        popover!.delegate = self
+//        popover!.sourceView = self.view
+//        popover!.sourceRect = CGRect(x:100, y: 100, width: 200, height: 150)//(100,100,0,0)
+//
+//        self.present(nav, animated: true, completion: nil)
+    }
+    
     @IBAction func onBrowse(_ sender: UIButton) {
         imagePicker.modalPresentationStyle = UIModalPresentationStyle.currentContext
         imagePicker.delegate = self
@@ -223,4 +251,17 @@ extension UploadReceiptViewController : UIImagePickerControllerDelegate, UINavig
         activityIndicator.removeFromSuperview()
         effectView.removeFromSuperview()
     }
+}
+
+extension UploadReceiptViewController:DepartmentSelectionDelegate{
+    func departmentSelected(selectedDepartment: String) {
+        self.dismiss(animated: false, completion:nil)
+        departmentString = selectedDepartment
+        self.buttonDepartment.titleLabel!.text = departmentString
+    }
+    
+    
+}
+extension UploadReceiptViewController:UIPopoverPresentationControllerDelegate{
+    
 }
