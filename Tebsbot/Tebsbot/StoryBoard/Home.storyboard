@@ -733,15 +733,15 @@
                                             <outlet property="leaveTypeLabel" destination="m2j-DC-ELk" id="MqR-gT-Vsf"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="empty" textLabel="ea9-bQ-Cj4" style="IBUITableViewCellStyleDefault" id="KAz-Qc-dLU">
-                                        <rect key="frame" x="0.0" y="317" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="empty" textLabel="ea9-bQ-Cj4" rowHeight="85" style="IBUITableViewCellStyleDefault" id="KAz-Qc-dLU">
+                                        <rect key="frame" x="0.0" y="317" width="320" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KAz-Qc-dLU" id="irR-FI-TFg">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Leave List is empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ea9-bQ-Cj4">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="44"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Leave list is empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ea9-bQ-Cj4">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="85"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -977,7 +977,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLZ-s1-R64">
-                                                    <rect key="frame" x="15" y="86" width="290" height="16"/>
+                                                    <rect key="frame" x="15" y="69" width="290" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="iN3-zO-NEd"/>
                                                     </constraints>
@@ -986,7 +986,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" text="Label" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V7r-Hm-b1f" customClass="PaddingLabel" customModule="Tebsbot" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="41" width="55.5" height="37"/>
+                                                    <rect key="frame" x="15" y="41" width="35.5" height="20"/>
                                                     <color key="backgroundColor" red="0.15294117647058825" green="0.2196078431372549" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="ii7-ax-JTJ"/>
@@ -996,7 +996,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhw-3g-vQq" customClass="PaddingLabel" customModule="Tebsbot" customModuleProvider="target">
-                                                    <rect key="frame" x="249.5" y="110" width="55.5" height="43"/>
+                                                    <rect key="frame" x="269.5" y="93" width="35.5" height="60"/>
                                                     <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="OXf-zZ-u5K"/>

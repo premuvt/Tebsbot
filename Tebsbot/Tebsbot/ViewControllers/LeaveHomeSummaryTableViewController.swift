@@ -110,7 +110,7 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
                     return 135
                 }
                 else {
-                    return 40
+                    return 250
                 }
             }
         default:
@@ -122,7 +122,7 @@ class LeaveHomeSummaryTableViewController: UIViewController,UITableViewDelegate,
                     return 135
                 }
                 else {
-                    return 40
+                    return 250
                 }
             }
             

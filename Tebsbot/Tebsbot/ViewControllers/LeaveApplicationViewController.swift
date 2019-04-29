@@ -65,7 +65,7 @@ class LeaveApplicationViewController: UIViewController {
             self.footerView.addSubview(self.submitView)
             self.submitView.bindFrameToSuperviewBounds()
         }
-        
+        leaveTableView.delegate = self
         setButtons()
         setUpKeyBoardNotification()
         setUpView()
@@ -176,6 +176,10 @@ class LeaveApplicationViewController: UIViewController {
         debugPrint("delete tapped")
     }
     
+    
+    @IBAction func onDateButton(_ sender: UIButton) {
+        self.calenderOpened()
+    }
     @objc func buttonCalendarClicked(sender:UIButton){
         debugPrint("calender tapped")
         self.calenderOpened()
@@ -544,8 +548,12 @@ extension LeaveApplicationViewController: UITableViewDataSource{
     func setAttributedText() -> NSAttributedString{
         let attributedString = NSMutableAttributedString(string: defaultTextFieldText)
         let textLength = defaultTextFieldText.count
+        var color = UIColor.black
+        if defaultTextFieldText == DEFAULT_TEXT {
+            color = UIColor.gray
+        }
         let firstAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black,
+            .foregroundColor: color,
             .backgroundColor: UIColor.white]
         let secondAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor(red: 85.0 / 255.0, green: 99.0 / 255.0, blue: 151.0 / 255.0, alpha: 1),

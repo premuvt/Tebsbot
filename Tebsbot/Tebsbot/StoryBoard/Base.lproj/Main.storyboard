@@ -213,7 +213,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uez-xW-S7c"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pQf-LZ-1Xl">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -233,7 +233,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NaV-ev-baZ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NaV-ev-baZ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="350"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -442,12 +442,26 @@ Medical Prescription</string>
                                                         <constraint firstAttribute="height" constant="1" id="zah-Tp-xPI"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFm-2l-g6f">
+                                                    <rect key="frame" x="55" y="17" width="250" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="250" id="3jY-h0-q5x"/>
+                                                        <constraint firstAttribute="height" constant="30" id="dBn-sI-aoS"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="onDateButton:" destination="iD1-mw-jKo" eventType="touchUpInside" id="9Uv-8Y-Eph"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2Bs-Ye-VQQ" firstAttribute="centerY" secondItem="Nhx-zg-HPN" secondAttribute="centerY" id="2Li-Y4-Abu"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="0K5-mS-zjV" secondAttribute="bottom" id="6TN-IX-a8b"/>
+                                                <constraint firstItem="CFm-2l-g6f" firstAttribute="top" secondItem="Nhx-zg-HPN" secondAttribute="top" constant="17" id="IZt-ai-qcJ"/>
                                                 <constraint firstItem="5wb-Yg-fCw" firstAttribute="centerY" secondItem="Nhx-zg-HPN" secondAttribute="centerY" id="Obg-af-c1N"/>
+                                                <constraint firstAttribute="trailing" secondItem="CFm-2l-g6f" secondAttribute="trailing" constant="15" id="P8u-4d-UsF"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="5wb-Yg-fCw" secondAttribute="trailing" constant="10" id="T1B-Ln-Hqw"/>
+                                                <constraint firstItem="CFm-2l-g6f" firstAttribute="leading" secondItem="2Bs-Ye-VQQ" secondAttribute="trailing" constant="10" id="WHJ-qg-15Q"/>
+                                                <constraint firstAttribute="bottom" secondItem="CFm-2l-g6f" secondAttribute="bottom" constant="18" id="aGf-xa-AJg"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="0K5-mS-zjV" secondAttribute="trailing" constant="10" id="acc-nn-DMz"/>
                                                 <constraint firstItem="2Bs-Ye-VQQ" firstAttribute="leading" secondItem="Nhx-zg-HPN" secondAttribute="leadingMargin" id="hex-yu-EHs"/>
                                                 <constraint firstItem="0K5-mS-zjV" firstAttribute="leading" secondItem="Nhx-zg-HPN" secondAttribute="leadingMargin" id="sdh-kF-l4T"/>
@@ -459,7 +473,7 @@ Medical Prescription</string>
                                             <outlet property="dateTextField" destination="5wb-Yg-fCw" id="p8g-d8-Qcs"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell5" rowHeight="153" id="EgI-02-wOb" customClass="LeaveApplicationCell" customModule="Tebsbot" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell5" rowHeight="153" id="EgI-02-wOb" customClass="LeaveApplicationCell" customModule="Tebsbot" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="333" width="320" height="153"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EgI-02-wOb" id="xVS-2d-HlF">
@@ -677,7 +691,7 @@ Medical Prescription</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tQm-aw-EhX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sO7-yz-MXE">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -695,7 +709,7 @@ Medical Prescription</string>
                 <navigationController storyboardIdentifier="LeaveApplicationViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="yKo-Sl-YIQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9xP-dZ-8RO">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
