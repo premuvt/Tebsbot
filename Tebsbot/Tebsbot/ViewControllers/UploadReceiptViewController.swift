@@ -78,7 +78,12 @@ class UploadReceiptViewController: UIViewController {
         self.buttonupload.setCornerRaius()
     }
 
-    @IBAction func buttonDepartmentTapped(_ sender: Any) {
+    @IBAction func buttonDepartmentTapped(_ sender: UIButton) {
+        if departmentString == ""{
+            self.buttonDepartment.titleLabel!.text = "Select Cost Centre"
+        }else{
+            self.buttonDepartment.titleLabel!.text = departmentString
+        }
          let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        /DepartmentSelectionViewController
         

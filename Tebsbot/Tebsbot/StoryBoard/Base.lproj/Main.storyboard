@@ -179,7 +179,7 @@
                                     <constraint firstAttribute="height" constant="30" id="s31-mb-yMm"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="250" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Select Department" image="drop_down_arrow">
+                                <state key="normal" title="Select Cost Centre" image="drop_down_arrow">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
