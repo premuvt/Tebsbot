@@ -510,9 +510,9 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
             let indexPath = IndexPath(
                 row: rowCount,
                 section: 0)
-//        if self.navigationController!.presentedViewController == ApplyLeaveViewController{
+        if self.navigationController!.visibleViewController! is ApplyLeaveViewController{
             self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-//        }
+        }
 
     }
     
