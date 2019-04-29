@@ -52,7 +52,7 @@ class LeaveCell: UITableViewCell {
     }
     func getLeaveDescriptionFrom(timeStamp:Int) -> String {
         
-        let date = Date.init(timeIntervalSinceNow: TimeInterval(exactly: timeStamp/1000000)!)
+        let date = Date.init(timeIntervalSince1970: TimeInterval(exactly: timeStamp)!)//(timeIntervalSinceNow: TimeInterval(exactly: timeStamp)! - 62_135_596_800)
         print(date.debugDescription)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy h:mm a"

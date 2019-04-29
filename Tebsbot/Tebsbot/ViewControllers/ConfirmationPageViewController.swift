@@ -71,7 +71,7 @@ class ConfirmationPageViewController: UIViewController {
     
     func changeDateFormat(string : String) -> String{
         
-let dayArray = string.split(separator: "-")
+        let dayArray = string.split(separator: "-")
         let day:String = String(dayArray[0])
         let dayString = setday(daystring: day)
         

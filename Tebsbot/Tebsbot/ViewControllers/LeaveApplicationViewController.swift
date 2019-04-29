@@ -115,6 +115,7 @@ class LeaveApplicationViewController: UIViewController {
     // MARK:-  Button Actions
     
     @IBAction func buttonSubmitClicked(_ sender: Any) {
+        self.buttonSubmit.isEnabled = false
         self.dismissKeyboard()
         resignFirstResponder()
         validation()
@@ -241,12 +242,15 @@ extension LeaveApplicationViewController{
     func validation(){
         if self.startDateString == "" {
             noDateMessage()
+            self.buttonSubmit.isEnabled = true
         }
         else if reason! == "" && leaveType?.lowercased() == "medical" {
              noReasonMessage()
+            self.buttonSubmit.isEnabled = true
         }
         else{
           uploadApplyLeaveData()
+            
         }
     }
     func scrollToBottom(){
@@ -333,6 +337,9 @@ extension LeaveApplicationViewController{
                 
                 upload.responseJSON { response in
                     //print response.result
+                    DispatchQueue.main.async {
+                        self.buttonSubmit.isEnabled = true
+                    }
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "LeaveConfirmationViewController")
                     self.navigationController?.present(controller, animated: true)
@@ -479,8 +486,9 @@ extension LeaveApplicationViewController: UITableViewDataSource{
             cell = (tableView.dequeueReusableCell(withIdentifier: "Cell4", for: indexPath) as! LeaveApplicationCell)
             cell?.buttonCalender.addTarget(self, action: #selector(buttonCalendarClicked(sender:)), for: .touchUpInside)
             cell?.dateTextField.addTarget(self, action: #selector(buttonCalendarClicked(sender:)), for: .touchUpInside)
+            
             cell?.buttonCalender.isEnabled = !isFromBot
-            cell?.dateTextField.isEnabled = !isFromBot
+            cell?.dateTextField.isEnabled = false
             
             if startDate != nil {
                 if endDate == startDate{

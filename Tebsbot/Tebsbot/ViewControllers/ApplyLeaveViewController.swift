@@ -62,6 +62,9 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     var chatMessage: String = ""
     var autoSendTimer:Timer!
     
+    let noThanksString = "No thanks, Im good!"
+    let showBalanceString = "Show my Leave Balance"
+    
     var leaveBalanceFlag = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,6 +202,8 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
             self.messageArray.append(message)
             chatMessage = message
         }
+        else if message == showBalanceString || message == noThanksString {
+        }
         else{
             self.messageArray.append(message)
             for i in 0 ..< messageArray.count{
@@ -307,7 +312,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     }
     @IBAction func onLeaveBalance() {
         print("onLeaveBalance")
-        let message = "Show my Leave Balance"
+        let message = showBalanceString
         self.showBalance.isEnabled = false
         self.noThanks.isEnabled = false
         self.sendMessage(message: message)
@@ -317,7 +322,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
         print("onNoThanks")
         self.showBalance.isEnabled = false
         self.noThanks.isEnabled = false
-        let message = "No thanks, Im good!"
+        let message = noThanksString
         
         self.sendMessage(message: message)
 //        removeOptionsViewAddMessageView()

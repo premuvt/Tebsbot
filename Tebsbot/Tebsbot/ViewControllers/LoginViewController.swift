@@ -20,12 +20,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     //MARK: Dummy creds
-    let userid = "abcd"
+    let userid = "Shine"
     let pwd = "1234"
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        setDemoCred()
+//        setDemoCred()
         setUpTapToDismissKeyboard()
         setUpKeyboardNotification()
         
