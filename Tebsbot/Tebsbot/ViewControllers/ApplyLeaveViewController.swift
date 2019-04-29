@@ -33,6 +33,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     @IBOutlet var documentView: UIView!
     @IBOutlet weak var recordButton: UIButton!
     
+    @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var sendButton: UIButton!
     //MARK:- speet to text
     let audioEngine = AVAudioEngine()
@@ -62,7 +63,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     var chatMessage: String = ""
     var autoSendTimer:Timer!
     
-    let noThanksString = "No thanks, Im good!"
+    let noThanksString = "No thanks, I'm good!"
     let showBalanceString = "Show my Leave Balance"
     
     var leaveBalanceFlag = false
@@ -79,6 +80,9 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
         
         imagePicker.modalPresentationStyle = UIModalPresentationStyle.currentContext
         imagePicker.delegate = self
+        
+        let userName:String = UserDefaults.standard.object(forKey: "user") as! String
+        self.userLabel.text = "Hi "+userName.capitalized
 
 //        print("laguage code - ",Locale.current.languageCode!)
 //        print("reagin local - ", NSLocale.current.identifier)
@@ -231,7 +235,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
 {
     "data": {
         "final_flag": 0,
-        "query": "Hi, Im Leevo, I will help you apply for a leave. Do you wish to check your leave balance before we start?",
+        "query": "Hi, I'm Leevo, I will help you apply for a leave. Do you wish to check your leave balance before we start?",
         "Sentence": null,
         "Leave": null,
         "type": "not specified",
@@ -438,6 +442,9 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         imagePicker.dismiss(animated: true, completion: nil)
+        self.attachButton.isEnabled = true
+        self.cameraButton.isEnabled = true
+        self.skipButton.isEnabled = true
         
     }
     
@@ -510,9 +517,12 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
             let indexPath = IndexPath(
                 row: rowCount,
                 section: 0)
-        if self.navigationController!.visibleViewController! is ApplyLeaveViewController{
-            self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        if let nav = self.navigationController {
+            if let vc = nav.visibleViewController, vc is ApplyLeaveViewController {
+                self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
         }
+        
 
     }
     
@@ -578,10 +588,14 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
         
     //MARK:- text to speech
     func speakText(message:String) {
+        if let nav = self.navigationController {
+            if let vc = nav.visibleViewController, vc is ApplyLeaveViewController {
         let utterance = AVSpeechUtterance(string: message)
         utterance.voice = AVSpeechSynthesisVoice(language: NSLocale.current.identifier)
         utterance.volume = 1.0
         synth.speak(utterance)
+            }
+        }
     }
     
     //MARK: - Check Authorization Status
@@ -706,9 +720,11 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
         print(leaveatype,total,taken)
         self.leaveTypeButton.titleLabel?.text = leaveatype.capitalized
         self.sendMessage(message: leaveatype)
+        self.leaveTypeButton.isEnabled = true
     }
     func cancelledLeavePicker(){
         print("cancelled picker")
+        self.leaveTypeButton.isEnabled = true
     }
 }
 extension UIView {

@@ -34,6 +34,7 @@ class LeaveApplicationViewController: UIViewController {
     var isFromBot:Bool = false
     
     
+    
     @IBOutlet weak var buttonEdit: UIButton!
     @IBOutlet weak var inputAccessoryHight: NSLayoutConstraint!
     @IBOutlet weak var buttonSubmit: UIButton!
@@ -518,6 +519,7 @@ extension LeaveApplicationViewController: UITableViewDataSource{
             cell?.dateTextField.delegate =  self
             cell?.buttonCalender.isEnabled = !isFromBot
             cell?.dateTextField.isEnabled = false
+            cell?.dateLabelButton.isEnabled = !isFromBot
             
             if startDate != nil {
                 if endDate == startDate{
@@ -610,6 +612,8 @@ class LeaveApplicationCell:UITableViewCell{
     @IBOutlet weak var buttonDelete: UIButton!
     @IBOutlet weak var recieptImageView: UIImageView!
     @IBOutlet weak var labelAttachment: UILabel!
+    
+    @IBOutlet weak var dateLabelButton: UIButton!
     
     override func awakeFromNib() {
         // cell 1 progress view

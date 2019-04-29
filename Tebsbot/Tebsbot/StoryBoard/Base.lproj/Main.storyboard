@@ -470,6 +470,7 @@ Medical Prescription</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="buttonCalender" destination="2Bs-Ye-VQQ" id="cFJ-qR-Lvs"/>
+                                            <outlet property="dateLabelButton" destination="CFm-2l-g6f" id="NVw-ub-gGu"/>
                                             <outlet property="dateTextField" destination="5wb-Yg-fCw" id="p8g-d8-Qcs"/>
                                         </connections>
                                     </tableViewCell>
@@ -691,7 +692,7 @@ Medical Prescription</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tQm-aw-EhX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sO7-yz-MXE">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -709,7 +710,7 @@ Medical Prescription</string>
                 <navigationController storyboardIdentifier="LeaveApplicationViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="yKo-Sl-YIQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9xP-dZ-8RO">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
