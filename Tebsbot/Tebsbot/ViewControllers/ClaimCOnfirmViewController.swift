@@ -72,7 +72,7 @@ class ClaimConfirmViewController: UIViewController {
         self.activityIndicator("Confirming...")
         sender.isEnabled = false
         let dictionaryClaim: Dictionary<String,String> = ["date":responceDateString,"claim_type":responceClaimString,"fare_amount":responceFareString]
-        WebService.shared.confirmClaim(parameter: dictionaryClaim) { (success, errorMessage, successMessage) in
+        WebService.shared.confirmClaim(parameter: dictionaryClaim,department: "replace the selected departmet") { (success, errorMessage, successMessage) in
             sender.isEnabled = true
             if success{
                 DispatchQueue.main.sync {

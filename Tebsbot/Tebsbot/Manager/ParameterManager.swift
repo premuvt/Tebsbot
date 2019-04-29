@@ -21,9 +21,9 @@ struct ConfirmLeave {
     }
 }
 struct ConfirmClaim {
-    static func requestBody(stringParam:Dictionary<String,Any>) -> [String: Any] {
+    static func requestBody(stringParam:Dictionary<String,Any>,departmentName: String) -> [String: Any] {
         
-        let body:[String : Any] = ["data": stringParam,
+        let body:[String : Any] = ["data": stringParam, "status": 1,"department":departmentName
                                    ]
         return body
     }

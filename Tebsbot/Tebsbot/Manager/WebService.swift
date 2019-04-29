@@ -79,9 +79,9 @@ class WebService {
             print(error)
         }
     }
-    func confirmClaim(parameter:Dictionary<String,String>,completionBlock:((Bool,String?, String?) -> Void)!){
+    func confirmClaim(parameter:Dictionary<String,String>,department:String,completionBlock:((Bool,String?, String?) -> Void)!){
         
-        let requestParams = ConfirmClaim.requestBody(stringParam: parameter)
+        let requestParams = ConfirmClaim.requestBody(stringParam: parameter,departmentName: department)
         let url = URL(string: BASE_URL+CONFIRM_CLAIM)
         var request = URLRequest(url: url!)
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
