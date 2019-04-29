@@ -157,7 +157,10 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
                                  self.leaveBalanceFlag = true
                             }
                             self.chatTableView.reloadData()
-                            self.scrollToBottom()
+                            DispatchQueue.main.async {
+                                self.scrollToBottom()
+                            }
+                            
                         }
                         if let question = chatModel?.data?.query {
                             self.speakText(message: question)
@@ -490,21 +493,27 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
                            options: animationCurve,
                            animations: { self.view.layoutIfNeeded() },
                            completion: nil)
-            self.scrollToBottom()
+            DispatchQueue.main.async {
+                self.scrollToBottom()
+                
+            }
+            
         }
     }
     
     func scrollToBottom(){
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            var rowCount = self.messageArray.count - 1
+        
+                var rowCount = self.messageArray.count - 1
             if self.chatArray.count > self.messageArray.count {
                 rowCount = self.chatArray.count - 1
             }
             let indexPath = IndexPath(
                 row: rowCount,
                 section: 0)
+//        if self.navigationController!.presentedViewController == ApplyLeaveViewController{
             self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        }
+//        }
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

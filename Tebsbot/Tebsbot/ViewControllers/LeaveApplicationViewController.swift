@@ -178,11 +178,26 @@ class LeaveApplicationViewController: UIViewController {
     
     @objc func buttonCalendarClicked(sender:UIButton){
         debugPrint("calender tapped")
+        self.calenderOpened()
+    }
+    @objc func calenderOpened(){
         let dateRangePickerViewController = CalendarDateRangePickerViewController(collectionViewLayout: UICollectionViewFlowLayout())
         dateRangePickerViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: dateRangePickerViewController)
-        dateRangePickerViewController.clearsSelectionOnViewWillAppear = true
+        if startDate != nil{
+            if (startDate?.compare(endDate!))!.rawValue == 0{
+                dateRangePickerViewController.selectedStartDate = startDate
+            }else{
+                dateRangePickerViewController.selectedStartDate = startDate
+                dateRangePickerViewController.selectedEndDate = endDate
+            }
+        }
+  
+        
+        
+        //        dateRangePickerViewController.clearsSelectionOnViewWillAppear = true
         self.navigationController?.present(navigationController, animated: false, completion: nil)
+        
     }
 }
 
@@ -253,7 +268,7 @@ extension LeaveApplicationViewController{
             
         }
     }
-    func scrollToBottom(){
+    func scrollToBottomTable(){
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             let indexPath = IndexPath(
                 row: 4,
@@ -446,6 +461,16 @@ extension LeaveApplicationViewController:UITableViewDelegate{
             return 0
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 1:
+            break
+        case 3:
+            self.calenderOpened()
+        default:
+            break
+        }
+    }
 }
 
 
@@ -485,8 +510,8 @@ extension LeaveApplicationViewController: UITableViewDataSource{
         case 3:
             cell = (tableView.dequeueReusableCell(withIdentifier: "Cell4", for: indexPath) as! LeaveApplicationCell)
             cell?.buttonCalender.addTarget(self, action: #selector(buttonCalendarClicked(sender:)), for: .touchUpInside)
-            cell?.dateTextField.addTarget(self, action: #selector(buttonCalendarClicked(sender:)), for: .touchUpInside)
-            
+//            cell?.dateTextField.addTarget(self, action: #selector(buttonCalendarClicked(sender:)), for: .touchUpInside)
+            cell?.dateTextField.delegate =  self
             cell?.buttonCalender.isEnabled = !isFromBot
             cell?.dateTextField.isEnabled = false
             
@@ -495,7 +520,7 @@ extension LeaveApplicationViewController: UITableViewDataSource{
                     defaultTextFieldText = (startDate?.setTimeFormat())!
                 }else{
                     
-                    defaultTextFieldText = "\((self.startDate?.setTimeFormat())!)   to   \((self.endDate?.setTimeFormat())!)"
+                    defaultTextFieldText = "\((self.startDate?.setTimeFormat())!)    to   \((self.endDate?.setTimeFormat())!)"
                 }
             }else{
                 defaultTextFieldText = DEFAULT_TEXT
@@ -513,6 +538,8 @@ extension LeaveApplicationViewController: UITableViewDataSource{
         }
         return cell!
     }
+    
+    
     
     func setAttributedText() -> NSAttributedString{
         let attributedString = NSMutableAttributedString(string: defaultTextFieldText)
@@ -532,6 +559,11 @@ extension LeaveApplicationViewController: UITableViewDataSource{
         }
         attributedText = attributedString
         return attributedText!
+    }
+}
+extension LeaveApplicationViewController:UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.calenderOpened()
     }
 }
 
@@ -584,7 +616,7 @@ extension LeaveApplicationViewController:UITextViewDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
         debugPrint(canBecomeFirstResponder)
         textView.becomeFirstResponder()
-        scrollToBottom()
+        self.scrollToBottomTable()
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == nil && textView.text.isEmpty{
