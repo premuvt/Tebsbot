@@ -49,7 +49,7 @@ class LeaveApplicationViewController: UIViewController, UITableViewDelegate {
     var startDateString : String? = ""
     var endDateString : String? = ""
     var fileName:String? = ""
-    var username:String? = UserDefaults.standard.object(forKey: "user") as! String
+    var username:String? = "Senthil"//UserDefaults.standard.object(forKey: "user") as! String
     var appliedDateTime:TimeZone?
     var isProgressInit:Bool = false
     
@@ -290,6 +290,7 @@ extension LeaveApplicationViewController:UIImagePickerControllerDelegate,UINavig
 
 extension LeaveApplicationViewController{
     func validation(){
+        
         if self.startDateString == "" || self.startDateString == nil {
             noDateMessage()
             enableButtons()
@@ -349,7 +350,7 @@ extension LeaveApplicationViewController{
     func uploadApplyLeaveData(){
         
         //        print("upload initiated")
-        //        self.activityIndicator("Uploading..")
+        self.activityIndicator("Submitting...")
         let parameters : [String : String]?
         var name : String = ""
         if self.fileName == ""{
@@ -398,6 +399,7 @@ extension LeaveApplicationViewController{
                 upload.responseJSON { response in
                     //print response.result
                     DispatchQueue.main.async {
+                        self.stopActivity()
                         self.buttonSubmit.isEnabled = true
                         self.buttonConfirm.isEnabled = true
                     }
