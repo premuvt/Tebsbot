@@ -69,8 +69,8 @@ class LeaveChatTableviewCell: UITableViewCell {
     
     @IBInspectable var topInset: CGFloat = 10.0
     @IBInspectable var bottomInset: CGFloat = 10.0
-    @IBInspectable var leftInset: CGFloat = 10.0
-    @IBInspectable var rightInset: CGFloat = 10.0
+    @IBInspectable var leftInset: CGFloat = 5.0
+    @IBInspectable var rightInset: CGFloat = 5.0
     
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets.init(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)

@@ -70,8 +70,9 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate, AVSpe
     override func viewDidLoad() {
         super.viewDidLoad()
         setUIBoarder()
-        self.recordButton.isEnabled = false
-        speakText(message: sayIntroMessage())
+//        self.recordButton.isEnabled = false
+//        speakText(message: sayIntroMessage())
+        self.sayIntroMessage()
         self.footerContinerView.addSubview(self.optionsView)
         self.optionsView.bindFrameToSuperviewBounds()
         
@@ -82,7 +83,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate, AVSpe
         imagePicker.delegate = self
         
         let userName:String = UserDefaults.standard.object(forKey: "user") as! String
-        self.userLabel.text = "Hi "+userName.capitalized
+        self.userLabel.text = "Hi Senthil"//+userName.capitalized
 
 //        print("laguage code - ",Locale.current.languageCode!)
 //        print("reagin local - ", NSLocale.current.identifier)
@@ -132,7 +133,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate, AVSpe
         if message != ""{
             debugPrint("message : ========= ",message!)
             self.activityIndicator("Sending...")
-            updateMessageAndSendTime(message: message!)
+            updateMessageAndSendTime(message: self.updateString(text: message!))
             if reason == "1" {
                 reasonText = message!
             }
@@ -676,10 +677,10 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
             if let result = result {
                 
                 let bestString = result.bestTranscription.formattedString
-                self.messageTextView.text = bestString
+                self.messageTextView.text = self.updateString(text: bestString)
                 self.autoSendTimer?.invalidate()
 
-                    self.autoSendTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.sendAction), userInfo: nil, repeats: false)
+                    self.autoSendTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.sendAction), userInfo: nil, repeats: false)
                 
                 var lastString: String = ""
                 for segment in result.bestTranscription.segments {
@@ -694,7 +695,20 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
             }
         })
     }
-    
+    func updateString(text:String) -> String {
+        print("input string - ", text)
+        var updatedStr = text
+        let stringArr = updatedStr.components(separatedBy: "-")
+        if stringArr.count > 1 {
+            updatedStr = stringArr[0]+" to "+stringArr[1]
+        }
+//        let stringArr2 = updatedStr.components(separatedBy: " two ")
+//        if stringArr2.count > 1 {
+//            updatedStr = stringArr2[0]+" to "+stringArr2[1]
+//        }
+        print("output string - ", updatedStr)
+        return updatedStr
+    }
     //MARK: - Alert
     
     func sendAlert(message: String) {

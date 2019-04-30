@@ -315,21 +315,32 @@ Medical Prescription</string>
                                                     <color key="textColor" white="0.36310288245342459" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBO-Sr-guc">
+                                                    <rect key="frame" x="52" y="26" width="253" height="44"/>
+                                                    <connections>
+                                                        <action selector="onPickerButton:" destination="iD1-mw-jKo" eventType="touchUpInside" id="iaG-pc-d2y"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="vBO-Sr-guc" firstAttribute="leading" secondItem="reV-nD-08u" secondAttribute="leading" constant="52" id="3AY-eo-Foc"/>
+                                                <constraint firstItem="vBO-Sr-guc" firstAttribute="top" secondItem="reV-nD-08u" secondAttribute="top" constant="26" id="66B-dK-A6q"/>
                                                 <constraint firstItem="HF2-Xa-sXQ" firstAttribute="top" secondItem="reV-nD-08u" secondAttribute="topMargin" constant="15" id="CUR-4H-Uit"/>
                                                 <constraint firstItem="zCc-de-mVC" firstAttribute="top" secondItem="reV-nD-08u" secondAttribute="topMargin" constant="8" id="JAn-tZ-OOp"/>
                                                 <constraint firstItem="zCc-de-mVC" firstAttribute="centerY" secondItem="HF2-Xa-sXQ" secondAttribute="centerY" id="T54-dP-Na5"/>
                                                 <constraint firstItem="EV7-PU-KnK" firstAttribute="top" secondItem="HF2-Xa-sXQ" secondAttribute="bottom" constant="20" id="ZWH-eV-8hp"/>
+                                                <constraint firstAttribute="bottom" secondItem="vBO-Sr-guc" secondAttribute="bottom" constant="36" id="dhK-9U-Mjv"/>
                                                 <constraint firstItem="EV7-PU-KnK" firstAttribute="leading" secondItem="reV-nD-08u" secondAttribute="leadingMargin" id="iCb-8s-432"/>
                                                 <constraint firstItem="HF2-Xa-sXQ" firstAttribute="leading" secondItem="reV-nD-08u" secondAttribute="leadingMargin" id="noY-3j-l2L"/>
                                                 <constraint firstItem="zCc-de-mVC" firstAttribute="leading" secondItem="HF2-Xa-sXQ" secondAttribute="trailing" constant="8" id="rXU-DE-rph"/>
+                                                <constraint firstAttribute="trailing" secondItem="vBO-Sr-guc" secondAttribute="trailing" constant="15" id="u3T-I7-CQP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="addButton" destination="HF2-Xa-sXQ" id="wgF-QK-Djl"/>
                                             <outlet property="labelScan" destination="zCc-de-mVC" id="LYD-Li-BMd"/>
+                                            <outlet property="pickerButton" destination="vBO-Sr-guc" id="2Dz-bh-fiM"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell3" rowHeight="69" id="7XY-rd-nz5" customClass="LeaveApplicationCell" customModule="Tebsbot" customModuleProvider="target">
@@ -692,7 +703,7 @@ Medical Prescription</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tQm-aw-EhX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sO7-yz-MXE">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -710,7 +721,7 @@ Medical Prescription</string>
                 <navigationController storyboardIdentifier="LeaveApplicationViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="yKo-Sl-YIQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9xP-dZ-8RO">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

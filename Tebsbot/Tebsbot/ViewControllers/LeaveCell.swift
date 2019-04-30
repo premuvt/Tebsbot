@@ -48,7 +48,7 @@ class LeaveCell: UITableViewCell {
             self.durationLabel.text = String(describing: duration) + " " + dayString
         }
         
-        self.dateRangeLabel.text = data.startDate! + " - " + data.endDate!
+        self.dateRangeLabel.text = data.startDate! == data.endDate! ? data.endDate! : data.startDate! + " - " + data.endDate!
     }
     func getLeaveDescriptionFrom(timeStamp:Int) -> String {
         

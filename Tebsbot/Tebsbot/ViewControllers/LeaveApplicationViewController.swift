@@ -10,7 +10,7 @@ import UIKit
 import CalendarDateRangePickerViewController
 import Alamofire
 
-class LeaveApplicationViewController: UIViewController {
+class LeaveApplicationViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var leaveTableView: UITableView!
     var cell : LeaveApplicationCell? = nil
     var selectedImage: UIImage? = nil
@@ -164,14 +164,16 @@ class LeaveApplicationViewController: UIViewController {
     }
     
     @objc func buttonAddClicked(sender:UIButton){
-        
+        self.openAttachmentOptions()
+    }
+    func openAttachmentOptions() {
         alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction(title: "Camera", style: .default)
         {
             UIAlertAction in
             self.openCamera()
         }
-        let gallaryAction = UIAlertAction(title: "Gallary", style: .default)
+        let gallaryAction = UIAlertAction(title: "Gallery", style: .default)
         {
             UIAlertAction in
             self.openGallery()
@@ -191,7 +193,6 @@ class LeaveApplicationViewController: UIViewController {
         self.present(alert!, animated: true, completion: nil)
         debugPrint("add button tapped")
     }
-    
     @objc func buttonDeleteTapped(sender:UIButton){
         imageSelected = false
         selectedImage = nil
@@ -202,6 +203,9 @@ class LeaveApplicationViewController: UIViewController {
     
     @IBAction func onDateButton(_ sender: UIButton) {
         self.calenderOpened()
+    }
+    @IBAction func onPickerButton(_ sender: UIButton) {
+        self.openAttachmentOptions()
     }
     @objc func buttonCalendarClicked(sender:UIButton){
         debugPrint("calender tapped")
@@ -470,7 +474,7 @@ extension LeaveApplicationViewController: CalendarDateRangePickerViewControllerD
 
 // MARK:- TableView Delegate and Datasource
 
-extension LeaveApplicationViewController:UITableViewDelegate{
+extension LeaveApplicationViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let rowNumber = indexPath.row
         switch rowNumber {
@@ -502,6 +506,7 @@ extension LeaveApplicationViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 1:
+            self.openAttachmentOptions()
             break
         case 3:
             self.calenderOpened()
@@ -647,7 +652,7 @@ class LeaveApplicationCell:UITableViewCell{
     @IBOutlet weak var labelAttachment: UILabel!
     
     @IBOutlet weak var dateLabelButton: UIButton!
-    
+    @IBOutlet weak var pickerButton: UIButton!
     override func awakeFromNib() {
         // cell 1 progress view
         if leaveStatusProgress != nil{

@@ -19,10 +19,12 @@ class WebService {
         let params = ["sentence" : message,"reasonResponse":reason,"documentResponse":document,"sessionStart":start,"reason":reasonText]
 //        let jsonData = try
         do{
+            print("applyLeaveChat start - ", Date())
         request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
 
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             do{
+                print("applyLeaveChat return - ", Date())
                 let jsonDecoder = JSONDecoder()
                 if data != nil{
                 let responseModel = try jsonDecoder.decode(LeaveChatModal.self, from: data!)
@@ -118,7 +120,7 @@ class WebService {
     }
     func getLeaveList(CompletionBlock:((Bool,String?, MyLeaveListModal?) -> Void)!){
         let user:String = UserDefaults.standard.object(forKey: "user") as! String
-        let url = URL(string: BASE_URL + LEAVE_LIST + user)
+        let url = URL(string: BASE_URL + LEAVE_LIST + "Senthil")
         var request = URLRequest(url: url!)
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "GET"
