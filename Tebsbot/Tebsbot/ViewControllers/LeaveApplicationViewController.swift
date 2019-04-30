@@ -98,6 +98,7 @@ class LeaveApplicationViewController: UIViewController, UITableViewDelegate {
     }
     
     @objc func dismissKeyboard(){
+        resignFirstResponder()
         view.endEditing(true)
     }
     
@@ -112,6 +113,7 @@ class LeaveApplicationViewController: UIViewController, UITableViewDelegate {
     //MARK:- keyboard notification
     
     @objc func keyboardShow(notification:Notification){
+        inputAccessoryHight.constant = 65
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
@@ -212,6 +214,8 @@ class LeaveApplicationViewController: UIViewController, UITableViewDelegate {
         self.calenderOpened()
     }
     @objc func calenderOpened(){
+        self.dismissKeyboard()
+        
         let dateRangePickerViewController = CalendarDateRangePickerViewController(collectionViewLayout: UICollectionViewFlowLayout())
         dateRangePickerViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: dateRangePickerViewController)
@@ -308,7 +312,7 @@ extension LeaveApplicationViewController{
           self.buttonEdit.backgroundColor = EDIT_BACKGROUND_COLOR_SELECTED
     }
     func scrollToBottomTable(){
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
             let indexPath = IndexPath(
                 row: 4,
                 section: 0)
