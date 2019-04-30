@@ -25,7 +25,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        setDemoCred()
+//        setDemoCred()
         setUpTapToDismissKeyboard()
         setUpKeyboardNotification()
         
