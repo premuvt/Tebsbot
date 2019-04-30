@@ -14,6 +14,7 @@ class ClaimConfirmViewController: UIViewController {
     var responceClaimString:String!
     var responceFareString:String!
     var selectedImage:UIImage!
+    var departmentString:String!
     
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
@@ -31,6 +32,7 @@ class ClaimConfirmViewController: UIViewController {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLable: UILabel!
+    @IBOutlet weak var coastCenter: UILabel!
     var lastScale:CGFloat!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +52,7 @@ class ClaimConfirmViewController: UIViewController {
         typeLabel.text = "Claim Type - \(responceClaimString ?? "no type")"
         dateLabel.text = "Date - \(responceDateString ?? "no date")"
         amountLable.text = "Claim Amount - \(responceFareString ?? "no amount")"
+        coastCenter.text = "Cost center - \(departmentString ?? "no cost center")"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +75,7 @@ class ClaimConfirmViewController: UIViewController {
         self.activityIndicator("Confirming...")
         sender.isEnabled = false
         let dictionaryClaim: Dictionary<String,String> = ["date":responceDateString,"claim_type":responceClaimString,"fare_amount":responceFareString]
-        WebService.shared.confirmClaim(parameter: dictionaryClaim,department: "replace the selected departmet") { (success, errorMessage, successMessage) in
+        WebService.shared.confirmClaim(parameter: dictionaryClaim,department: departmentString) { (success, errorMessage, successMessage) in
             sender.isEnabled = true
             if success{
                 DispatchQueue.main.sync {

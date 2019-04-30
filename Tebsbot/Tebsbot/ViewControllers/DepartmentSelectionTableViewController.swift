@@ -10,9 +10,10 @@ import UIKit
 
 protocol DepartmentSelectionDelegate {
     func departmentSelected(selectedDepartment:String)
+    func didCanceldepartmentSelected()
 }
 class DepartmentSelectionTableViewController: UITableViewController {
-    var departments : [String] = ["Sales","AMS","delivery team"]
+    var departments : [String] = ["Sales","AMS","delivery team","","Close"]
     var departmentDelegate : DepartmentSelectionDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,14 @@ class DepartmentSelectionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.departmentDelegate?.departmentSelected(selectedDepartment: departments[indexPath.row])
+        if indexPath.row == (departments.count - 1) {
+            self.departmentDelegate?.didCanceldepartmentSelected()
+            self.dismiss(animated: true, completion: nil)
+        }
+        else if departments[indexPath.row].count > 0 {
+            self.departmentDelegate?.departmentSelected(selectedDepartment: departments[indexPath.row])
+        }
+        
         
     }
 

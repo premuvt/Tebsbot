@@ -9,14 +9,14 @@
 import UIKit
 
 class DepartmentSelectionViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    var departments : [String] = ["Sales","AMS","Delivery Team"]
+    var departments : [String] = ["Sales","AMS","Delivery Team","","Close"]
     var departmentDelegate : DepartmentSelectionDelegate?
 
     @IBOutlet weak var departmentTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.departmentTableView.reloadData()
-
+        self.departmentTableView.layer.cornerRadius = 20
         // Do any additional setup after loading the view.
     }
     
@@ -31,6 +31,9 @@ class DepartmentSelectionViewController: UIViewController,UITableViewDelegate,UI
         
         return departments.count
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "departmentCell", for: indexPath) as! DepartmentTableViewCell
@@ -39,7 +42,14 @@ class DepartmentSelectionViewController: UIViewController,UITableViewDelegate,UI
     }
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.departmentDelegate?.departmentSelected(selectedDepartment: departments[indexPath.row])
+        if indexPath.row == (departments.count - 1) {
+            self.departmentDelegate?.didCanceldepartmentSelected()
+            self.dismiss(animated: true, completion: nil)
+        }
+        else if departments[indexPath.row].count > 0 {
+            self.departmentDelegate?.departmentSelected(selectedDepartment: departments[indexPath.row])
+        }
+        tableView.cellForRow(at: indexPath)?.isSelected = false
         
     }
 }

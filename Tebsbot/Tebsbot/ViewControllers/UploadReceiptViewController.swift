@@ -31,6 +31,7 @@ class UploadReceiptViewController: UIViewController {
     
     @IBOutlet weak var buttonupload: UIButton!
     @IBOutlet weak var buttonDepartment: UIButton!
+    @IBOutlet weak var departmentLabel: UILabel!
     
     
     var imagePicker = UIImagePickerController()
@@ -53,6 +54,15 @@ class UploadReceiptViewController: UIViewController {
         let imageView = UIImageView(image:logo)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
+        
+        let userName = UserDefaults.standard.object(forKey: "user") as! String
+        self.nameLabel.text = "Hi "+userName.capitalized
+        
+        if departmentString == ""{
+            self.departmentLabel.text = "Select Cost Centre"
+        }else{
+            self.departmentLabel.text = departmentString
+        }
 //        let button = UIButton.init(type: .custom)
 //        button.setImage(UIImage.init(named: "arrow"), for: UIControl.State.normal)
 //        button.addTarget(self, action:#selector(ApplyLeaveViewController.backAction), for:.touchUpInside)
@@ -73,17 +83,13 @@ class UploadReceiptViewController: UIViewController {
     func setUpUI(){
 
         buttonDepartment.imageEdgeInsets
-        .left = self.buttonDepartment.frame.maxX - 30
+        .left = self.buttonDepartment.frame.width - 45
         self.buttonbrowse.setCornerRaius()
         self.buttonupload.setCornerRaius()
     }
 
     @IBAction func buttonDepartmentTapped(_ sender: UIButton) {
-        if departmentString == ""{
-            self.buttonDepartment.titleLabel!.text = "Select Cost Centre"
-        }else{
-            self.buttonDepartment.titleLabel!.text = departmentString
-        }
+        self.buttonDepartment.isEnabled = false
          let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        /DepartmentSelectionViewController
         
@@ -214,6 +220,7 @@ extension UploadReceiptViewController : UIImagePickerControllerDelegate, UINavig
             controller.responceClaimString = self.responceClaimString
             controller.responceDateString = self.responceDateString
             controller.selectedImage = self.selectedImage
+            controller.departmentString = self.departmentString
             self.navigationController?.pushViewController(controller, animated: true)
         }
         
@@ -260,11 +267,16 @@ extension UploadReceiptViewController : UIImagePickerControllerDelegate, UINavig
 
 extension UploadReceiptViewController:DepartmentSelectionDelegate{
     func departmentSelected(selectedDepartment: String) {
+        self.buttonDepartment.isEnabled = true
         self.dismiss(animated: false, completion:nil)
         departmentString = selectedDepartment
-        self.buttonDepartment.titleLabel!.text = departmentString
+//        self.buttonDepartment.titleLabel!.text = departmentString
+        self.departmentLabel.text = departmentString
+        
     }
-    
+    func didCanceldepartmentSelected () {
+        self.buttonDepartment.isEnabled = true
+    }
     
 }
 extension UploadReceiptViewController:UIPopoverPresentationControllerDelegate{
