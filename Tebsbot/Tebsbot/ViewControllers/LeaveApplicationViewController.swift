@@ -60,6 +60,13 @@ class LeaveApplicationViewController: UIViewController {
         if isFromBot {
             self.footerView.addSubview(self.confirmEditView)
             self.confirmEditView.bindFrameToSuperviewBounds()
+//            if startDate == nil{
+//                self.buttonConfirm.isEnabled = false
+//                self.buttonConfirm.backgroundColor = CONFIRM_DISABLED_BG_COLOR
+//            }else{
+//                self.buttonConfirm.isEnabled = true
+//                self.buttonConfirm.backgroundColor = CONFIRM_ENABLED_BG_COLOR
+//            }
         }
         else{
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(cancelClicked))
@@ -73,12 +80,10 @@ class LeaveApplicationViewController: UIViewController {
     }
     
     func setButtons(){
-        self.buttonSubmit.layer.cornerRadius = self.buttonSubmit.frame.height / 2
-        self.buttonSubmit.layer.masksToBounds = true
-        self.buttonEdit.layer.cornerRadius = self.buttonEdit.frame.height / 2
-        self.buttonEdit.layer.masksToBounds = true
-        self.buttonConfirm.layer.cornerRadius = self.buttonConfirm.frame.height / 2
-        self.buttonConfirm.layer.masksToBounds = true
+        
+        self.buttonSubmit.setCornerRaius()
+        self.buttonEdit.setCornerRaius()
+        self.buttonConfirm.setCornerRaius()
     }
     
     func setUpView(){
@@ -128,10 +133,17 @@ class LeaveApplicationViewController: UIViewController {
         self.isFromBot = !self.isFromBot
         self.buttonEdit.backgroundColor = self.isFromBot ? EDIT_BACKGROUND_COLOR:EDIT_BACKGROUND_COLOR_SELECTED
         self.leaveTableView.reloadData()
+        self.buttonConfirm.isEnabled = true
+        self.buttonConfirm.backgroundColor = CONFIRM_ENABLED_BG_COLOR
     }
     @IBAction func buttonConfirmClicked(_ sender: Any) {
+        if startDate == nil{
+           validation()
+        }
+        
         self.setUploadDate()
         self.buttonSubmit.sendActions(for: .touchUpInside)
+//        self.buttonConfirm.isEnabled = false
     }
     
     
@@ -260,18 +272,26 @@ extension LeaveApplicationViewController:UIImagePickerControllerDelegate,UINavig
 
 extension LeaveApplicationViewController{
     func validation(){
-        if self.startDateString == "" {
+        if self.startDateString == "" || self.startDateString == nil {
             noDateMessage()
-            self.buttonSubmit.isEnabled = true
+            enableButtons()
         }
         else if reason! == "" && leaveType?.lowercased() == "medical" {
              noReasonMessage()
-            self.buttonSubmit.isEnabled = true
+            enableButtons()
         }
         else{
           uploadApplyLeaveData()
             
         }
+    }
+    
+    func enableButtons(){
+        self.buttonSubmit.isEnabled = true
+        self.buttonConfirm.isEnabled = true
+          self.buttonConfirm.backgroundColor = CONFIRM_ENABLED_BG_COLOR
+        self.buttonEdit.isEnabled = isFromBot
+          self.buttonEdit.backgroundColor = EDIT_BACKGROUND_COLOR_SELECTED
     }
     func scrollToBottomTable(){
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -283,9 +303,11 @@ extension LeaveApplicationViewController{
     }
     func noReasonMessage(){
         setAlert(message: NO_REASON)
+//        enableButtons()
     }
     func noDateMessage(){
         setAlert(message: NO_DATERANGESELECTED)
+        
     }
     
     func setAlert(message:String){

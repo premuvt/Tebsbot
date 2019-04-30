@@ -26,7 +26,10 @@ let DEFAULT_TEXT: String                = "Select Dates"
 
 //validationMessages
 let NO_REASON : String                  = "Please mention the reason"
-let NO_DATERANGESELECTED : String       = "No date range is selected. Select leave date that you are applying for."
+let NO_DATERANGESELECTED : String       = "Please select the date"
 let EDIT_BACKGROUND_COLOR :UIColor      = UIColor.init(red: 76/255, green: 128/255, blue: 248/255, alpha: 1.0)
 let EDIT_BACKGROUND_COLOR_SELECTED :UIColor      = UIColor.init(red: 76/255, green: 128/255, blue: 248/255, alpha: 0.7)
 
+let CONFIRM_ENABLED_BG_COLOR            = UIColor.init(red: 30/255, green: 35/255, blue: 126/255, alpha: 1.0)
+
+let CONFIRM_DISABLED_BG_COLOR            = UIColor.init(red: 30/255, green: 35/255, blue: 126/255, alpha: 0.5)
