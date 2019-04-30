@@ -40,7 +40,8 @@ class UploadReceiptViewController: UIViewController {
     var responceDateString:String!
     var responceClaimString:String!
     var responceFareString:String!
-    var departmentString : String = ""
+    var departmentString : String = "Select Cost Centre"
+    var availableString:Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -64,13 +65,14 @@ class UploadReceiptViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = barButtonRight
         
         let userName = UserDefaults.standard.object(forKey: "user") as! String
-        self.nameLabel.text = "Hi "+userName.capitalized
+        self.nameLabel.text = "Hi Senthil"//+userName.capitalized
         
-        if departmentString == ""{
+        if departmentString == "" ||  !availableString{
             self.departmentLabel.text = "Select Cost Centre"
         }else{
             self.departmentLabel.text = departmentString
         }
+        availableString = true
 
     }
     
@@ -79,6 +81,10 @@ class UploadReceiptViewController: UIViewController {
         self.selectedImage = nil
         self.fileName = ""
         self.fileNameLabel.text = "No file selected.."
+         self.departmentLabel.text = "Select Cost Centre"
+        if !availableString{
+        departmentString = "Select Cost Centre"
+        }
         self.buttonupload.isUserInteractionEnabled = false
         self.buttonupload.isEnabled = false
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -90,8 +96,8 @@ class UploadReceiptViewController: UIViewController {
     
     func setUpUI(){
 
-        buttonDepartment.imageEdgeInsets
-        .left = self.buttonDepartment.frame.width - 45
+//        buttonDepartment.imageEdgeInsets
+//        .left =  (self.buttonDepartment.frame.width / 2)
         self.buttonbrowse.setCornerRaius()
         self.buttonupload.setCornerRaius()
     }
@@ -118,11 +124,16 @@ class UploadReceiptViewController: UIViewController {
         print("upload initiated")
         self.activityIndicator("Uploading..")
         if selectedImage != nil {
+            let dictionary:[String:String] = ["department": departmentString,"file":fileName+".JPG"]
             if let data = selectedImage.jpegData(compressionQuality:1.0) {
                 // Start Alamofire
                 
                 Alamofire.upload(multipartFormData: { (multipartFormData) in
                     multipartFormData.append(self.selectedImage.jpegData(compressionQuality: 1)!, withName: "file", fileName: "file.JPG", mimeType: "image/jpeg")
+                    for (key, value) in dictionary {
+                        multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+                    }
+                    
                 }, to:BASE_URL+FILE_UPLOAD)
                 { (result) in
                     switch result {
@@ -211,6 +222,7 @@ extension UploadReceiptViewController : UIImagePickerControllerDelegate, UINavig
     
     func pushToConfirmView() {
         DispatchQueue.main.async {
+            self.availableString = false
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "ClaimConfirmViewController") as! ClaimConfirmViewController
             controller.responceFareString = self.responceFareString
@@ -267,8 +279,9 @@ extension UploadReceiptViewController:DepartmentSelectionDelegate{
         self.buttonDepartment.isEnabled = true
         self.dismiss(animated: false, completion:nil)
         departmentString = selectedDepartment
+
 //        self.buttonDepartment.titleLabel!.text = departmentString
-        self.departmentLabel.text = departmentString
+        self.departmentLabel.text = selectedDepartment
         
     }
     func didCanceldepartmentSelected () {

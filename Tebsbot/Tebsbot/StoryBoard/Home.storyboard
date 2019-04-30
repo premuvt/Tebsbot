@@ -527,7 +527,7 @@
                                     <action selector="cancelButtonTapped:" destination="Z1g-yy-mwx" eventType="touchUpInside" id="NT5-IY-xL0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost sender" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pb2-vT-Y5g">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost centre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pb2-vT-Y5g">
                                 <rect key="frame" x="16" y="337" width="290" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="sEH-jl-Edl"/>
@@ -585,6 +585,7 @@
                         <outlet property="claimImagePanGesture" destination="j8p-l3-1uv" id="ROn-5Z-kvJ"/>
                         <outlet property="coastCenter" destination="Pb2-vT-Y5g" id="Ukn-an-DWl"/>
                         <outlet property="confirmButton" destination="KZW-nf-rRA" id="CAE-4d-sfe"/>
+                        <outlet property="costcenterHeight" destination="sEH-jl-Edl" id="bbV-KI-WyK"/>
                         <outlet property="dateLabel" destination="ABb-1S-d8O" id="uuZ-hp-qJm"/>
                         <outlet property="imagePanGesture" destination="jLQ-Tg-JVP" id="oBA-uu-vwu"/>
                         <outlet property="reciptImageview" destination="vcH-aM-1Wd" id="F50-fx-W8b"/>

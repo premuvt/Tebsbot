@@ -9,7 +9,7 @@
 import UIKit
 
 class DepartmentSelectionViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    var departments : [String] = ["Sales","AMS","Delivery Team","","Close"]
+    var departments : [String] = ["Select Cost Centre","Sales","AMS","Delivery Team","","Close"]
     var departmentDelegate : DepartmentSelectionDelegate?
 
     @IBOutlet weak var departmentTableView: UITableView!

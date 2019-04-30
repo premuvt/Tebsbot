@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     
     //demo cread
-    let username = "abcd"
+    let username = "senthil.p@tebs.com"
     let pwd = "1234"
     
     override func viewDidLoad() {

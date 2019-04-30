@@ -14,7 +14,7 @@ class ClaimConfirmViewController: UIViewController {
     var responceClaimString:String!
     var responceFareString:String!
     var selectedImage:UIImage!
-    var departmentString:String!
+    var departmentString:String?
     
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
@@ -29,6 +29,7 @@ class ClaimConfirmViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var reciptImageview: UIImageView!
+    @IBOutlet weak var costcenterHeight: NSLayoutConstraint!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLable: UILabel!
@@ -52,7 +53,12 @@ class ClaimConfirmViewController: UIViewController {
         typeLabel.text = "Claim Type - \(responceClaimString ?? "no type")"
         dateLabel.text = "Date - \(responceDateString ?? "no date")"
         amountLable.text = "Claim Amount - \(responceFareString ?? "no amount")"
-        coastCenter.text = "Cost center - \(departmentString ?? "no cost center")"
+        coastCenter.text = "Cost centre - \(departmentString ?? "no cost center")"
+        if departmentString == nil || departmentString == "" || departmentString == "Select Cost Centre" {
+            costcenterHeight.constant = 0
+        }else{
+            costcenterHeight.constant = 23
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +81,7 @@ class ClaimConfirmViewController: UIViewController {
         self.activityIndicator("Confirming...")
         sender.isEnabled = false
         let dictionaryClaim: Dictionary<String,String> = ["date":responceDateString,"claim_type":responceClaimString,"fare_amount":responceFareString]
-        WebService.shared.confirmClaim(parameter: dictionaryClaim,department: departmentString) { (success, errorMessage, successMessage) in
+        WebService.shared.confirmClaim(parameter: dictionaryClaim,department: departmentString!) { (success, errorMessage, successMessage) in
             sender.isEnabled = true
             if success{
                 DispatchQueue.main.sync {
