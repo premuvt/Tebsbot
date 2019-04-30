@@ -594,13 +594,16 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
         let myString = formatter.string(from: curDate)
         return myString// string
     }
-    func getDate(stringDate:String) -> Date{
+    func getDate(stringDate:String) -> Date?{
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
         formatter.dateFormat = "dd-MM-yyyy"
         
-        let date = formatter.date(from: stringDate)
-        return date!// string
+        if let date = formatter.date(from: stringDate){
+            return date
+        }
+        return nil
+       // string
     }
         
     //MARK:- text to speech
