@@ -54,6 +54,14 @@ class UploadReceiptViewController: UIViewController {
         let imageView = UIImageView(image:logo)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
+
+        
+        let rightButton = UIButton.init(type: .custom)
+        rightButton.setImage(UIImage.init(named: "logout"), for: UIControl.State.normal)
+        rightButton.addTarget(self, action:#selector(logout(sender:)), for:.touchUpInside)
+        rightButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
+        let barButtonRight = UIBarButtonItem.init(customView: rightButton)
+        self.navigationItem.rightBarButtonItem = barButtonRight
         
         let userName = UserDefaults.standard.object(forKey: "user") as! String
         self.nameLabel.text = "Hi "+userName.capitalized
@@ -63,16 +71,16 @@ class UploadReceiptViewController: UIViewController {
         }else{
             self.departmentLabel.text = departmentString
         }
-//        let button = UIButton.init(type: .custom)
-//        button.setImage(UIImage.init(named: "arrow"), for: UIControl.State.normal)
-//        button.addTarget(self, action:#selector(ApplyLeaveViewController.backAction), for:.touchUpInside)
-//        button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
-//        let barButton = UIBarButtonItem.init(customView: button)
-//        self.navigationItem.leftBarButtonItem = barButton
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.selectedImage = nil
+        self.fileName = ""
+        self.fileNameLabel.text = "No file selected.."
+        self.buttonupload.isUserInteractionEnabled = false
+        self.buttonupload.isEnabled = false
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -94,21 +102,10 @@ class UploadReceiptViewController: UIViewController {
 //        /DepartmentSelectionViewController
         
         let departmentSlectionViewController = storyboard.instantiateViewController(withIdentifier: "DepartmentSelectionViewController") as! DepartmentSelectionViewController
-//        let departmentSlectionViewController = storyboard.instantiateViewController(withIdentifier: "DepartmentSelectionTableViewController") as! DepartmentSelectionTableViewController
-departmentSlectionViewController.departmentDelegate = self
+        departmentSlectionViewController.departmentDelegate = self
 
         self.navigationController?.present(departmentSlectionViewController, animated: true)
-        
-//        let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "DepartmentSelectionTableViewController") as! UIViewController
-//        let nav = UINavigationController(rootViewController: popoverContent)
-//        nav.modalPresentationStyle = .popover
-//        let popover = nav.popoverPresentationController
-//        popoverContent.preferredContentSize = CGSize(width: 200, height: 150)//(500,600)
-//        popover!.delegate = self
-//        popover!.sourceView = self.view
-//        popover!.sourceRect = CGRect(x:100, y: 100, width: 200, height: 150)//(100,100,0,0)
-//
-//        self.present(nav, animated: true, completion: nil)
+
     }
     
     @IBAction func onBrowse(_ sender: UIButton) {
@@ -281,4 +278,11 @@ extension UploadReceiptViewController:DepartmentSelectionDelegate{
 }
 extension UploadReceiptViewController:UIPopoverPresentationControllerDelegate{
     
+}
+extension UploadReceiptViewController{
+    @objc func logout(sender:UIButton){
+        let alert = UIAlertController.init(title: "Confirm", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        alert.alertWithOkCancelButton(view: self, okAction: .logout)
+
+    }
 }
