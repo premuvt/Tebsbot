@@ -68,10 +68,16 @@ class LeaveApplicationViewController: UIViewController {
         }
         leaveTableView.delegate = self
         setButtons()
-        setUpKeyBoardNotification()
         setUpView()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpKeyBoardNotification()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeKeyBoardNotification()
+    }
     func setButtons(){
         self.buttonSubmit.layer.cornerRadius = self.buttonSubmit.frame.height / 2
         self.buttonSubmit.layer.masksToBounds = true
@@ -94,7 +100,10 @@ class LeaveApplicationViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
-    
+    func removeKeyBoardNotification() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
     //MARK:- keyboard notification
     
     @objc func keyboardShow(notification:Notification){
@@ -131,6 +140,7 @@ class LeaveApplicationViewController: UIViewController {
     }
     @IBAction func buttonConfirmClicked(_ sender: Any) {
         self.setUploadDate()
+        self.buttonConfirm.isEnabled = false
         self.buttonSubmit.sendActions(for: .touchUpInside)
     }
     
@@ -263,10 +273,12 @@ extension LeaveApplicationViewController{
         if self.startDateString == "" {
             noDateMessage()
             self.buttonSubmit.isEnabled = true
+            self.buttonConfirm.isEnabled = true
         }
         else if reason! == "" && leaveType?.lowercased() == "medical" {
              noReasonMessage()
             self.buttonSubmit.isEnabled = true
+            self.buttonConfirm.isEnabled = true
         }
         else{
           uploadApplyLeaveData()
@@ -359,6 +371,7 @@ extension LeaveApplicationViewController{
                     //print response.result
                     DispatchQueue.main.async {
                         self.buttonSubmit.isEnabled = true
+                        self.buttonConfirm.isEnabled = true
                     }
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "LeaveConfirmationViewController")

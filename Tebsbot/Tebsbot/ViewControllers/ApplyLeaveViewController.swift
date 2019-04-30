@@ -12,7 +12,7 @@ import AVFoundation
 import Speech
 
 
-class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
+class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate, AVSpeechSynthesizerDelegate{
   
 
     @IBOutlet weak var textViewConstraint: NSLayoutConstraint!
@@ -69,8 +69,8 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     var leaveBalanceFlag = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpKeyBoardNotification()
         setUIBoarder()
+        self.recordButton.isEnabled = false
         speakText(message: sayIntroMessage())
         self.footerContinerView.addSubview(self.optionsView)
         self.optionsView.bindFrameToSuperviewBounds()
@@ -97,7 +97,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
             self.chatTableView.reloadData()
             self.scrollToBottom()
         }
-        
+        synth.delegate = self
 //        self.speakText(message: "Hi sir, now you can also apply leave by speak. Please tap the mic button on bottom right corner to speak.")
     }
     deinit {
@@ -112,6 +112,10 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: UIResponder.keyboardDidHideNotification,
                                                object: nil)
+    }
+    func removeKeyBoardNotification() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     func setUIBoarder(){
         
@@ -141,7 +145,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
                 DispatchQueue.main.sync {
                     self.showBalance.isEnabled = true
                     self.noThanks.isEnabled = true
-                    self.recordButton.isEnabled = true
+                    self.requestSpeechAuthorization()
                     self.attachButton.isEnabled = true
                     self.cameraButton.isEnabled = true
                     self.skipButton.isEnabled = true
@@ -167,6 +171,9 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
                             
                         }
                         if let question = chatModel?.data?.query {
+                            DispatchQueue.main.async {
+                                self.recordButton.isEnabled = false
+                            }
                             self.speakText(message: question)
                         }
                         
@@ -213,13 +220,16 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
         }
         else{
             self.messageArray.append(message)
-            for i in 0 ..< messageArray.count{
+            for i in 0 ..< (messageArray.count - Int(reason)!){
 
                 chatMessage.append(messageArray[i])
                 chatMessage.append(" ")
             }
         }
-        
+        if document == "1" && reasonText.count > 0 {
+            let mgsSplit = chatMessage.components(separatedBy: reasonText)
+            chatMessage = mgsSplit[0]+mgsSplit[1]
+        }
         var chat = chatArray[chatArray.count - 1]
         chat.sendDate = Date()
         chatArray[chatArray.count - 1] = chat
@@ -262,6 +272,8 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setUpKeyBoardNotification()
+        self.requestSpeechAuthorization()
         navigationController?.setNavigationBarHidden(false, animated: animated)
         navigationController?.navigationBar.backgroundColor = UIColor.white
         let logo = UIImage(named: "logo")
@@ -280,6 +292,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         synth.stopSpeaking(at: .immediate)
+        self.removeKeyBoardNotification()
     }
     @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
@@ -297,6 +310,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
             debugPrint("Chat Message : =========== ",message)
             self.sendMessage(message: message)
             self.sendButton.isEnabled = false
+            self.recordButton.isEnabled = false
         }else{
             debugPrint("enter a message a to send")
         }
@@ -345,6 +359,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     }
     @IBAction func onAttach() {
         print("onAttach")
+        chatMessage.removeAll()
         self.attachButton.isEnabled = false
         self.cameraButton.isEnabled = false
         self.skipButton.isEnabled = false
@@ -352,6 +367,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     }
     @IBAction func onCamera() {
         print("onCamera")
+        chatMessage.removeAll()
         self.attachButton.isEnabled = false
         self.cameraButton.isEnabled = false
         self.skipButton.isEnabled = false
@@ -359,6 +375,7 @@ class ApplyLeaveViewController: UIViewController, LeaveTypePickerDelegate{
     }
     @IBAction func onSkip() {
         print("onSkip")
+        chatMessage.removeAll()
         self.attachButton.isEnabled = false
         self.cameraButton.isEnabled = false
         self.skipButton.isEnabled = false
@@ -597,7 +614,11 @@ extension ApplyLeaveViewController: UITableViewDelegate, UITableViewDataSource, 
             }
         }
     }
-    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        DispatchQueue.main.async {
+            self.requestSpeechAuthorization()
+        }
+    }
     //MARK: - Check Authorization Status
     
     func requestSpeechAuthorization() {
