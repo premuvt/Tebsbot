@@ -55,6 +55,7 @@ class ClaimConfirmViewController: UIViewController {
         amountLable.text = "Claim Amount - \(responceFareString ?? "no amount")"
         coastCenter.text = "Cost centre - \(departmentString ?? "no cost center")"
         if departmentString == nil || departmentString == "" || departmentString == "Select Cost Centre" {
+            departmentString = ""
             costcenterHeight.constant = 0
         }else{
             costcenterHeight.constant = 23
